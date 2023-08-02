@@ -1,0 +1,502 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding-top: 60px;
+}
+
+.container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.tycoon-container-desktop {
+  display: block;
+  background-color: transparent;
+  width: 100%;
+  height: auto;
+}
+
+.tycoon-container-mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .tycoon-container-desktop {
+    display: none;
+  }
+}
+
+.tycoon-container-mobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .tycoon-container-mobile {
+    display: block;
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+  }
+}
+
+/* Modal Design */
+
+.tycoon-modal {
+  padding: 40px 20px;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.tycoon-row {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+
+/* Hover Animation */
+@keyframes hoverLand {
+  0% {
+    transform: translateY(-6px);
+  }
+
+  50% {
+    transform: translateY(12px);
+  }
+
+  100% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes hoverLand-Mobile {
+  0% {
+    transform: translateY(-4px);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(-4px);
+  }
+}
+
+.land-wrapper {
+  display: flex;
+  text-align: initial;
+  margin: -6px -2px;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    height: auto;
+    padding-bottom: 60px;
+  }
+
+  .land-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: -6px -2px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .container {
+    height: 100vh;
+    padding-top: 30px;
+  }
+
+  .land-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 440px) {
+  .container {
+    height: 100vh;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .tycoon-container-mobile {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    margin-top: 0px;
+  }
+
+  .land-wrapper {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+.land-ownership {
+  display: none;
+  transition: all 0.4s;
+}
+
+/* Hover Animation */
+@keyframes hoverLand {
+  0% {
+    transform: translateY(-4px);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes hoverLand-Mobile {
+  0% {
+    transform: translateY(-4px);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+
+  100% {
+    transform: translateY(-4px);
+  }
+}
+
+/* .land-for-sale = For sale */
+
+.land-for-sale {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #fafafa, #ccc);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land-for-sale:before,
+.land-for-sale:after {
+  position: absolute;
+  content: "";
+  background: inherit;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  transition: 0.4s;
+  transform-origin: center;
+}
+
+.land-for-sale:before {
+  transform: rotateZ(60deg);
+}
+
+.land-for-sale:after {
+  transform: rotateZ(-60deg);
+}
+
+.land-for-sale:hover {
+  border-radius: 50px;
+  transition: 0.6s;
+  animation-duration: 1s;
+  animation-name: hoverLand;
+  animation-iteration-count: infinite;
+}
+
+@media (max-width: 768px) {
+  .land-for-sale:hover {
+    border-radius: 50px;
+    transition: 0.6s;
+    animation-duration: 1.4s;
+    animation-name: hoverLand-Mobile;
+    animation-iteration-count: infinite;
+  }
+}
+
+.land-for-sale:hover:before {
+  border-radius: 50px;
+  transition: 0.6s;
+}
+
+.land-for-sale:hover:after {
+  border-radius: 50px;
+  transition: 0.6s;
+}
+
+.land-for-sale:hover .land-ownership {
+  display: initial;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* .land-sold-uranos = Sold (Uranos) */
+
+.land-sold-uranos {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #fff1a1, #eca100);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land-sold-uranos:before,
+.land-sold-uranos:after {
+  position: absolute;
+  content: "";
+  background: inherit;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  transition: 0.4s;
+  transform-origin: center;
+}
+
+.land-sold-uranos:before {
+  transform: rotateZ(60deg);
+}
+
+.land-sold-uranos:after {
+  transform: rotateZ(-60deg);
+}
+
+.land-sold-uranos:hover {
+  border-radius: 50px;
+  transition: 0.6s;
+  animation-duration: 1.4s;
+  animation-name: hoverLand;
+  animation-iteration-count: infinite;
+}
+
+@media (max-width: 768px) {
+  .land-sold-uranos:hover {
+    border-radius: 50px;
+    transition: 0.6s;
+    animation-duration: 1.4s;
+    animation-name: hoverLand-Mobile;
+    animation-iteration-count: infinite;
+  }
+}
+
+.land-sold-uranos:hover:before {
+  border-radius: 50px;
+  transition: 0.6s;
+}
+
+.land-sold-uranos:hover:after {
+  border-radius: 50px;
+  transition: 0.6s;
+}
+
+.land-sold-uranos:hover .land-ownership {
+  display: initial;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* .land-sold-thalassa = Sold (Thalassa) */
+
+.land-sold-thalassa {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #7eceff, #2d3da7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land-sold-thalassa:before,
+.land-sold-thalassa:after {
+  position: absolute;
+  content: "";
+  background: inherit;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  transition: 0.4s;
+  transform-origin: center;
+}
+
+.land-sold-thalassa:before {
+  transform: rotateZ(60deg);
+}
+
+.land-sold-thalassa:after {
+  transform: rotateZ(-60deg);
+}
+
+.land-sold-thalassa:hover {
+  border-radius: 50px;
+  transition: 0.6s;
+  animation-duration: 1.4s;
+  animation-name: hoverLand;
+  animation-iteration-count: infinite;
+}
+
+@media (max-width: 768px) {
+  .land-sold-thalassa:hover {
+    border-radius: 50px;
+    transition: 0.6s;
+    animation-duration: 1.4s;
+    animation-name: hoverLand-Mobile;
+    animation-iteration-count: infinite;
+  }
+}
+
+.land-sold-thalassa:hover:before {
+  border-radius: 50px;
+  transition: 0.6s;
+}
+
+.land-sold-thalassa:hover:after {
+  border-radius: 50px;
+  transition: 0.6s;
+}
+
+.land-sold-thalassa:hover .land-ownership {
+  display: initial;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* .land-sold-ieros = Sold (Ieros) */
+
+.land-sold-ieros {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #d6a8ff, #6f0c72);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land-sold-ieros:before,
+.land-sold-ieros:after {
+  position: absolute;
+  content: "";
+  background: inherit;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  transition: 0.4s;
+  transform-origin: center;
+}
+
+.land-sold-ieros:before {
+  transform: rotateZ(60deg);
+}
+
+.land-sold-ieros:after {
+  transform: rotateZ(-60deg);
+}
+
+.land-sold-ieros:hover {
+  border-radius: 50px;
+  transition: 0.6s;
+  animation-duration: 1.4s;
+  animation-name: hoverLand;
+  animation-iteration-count: infinite;
+}
+
+@media (max-width: 768px) {
+  .land-sold-ieros:hover {
+    border-radius: 50px;
+    transition: 0.6s;
+    animation-duration: 1.4s;
+    animation-name: hoverLand-Mobile;
+    animation-iteration-count: infinite;
+  }
+}
+
+.land-sold-ieros:hover:before {
+  border-radius: 50px;
+  transition: 0.6s;
+}
+
+.land-sold-ieros:hover:after {
+  border-radius: 50px;
+  transition: 0.6s;
+}
+
+.land-sold-ieros:hover .land-ownership {
+  display: initial;
+  position: absolute;
+  top: -30px;
+  transform: translateX(12%);
+  width: 80px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}

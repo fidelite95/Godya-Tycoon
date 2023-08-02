@@ -1,0 +1,658 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+/* font-family: 'Sofia Sans', sans-serif; */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    37deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(34, 34, 34, 1) 95%
+  );
+}
+
+/* 
+* ──────────────────────────────────────
+* Ownership (Above the cube)
+* ──────────────────────────────────────
+*/
+
+.ownership {
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 100px;
+  margin-bottom: 120px;
+  text-align: center;
+}
+
+.ownership_land {
+  margin-top: 15px;
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  color: #f5f5f5;
+}
+
+.ownership_owner {
+  margin-bottom: 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: #f5f5f5;
+}
+
+.ownership_price {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  left: 50%;
+  translate: -45%;
+  width: 80%;
+  height: 30px;
+}
+
+.price_gold,
+.price_red {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.price_gold img,
+.price_red img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.price_gold p,
+.price_red p {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #f5f5f5;
+}
+
+/* 
+* ──────────────────────────────────────
+* Description & Buttons (Below the cube)
+* ──────────────────────────────────────
+*/
+
+.description {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 1200px;
+  height: 180px;
+  padding-top: 30px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.description_block {
+  width: 100px;
+  border: 1px solid transparent;
+}
+
+.description h1 {
+  margin-bottom: 2px;
+  font-family: 'Sofia Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: #f5f5f5;
+}
+
+.description p {
+  margin-bottom: 4px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: #f5f5f5;
+}
+
+.description h4 {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #f5f5f5;
+}
+
+.description_buttons {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.description_img img {
+  max-width: 60px;
+}
+
+/* Button */
+.btn {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  color: #292929;
+  width: 140px;
+  height: 50px;
+  margin: 0px 10px;
+  padding: 0px 30px;
+  vertical-align: middle;
+  text-decoration: none;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 700;
+  transition: all 0.3s ease-out;
+}
+
+.btn span {
+  position: absolute;
+  cursor: pointer;
+  background-color: transparent;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 18px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+}
+
+.btn:hover {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 50px;
+}
+
+.btn:hover p {
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Button Background */
+.btn-effect {
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0px 0px 0px 1px #fff inset;
+  background-color: transparent;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+.btn-effect:hover {
+  border: 2px solid #fff;
+  background-color: transparent;
+  box-shadow: 0px 0px 0px 2px #292929 inset;
+}
+
+/* Highlight */
+.btn-effect:after {
+  background: #222;
+  border: 0px solid #fff;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: 0.8;
+  position: absolute;
+  top: -50px;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+  width: 50px;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 1;
+}
+
+.btn-effect:hover:after {
+  background: rgb(0, 109, 226);
+  border: 20px solid #fff;
+  opacity: 0;
+  left: 120%;
+  -webkit-transform: rotate(40deg);
+  transform: rotate(40deg);
+}
+
+@media (max-width: 1080px) {
+  .description {
+    width: 1200px;
+    height: 120px;
+    margin-top: 30px;
+    padding-top: 30px;
+  }
+
+  .description_block {
+    width: 120px;
+  }
+
+  .description h1 {
+    font-size: 24px;
+    letter-spacing: -1px;
+  }
+
+  .description p {
+    margin-bottom: 4px;
+    font-size: 16px;
+    color: #f5f5f5;
+  }
+
+  .description h4 {
+    font-size: 26px;
+    color: #f5f5f5;
+  }
+}
+
+@media (max-width: 870px) {
+  body {
+    height: auto;
+    padding-top: 50px;
+  }
+
+  .description {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding-top: none;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  .description_block {
+    display: flex;
+    flex-direction: row;
+    width: 400px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  .description_name {
+    width: 100%;
+  }
+
+  .description_count {
+    text-align: right;
+    width: 100%;
+  }
+
+  .description h1 {
+    margin-bottom: 2px;
+    font-size: 32px;
+    letter-spacing: -2px;
+  }
+
+  .description p {
+    margin-bottom: 4px;
+    font-size: 18px;
+  }
+
+  .description h4 {
+    font-size: 38px;
+  }
+
+  .description_img img {
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    height: auto;
+    padding-top: 40px;
+  }
+
+  .cube {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .cube_uranos {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .cube_thalassa {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .cube_ieros {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .ownership {
+    height: 60px;
+    margin-bottom: 50px;
+  }
+
+  .ownership_land {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .ownership_owner {
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .description_block {
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 20px;
+  }
+
+  .description h1 {
+    margin-bottom: 2px;
+    font-size: 26px;
+    letter-spacing: -2px;
+  }
+
+  .description p {
+    margin-bottom: 4px;
+    font-size: 16px;
+  }
+
+  .description h4 {
+    font-size: 30px;
+  }
+
+  .description_img img {
+    max-width: 80px;
+  }
+
+  .btn {
+    width: 130px;
+    height: 40px;
+    margin: 0px 10px;
+    padding: 0px 30px;
+    border-radius: 10px;
+  }
+
+  .btn span {
+    position: absolute;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+  }
+}
+
+/* 
+* ──────────────────────────────────────
+* Cube : For-sale
+* ──────────────────────────────────────
+*/
+
+.cube {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+
+.cube div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#d4d4d4, #fafafa);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ddd;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #ddd;
+  transform: translateZ(-110px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(221, 221, 221, 0.2),
+    0 0 200px rgba(221, 221, 221, 0.4), 0 0 300px rgba(221, 221, 221, 0.6);
+}
+
+/* 
+* ──────────────────────────────────────
+* Land : Uranos
+* ──────────────────────────────────────
+*/
+
+.cube_uranos {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_uranos div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_uranos div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#ffd448, #fffcea);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_uranos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ffd858;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_uranos::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #fff2c8;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(255, 242, 200, 0.2),
+    0 0 200px rgba(255, 242, 200, 0.4), 0 0 300px rgba(255, 242, 200, 0.6);
+}
+
+/* 
+* ──────────────────────────────────────
+* Land : Thalassa
+* ──────────────────────────────────────
+*/
+
+.cube_thalassa {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_thalassa div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_thalassa div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#3686ff, #bfe6ff);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_thalassa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #428eff;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_thalassa::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #afe1ff;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(175, 225, 255, 0.2),
+    0 0 200px rgba(175, 225, 255, 0.4), 0 0 300px rgba(175, 225, 255, 0.6);
+}
+
+/* 
+* ──────────────────────────────────────
+* Land : Ieros
+* ──────────────────────────────────────
+*/
+
+.cube_ieros {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_ieros div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_ieros div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#9925ff, #e8ceff);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_ieros {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #9d2eff;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_ieros::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #e8ceff;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(232, 206, 255, 0.2),
+    0 0 200px rgba(232, 206, 255, 0.4), 0 0 300px rgba(232, 206, 255, 0.6);
+}

@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* font-family: 'Outfit', sans-serif; */
+
+/*
+ * ------------------------------
+ * main.html
+ * ------------------------------
+ */
+.main {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    margin: 0px;
+}
+
+.video__wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.video__wrapper video {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.main__title {
+    position: absolute;
+    background-color: transparent;
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+    height: 400px;
+    /* backdrop-filter: blur(5px); */
+    align-content: center;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+}
+
+.main__wrapper {
+    position: inherit;
+    background-color: transparent;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main__title img {
+    background-color: transparent;
+    width: 140px;
+}
+
+.main__title h1 {
+    background-color: transparent;
+    margin-top: 20px;
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 50px;
+    font-weight: 600;
+    color: #fff;
+}
+
+@media (max-width: 720px) {
+    .main__title h1 {
+        margin-top: 20px;
+        font-size: 45px;
+    }
+}
+
+@media (max-width: 496px) {
+    .main__title h1 {
+        margin-top: 20px;
+        font-size: 30px;
+    }
+}
+
+.main__buttons {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    margin-top: 2em;
+}
+
+/* Button */
+.btn {
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.btn span {
+    position: absolute;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    color: #fff;
+}
+
+.btn:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+.btn:hover p {
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Button Background */
+.btn-effect {
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-effect:hover {
+    border: 2px solid #fff;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 2px #292929 inset;
+}
+
+/* Highlight */
+.btn-effect:after {
+    background: #222;
+    border: 0px solid #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: 0.8;
+    position: absolute;
+    top: -50px;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+    width: 50px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 1;
+}
+
+.btn-effect:hover:after {
+    background: rgb(0, 109, 226);
+    border: 20px solid #fff;
+    opacity: 0;
+    left: 120%;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+}
+
+.main__account {
+    background-color: transparent;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.main__account a {
+    text-decoration: none;
+    background-color: transparent;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.main__account a:hover {
+    cursor: pointer;
+}
+
+/*
+ * ------------------------------
+ * Responsive
+ * ------------------------------
+ */
+@media (max-width: 1024px) {}
+
+@media (max-width: 855px) {}
+
+@media (max-width: 720px) {}
+
+/*
+ * ------------------------------
+ * story_login.php
+ * ------------------------------
+ */

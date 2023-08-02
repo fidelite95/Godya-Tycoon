@@ -1,0 +1,437 @@
+/*
+* ──────────────────────────────
+* .navbar (Desktop & Laptop)
+* ──────────────────────────────
+*/
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: whitesmoke;
+  height: 100%;
+  max-width: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s;
+  z-index: 99;
+  flex-direction: column;
+  border-right: solid 2px #202020;
+  font-family: "Roboto", sans-serif;
+}
+
+.logo {
+  text-align: center;
+  position: relative;
+  border-bottom: 2px solid #202020;
+  border-radius: 0px;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  text-decoration: none;
+  background-color: transparent;
+  transition: all 0.3s;
+}
+
+.logo:hover,
+.logo:active {
+  background-color: #202020;
+  cursor: pointer;
+}
+
+.logo-link {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.logo img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.logo:hover img,
+.logo:active img {
+  cursor: pointer;
+  content: url("../assets/images/nomadium_logo_white.png");
+}
+
+.navbar ul {
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.6s;
+}
+
+.navbar ul li {
+  background-color: transparent;
+  color: #202020;
+  margin-bottom: 40px;
+  position: relative;
+  list-style: none;
+  transition: all 0.3s;
+}
+
+.navbar ul li:hover {
+  color: #202020;
+  cursor: pointer;
+}
+
+.navbar ul li a {
+  background-color: transparent;
+  position: relative;
+  text-decoration: none;
+  color: #202020;
+  font-weight: 600;
+  font-size: 22px;
+  transition: 0.6s;
+}
+
+.navbar ul li a:hover {
+  cursor: pointer;
+  color: #888;
+}
+
+.navbar ul li a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #202020;
+  transition: width 0.3s;
+}
+
+.navbar ul li a:hover::after {
+  width: 100%;
+}
+
+.signin-wrapper {
+  width: 80px;
+  height: 180px;
+  text-align: center;
+  background-color: transparent;
+  border-top: 2px solid #202020;
+}
+
+.signin {
+  display: block;
+  background-color: transparent;
+  color: #202020;
+  font-size: 10px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  border: solid 2px transparent;
+  transition: all 0.5s;
+}
+
+.signin:hover {
+  color: #fff;
+  background-color: #202020;
+  border: none;
+  border-radius: 30px;
+  border: solid 2px #202020;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.signin:active {
+  border: 2px solid #202020;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  animation: none;
+  color: #202020;
+  transition: all 0.3s;
+}
+
+.signin-wrapper p {
+  display: block;
+  background-color: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-left: 32px;
+  letter-spacing: -1px;
+  writing-mode: vertical-lr;
+  text-orientation: mixed;
+}
+
+/*
+* ──────────────────────────────
+* .navbar (Tablet & Mobile)
+* ──────────────────────────────
+*/
+.navbar-mobile {
+  display: none;
+}
+
+.logo-mobile {
+  background-color: transparent;
+  color: #202020;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 7px 10px;
+  border-radius: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  border: solid 2px transparent;
+  transition: all 0.4s;
+}
+
+.logo-mobile img {
+  width: 26px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.logo-mobile:hover {
+  color: #fff;
+  background-color: #303030;
+  border-radius: 30px;
+  border: solid 2px #303030;
+  cursor: pointer;
+}
+
+.logo-mobile:hover img {
+  cursor: pointer;
+  content: url("../assets/images/nomadium_logo_white.png");
+}
+
+.logo-mobile:active {
+  border: 2px solid #303030;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.logo-mobile:active img {
+  cursor: pointer;
+  content: url("../assets/images/nomadium_logo_black.png");
+}
+
+.logo-mobile h1 {
+  background-color: transparent;
+  font-size: 22px;
+  font-weight: 800;
+  color: #202020;
+  letter-spacing: -1px;
+  cursor: pointer;
+}
+
+.logo-mobile:hover h1 {
+  color: #fff;
+}
+
+.logo-mobile:active h1 {
+  color: #202020;
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    display: none;
+  }
+
+  .navbar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 70px;
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    border-right: none;
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+    border-bottom: solid 2px #202020;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+    z-index: 99;
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+/*
+  * ──────────────────────────────
+  * .navbar-sticky (after Scroll-Down)
+  * ──────────────────────────────
+  */
+.navbar-sticky {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .navbar-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(245, 245, 245, 0.95);
+    border: solid 2px #202020;
+    height: 70px;
+    width: calc(100% - 20px);
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.4s;
+    padding: 20px;
+    z-index: 999;
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+/*
+  * ───────────────────────────────────
+  * Mobile Navigation
+  * ───────────────────────────────────
+  */
+
+.menu {
+  background-color: transparent;
+  display: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.overlay__hide {
+  top: 50%;
+  left: 200%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+  position: fixed;
+  z-index: 999;
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.6s ease 0s;
+}
+
+.overlay__show {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: whitesmoke;
+  height: 100%;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+  position: fixed;
+  z-index: 999;
+  text-align: left;
+  overflow: hidden;
+  transition: all 0.6s ease 0s;
+}
+
+.overlay__close {
+  position: absolute;
+  background-color: whitesmoke;
+  z-index: 10;
+  margin-top: 10px;
+  right: 20px;
+  font-size: 30px;
+  font-weight: 700;
+  color: #202020;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.overlay__close:hover {
+  color: #888;
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.overlay__close:active {
+  color: #202020;
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.overlay__logo {
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+}
+
+.overlay__logo h1 {
+  background-color: whitesmoke;
+  font-size: 34px;
+  color: #202020;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.overlay__content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding-top: 10px;
+  background-color: transparent;
+}
+
+.overlay__nav {
+  background-color: transparent;
+  width: 100%;
+}
+
+.overlay__nav-list {
+  background-color: transparent;
+  list-style: none;
+  border-bottom: #202020 1px solid;
+  text-align: left;
+}
+
+.overlay__nav-list span {
+  background-color: transparent;
+  margin-right: 8px;
+}
+
+.navLink {
+  background-color: transparent;
+  text-decoration: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  letter-spacing: 0px;
+  font-size: 15px;
+  color: #202020;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  display: block;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.navLink:active {
+  margin-left: 2%;
+  cursor: pointer;
+  color: #666;
+}
+
+@media (max-width: 1024px) {
+  .menu {
+    background-color: transparent;
+    display: initial;
+  }
+}

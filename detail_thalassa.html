@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cube Thalassa</title>
+  <link rel="stylesheet" href="cube.css" />
+</head>
+
+<body>
+  <!-- Dialog -->
+  <dialog data-modal class="tycoon-modal">
+    <p>This is a modal!</p>
+    <button data-close-modal>Close</button>
+  </dialog>
+
+  <!-- Ownership -->
+  <div class="ownership">
+    <h1 class="ownership_land">THALASSA001TC</h1>
+    <h3 class="ownership_owner">소유자 : 없음</h3>
+    <div class="ownership_price">
+      <div class="price_gold">
+        <img src="./images/tycoon_gold.png" alt="gold" />
+        <p>1000</p>
+      </div>
+      <div class="price_red">
+        <img src="./images/tycoon_red.png" alt="red" />
+        <p>1000</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Land Cube -->
+  <div class="cube_thalassa">
+    <div class="top_thalassa"></div>
+    <div>
+      <span style="--i: 0"></span>
+      <span style="--i: 1"></span>
+      <span style="--i: 2"></span>
+      <span style="--i: 3"></span>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="description_buttons">
+    <button data-open-modal class="btn btn-effect">
+      <span>구매하기</span>
+    </button>
+    <button data-open-modal class="btn btn-effect">
+      <span>취소</span>
+    </button>
+  </div>
+
+  <!-- Description -->
+  <div class="description">
+    <div class="description_block">
+      <div class="description_name">
+        <div class="description_img">
+          <img src="./images/tycoon_lv1.png" alt="tycoon">
+        </div>
+        <p>Lv1. 주택</p>
+      </div>
+      <div class="description_count">
+        <h4>0</h4>
+      </div>
+    </div>
+    <div class="description_block">
+      <div class="description_name">
+        <div class="description_img">
+          <img src="./images/tycoon_lv2.png" alt="tycoon">
+        </div>
+        <p>Lv2. 학교</p>
+      </div>
+      <div class="description_count">
+        <h4>0</h4>
+      </div>
+    </div>
+    <div class="description_block">
+      <div class="description_name">
+        <div class="description_img">
+          <img src="./images/tycoon_lv3.png" alt="tycoon">
+        </div>
+        <p>Lv3. 극장</p>
+      </div>
+      <div class="description_count">
+        <h4>0</h4>
+      </div>
+    </div>
+    <div class="description_block">
+      <div class="description_name">
+        <div class="description_img">
+          <img src="./images/tycoon_lv4.png" alt="tycoon">
+        </div>
+        <p>Lv4. 병원</p>
+      </div>
+      <div class="description_count">
+        <h4>0</h4>
+      </div>
+    </div>
+    <div class="description_block">
+      <div class="description_name">
+        <div class="description_img">
+          <img src="./images/tycoon_lv5.png" alt="tycoon">
+        </div>
+        <p>Lv5. 은행</p>
+      </div>
+      <div class="description_count">
+        <h4>0</h4>
+      </div>
+    </div>
+    <div class="description_block">
+      <div class="description_name">
+        <div class="description_img">
+          <img src="./images/tycoon_lv6.png" alt="tycoon">
+        </div>
+        <p>Lv6. 대경기장</p>
+      </div>
+      <div class="description_count">
+        <h4>0</h4>
+      </div>
+    </div>
+    <div class="description_block">
+      <div class="description_name">
+        <div class="description_img">
+          <img src="./images/tycoon_lv7.png" alt="tycoon">
+        </div>
+        <p>Lv7. 파르테논</p>
+      </div>
+      <div class="description_count">
+        <h4>0</h4>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const openButton = document.querySelector("[data-open-modal]");
+    const closeButton = document.querySelector("[data-close-modal]");
+    const modal = document.querySelector("[data-modal]");
+
+    openButton.addEventListener("click", () => {
+      modal.showModal();
+    });
+
+    closeButton.addEventListener("click", () => {
+      modal.close();
+    });
+  </script>
+</body>
+
+</html>
