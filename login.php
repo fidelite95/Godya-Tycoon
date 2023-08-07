@@ -40,16 +40,19 @@
             <div class="main__wrapper">
                 <h1>T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N
                 </h1>
-                <div class="main__buttons">
-                    <button id="btnPlay" class="btn btn-effect" onclick="start()">
-                        <span>시작하기</span>
+                <form class="login__form" action="login_ok.php" method="post">
+                    <div class="login__box">
+                        <label for="inputId" class="form-label" style="margin-right: 30px;">ID :</label>
+                        <input name="inputId" type="text" class="form-control" id="inputId" />
+                    </div>
+                    <div class="login__box">
+                        <label for="inputPw" class="form-label">PW :</label>
+                        <input name="inputPw" type="password" class="form-control" id="inputPw" />
+                    </div>
+                    <button class="btn btn-effect" type="submit">
+                        <span>로그인</span>
                     </button>
-                </div>
-                <div class="main__account">
-                    <a href="https://play.google.com/store/apps/details?id=com.final.warofthegods&hl=ko">
-                        아직 계정이 없으신가요?
-                    </a>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -77,11 +80,6 @@
 
         // Video Autoplay
         document.getElementById('vid').play();
-
-        // Onclick Event
-        function start() {
-            location.href = "./login.php";
-        }
     </script>
 
     <!-- Audio Player -->
