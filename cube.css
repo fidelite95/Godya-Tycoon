@@ -18,11 +18,9 @@ body {
   width: 100%;
   height: 100vh;
   background: rgb(0, 0, 0);
-  background: linear-gradient(
-    37deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(34, 34, 34, 1) 95%
-  );
+  background: linear-gradient(37deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(34, 34, 34, 1) 95%);
 }
 
 /* 
@@ -197,6 +195,7 @@ body {
   position: relative;
   transition: all 0.3s ease-in-out;
 }
+
 .btn-effect:hover {
   border: 2px solid #fff;
   background-color: transparent;
@@ -342,6 +341,42 @@ body {
     height: 200px;
   }
 
+  .cube_uranos_double {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .cube_thalassa_double {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .cube_ieros_double {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .cube_uranos_triple {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .cube_thalassa_triple {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .cube_ieros_triple {
+    margin-top: 80px;
+    width: 200px;
+    height: 200px;
+  }
+
   .ownership {
     height: 60px;
     margin-bottom: 50px;
@@ -480,6 +515,8 @@ body {
 * ──────────────────────────────────────
 */
 
+/* ─────────────────── Uranos Normal */
+
 .cube_uranos {
   position: relative;
   display: block;
@@ -506,7 +543,7 @@ body {
   left: 0;
   width: 100%;
   height: 30%;
-  background: linear-gradient(#ffd448, #fffcea);
+  background: linear-gradient(#ffd736, #fffcea);
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
   /* 300/2 = 150 */
 }
@@ -517,7 +554,7 @@ body {
   left: 0;
   width: 200px;
   height: 100px;
-  background-color: #ffd858;
+  background-color: #ffd736;
   transform: rotateX(90deg) translateZ(99px);
 }
 
@@ -535,11 +572,127 @@ body {
     0 0 200px rgba(255, 242, 200, 0.4), 0 0 300px rgba(255, 242, 200, 0.6);
 }
 
+/* ─────────────────── Uranos Double */
+
+.cube_uranos_double {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_uranos_double div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_uranos_double div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#ff8418, #fffcea);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_uranos_double {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ff8e2b;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_uranos_double::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #ffd9b8;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(255, 242, 200, 0.2),
+    0 0 200px rgba(255, 242, 200, 0.4), 0 0 300px rgba(255, 242, 200, 0.6);
+}
+
+/* ─────────────────── Uranos Triple */
+
+.cube_uranos_triple {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_uranos_triple div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_uranos_triple div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#ff4621, #fffcea);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_uranos_triple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ff4621;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_uranos_triple::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #ffd2c8;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(255, 242, 200, 0.2),
+    0 0 200px rgba(255, 242, 200, 0.4), 0 0 300px rgba(255, 242, 200, 0.6);
+}
+
 /* 
 * ──────────────────────────────────────
 * Land : Thalassa
 * ──────────────────────────────────────
 */
+
+/* ─────────────────── Thalassa Normal */
 
 .cube_thalassa {
   position: relative;
@@ -567,7 +720,7 @@ body {
   left: 0;
   width: 100%;
   height: 30%;
-  background: linear-gradient(#3686ff, #bfe6ff);
+  background: linear-gradient(#15c1fb, #bfe6ff);
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
   /* 300/2 = 150 */
 }
@@ -578,7 +731,7 @@ body {
   left: 0;
   width: 200px;
   height: 100px;
-  background-color: #428eff;
+  background-color: #15c1fb;
   transform: rotateX(90deg) translateZ(99px);
 }
 
@@ -589,7 +742,121 @@ body {
   left: 0;
   width: 200px;
   height: 200px;
-  background-color: #afe1ff;
+  background-color: #d0f3ff;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(175, 225, 255, 0.2),
+    0 0 200px rgba(175, 225, 255, 0.4), 0 0 300px rgba(175, 225, 255, 0.6);
+}
+
+/* ─────────────────── Thalassa Double */
+
+.cube_thalassa_double {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_thalassa_double div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_thalassa_double div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#007bff, #bfdeff);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_thalassa_double {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #007bff;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_thalassa_double::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #bedeff;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(175, 225, 255, 0.2),
+    0 0 200px rgba(175, 225, 255, 0.4), 0 0 300px rgba(175, 225, 255, 0.6);
+}
+
+/* ─────────────────── Thalassa Triple */
+
+.cube_thalassa_triple {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_thalassa_triple div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_thalassa_triple div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#1d3bff, #bfe6ff);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_thalassa_triple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #1d3bff;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_thalassa_triple::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #c5ccff;
   transform: translateZ(-130px);
   filter: blur(20px);
   box-shadow: 0 0 120px rgba(175, 225, 255, 0.2),
@@ -601,6 +868,8 @@ body {
 * Land : Ieros
 * ──────────────────────────────────────
 */
+
+/* ─────────────────── Ieros Normal */
 
 .cube_ieros {
   position: relative;
@@ -628,7 +897,7 @@ body {
   left: 0;
   width: 100%;
   height: 30%;
-  background: linear-gradient(#9925ff, #e8ceff);
+  background: linear-gradient(#923fff, #e8ceff);
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
   /* 300/2 = 150 */
 }
@@ -639,7 +908,7 @@ body {
   left: 0;
   width: 200px;
   height: 100px;
-  background-color: #9d2eff;
+  background-color: #923fff;
   transform: rotateX(90deg) translateZ(99px);
 }
 
@@ -650,7 +919,121 @@ body {
   left: 0;
   width: 200px;
   height: 200px;
-  background-color: #e8ceff;
+  background-color: #dec5ff;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(232, 206, 255, 0.2),
+    0 0 200px rgba(232, 206, 255, 0.4), 0 0 300px rgba(232, 206, 255, 0.6);
+}
+
+/* ─────────────────── Ieros Double */
+
+.cube_ieros_double {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_ieros_double div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_ieros_double div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#b906eb, #e8ceff);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_ieros_double {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #b906eb;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_ieros_double::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #f1beff;
+  transform: translateZ(-130px);
+  filter: blur(20px);
+  box-shadow: 0 0 120px rgba(232, 206, 255, 0.2),
+    0 0 200px rgba(232, 206, 255, 0.4), 0 0 300px rgba(232, 206, 255, 0.6);
+}
+
+/* ─────────────────── Ieros Triple */
+
+.cube_ieros_triple {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  z-index: -9;
+  transform-style: preserve-3d;
+  transform: rotateX(-30deg);
+  animation: animate 4s linear infinite;
+}
+
+.cube_ieros_triple div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.cube_ieros_triple div span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(#ff14dc, #e8ceff);
+  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+  /* 300/2 = 150 */
+}
+
+.top_ieros_triple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  background-color: #ff14dc;
+  transform: rotateX(90deg) translateZ(99px);
+}
+
+.top_ieros_triple::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #ffb3f4;
   transform: translateZ(-130px);
   filter: blur(20px);
   box-shadow: 0 0 120px rgba(232, 206, 255, 0.2),

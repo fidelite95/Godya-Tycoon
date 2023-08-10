@@ -41,13 +41,13 @@
   $land_code = $row['land_code'];
   $land_lv = 0;
 
+  // Land Status
+  $land_status = $row['land_status'];
+
   // Member ID
   $member_id = $row['member_id'];
   if ($member_id == NULL) {
     $member_id = '없음';
-    $land_lv = 0;
-  } else {
-    $land_lv = 1;
   }
 
   // Prices
@@ -101,10 +101,11 @@
 
   <!-- Land Cube -->
   <?php
-  if ($land_lv == 0) {
+  // Ieros Normal
+  if ($land_status == 1) {
   ?>
-    <div class="cube">
-      <div class="top"></div>
+    <div class="cube_ieros">
+      <div class="top_ieros"></div>
       <div>
         <span style="--i: 0"></span>
         <span style="--i: 1"></span>
@@ -113,10 +114,37 @@
       </div>
     </div>
   <?php
+    // Ieros Double
+  } elseif ($land_status == 2) {
+  ?>
+    <div class="cube_ieros_double">
+      <div class="top_ieros_double"></div>
+      <div>
+        <span style="--i: 0"></span>
+        <span style="--i: 1"></span>
+        <span style="--i: 2"></span>
+        <span style="--i: 3"></span>
+      </div>
+    </div>
+  <?php
+    // Ieros Triple
+  } elseif ($land_status == 3) {
+  ?>
+    <div class="cube_ieros_triple">
+      <div class="top_ieros_triple"></div>
+      <div>
+        <span style="--i: 0"></span>
+        <span style="--i: 1"></span>
+        <span style="--i: 2"></span>
+        <span style="--i: 3"></span>
+      </div>
+    </div>
+  <?php
+    // Not sold
   } else {
   ?>
-    <div class="cube_ieros">
-      <div class="top_ieros"></div>
+    <div class="cube">
+      <div class="top"></div>
       <div>
         <span style="--i: 0"></span>
         <span style="--i: 1"></span>
@@ -129,14 +157,31 @@
   ?>
 
   <!-- Buttons -->
-  <div class="description_buttons">
-    <button data-open-modal class="btn btn-effect">
-      <span>구매하기</span>
-    </button>
-    <button data-open-modal class="btn btn-effect" onclick="back()">
-      <span>취소</span>
-    </button>
-  </div>
+  <?php
+  if ($land_status == 0) {
+  ?>
+    <div class="description_buttons">
+      <button data-open-modal class="btn btn-effect">
+        <span>구매하기</span>
+      </button>
+      <button data-open-modal class="btn btn-effect" onclick="back()">
+        <span>취소</span>
+      </button>
+    </div>
+  <?php
+  } else {
+  ?>
+    <div class="description_buttons">
+      <button data-open-modal class="btn btn-effect">
+        <span>건설하기</span>
+      </button>
+      <button data-open-modal class="btn btn-effect" onclick="back()">
+        <span>취소</span>
+      </button>
+    </div>
+  <?php
+  }
+  ?>
 
   <!-- Description -->
   <div class="description">

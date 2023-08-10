@@ -21,10 +21,10 @@ if (isset($_SESSION['id'])) {
 </head>
 
 <?php
-if (!$login_status) {
-  echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-  echo "<script>location.href='login.php';</script>";
-} else {
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
   // Retrieving data from a database
   $con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
   mysqli_query($con, 'SET NAMES utf8');
@@ -804,7 +804,7 @@ if (!$login_status) {
   </body>
 
 <?php
-}
+// }
 ?>
 
 </html>
