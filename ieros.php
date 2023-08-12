@@ -35,11 +35,11 @@ if ($con->connect_errno) {
       <source src="./videos/tycoon_background2.mp4" type="video/mp4" />
     </video>
 
-    <?php include("./navbar.php")?>
+    <?php include("./navbar.php") ?>
 
-    <!-- *************************************** -->
-    <!-- Desktop                                 -->
-    <!-- *************************************** -->
+    <!-- ────────────────────────────────── -->
+    <!-- Desktop                            -->
+    <!-- ────────────────────────────────── -->
     <div class="tycoon-container-desktop">
       <div class="tycoon-row">
         <?php
@@ -47,30 +47,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -83,30 +96,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -119,30 +145,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -155,30 +194,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -191,30 +243,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -227,30 +292,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -263,30 +341,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -299,30 +390,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -335,30 +439,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -371,30 +488,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -403,9 +533,9 @@ if ($con->connect_errno) {
       </div>
     </div>
 
-    <!-- *************************************** -->
-    <!-- Mobile                                  -->
-    <!-- *************************************** -->
+    <!-- ────────────────────────────────── -->
+    <!-- Mobile                             -->
+    <!-- ────────────────────────────────── -->
     <div class="tycoon-container-mobile">
       <div class="tycoon-row">
         <?php
@@ -413,30 +543,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -449,30 +592,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -485,30 +641,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -521,30 +690,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -557,30 +739,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -593,30 +788,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -629,30 +837,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -665,30 +886,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -701,30 +935,43 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
@@ -737,35 +984,48 @@ if ($con->connect_errno) {
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
-          $sold = 0;
           $idx = $row['idx'];
           $land_code = $row['land_code'];
+          $land_status = $row['land_status'];
 
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
-          if ($member_idx == NULL && $member_id == NULL) {
-            $sold = 0;
-          } else {
-            $sold = 1;
-          }
 
-          // Check if the land is sold or not
-          if ($sold == 0) { ?>
-            <div class="land-wrapper">
-              <div class="land-for-sale" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          // According to the "land_status"
+          // 0 : For sale
+          // 1 : Uranos Normal
+          // 2 : Uranos Double
+          // 3 : Uranos Triple
+          if ($land_status == 0) { ?>
+            <div class="land_wrapper">
+              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
           <?php
-          } elseif ($sold == 1) { ?>
-            <div class="land-wrapper">
-              <div class="land-sold-ieros" onclick="detail(<?= $idx ?>)">
-                <span class="land-ownership"><?php echo $land_code ?></span>
+          } elseif ($land_status == 1) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 2) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
+              </div>
+            </div>
+          <?php
+          } elseif ($land_status == 3) { ?>
+            <div class="land_wrapper">
+              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
+                <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
         <?php
           }
-        } ?>
+        } ?>0
       </div>
     </div>
   </div>
