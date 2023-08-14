@@ -12,6 +12,11 @@
 </head>
 
 <?php
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
+
 // Retrieving data from a database
 $con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
 mysqli_query($con, 'SET NAMES utf8');
@@ -1043,11 +1048,15 @@ if ($con->connect_errno) {
       modal.close();
     });
 
-    // Detail Page
+    // Move to ieros_detail.php
     function detail(idx) {
       location.href = "ieros_detail.php?idx=" + idx;
     }
   </script>
 </body>
+
+<?php
+// }
+?>
 
 </html>

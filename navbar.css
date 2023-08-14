@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; */
+
 html {
   scroll-behavior: smooth;
 }
@@ -32,7 +35,7 @@ body {
   flex-direction: column;
   border: 2px solid #fafafa;
   border-radius: 10px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .logo {
@@ -160,6 +163,7 @@ body {
   border-radius: 20px;
   border: solid 2px whitesmoke;
   transition: all 0.5s;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 .signin:hover {

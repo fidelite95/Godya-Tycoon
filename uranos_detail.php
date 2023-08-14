@@ -7,22 +7,29 @@
   <?php include("./head.php") ?>
   <title>TYCOON | URANOS</title>
   <link rel="stylesheet" href="cube.css" />
+  <link rel="stylesheet" type="text/css" href="./tycoon.css" />
   <link rel="stylesheet" type="text/css" href="./navbar.css" />
 </head>
 
+<?php
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
+
+$idx = $_GET['idx'];
+
+// Retrieving data from a database
+$con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
+mysqli_query($con, 'SET NAMES utf8');
+$con->query("SET NAMES 'UTF8'");
+
+if ($con->connect_errno) {
+  die('Connection Error : ' . $con->connect_error);
+}
+?>
+
 <body>
-  <?php
-  $idx = $_GET['idx'];
-
-  // Retrieving data from a database
-  $con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
-  mysqli_query($con, 'SET NAMES utf8');
-  $con->query("SET NAMES 'UTF8'");
-
-  if ($con->connect_errno) {
-    die('Connection Error : ' . $con->connect_error);
-  }
-  ?>
   <!-- Dialog -->
   <!-- <dialog data-modal class="tycoon-modal">
     <p>This is a modal!</p>
@@ -161,7 +168,7 @@
   if ($land_status == 0) {
   ?>
     <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect">
+      <button data-open-modal class="btn btn-effect" onclick="buy(<?= $idx ?>)">
         <span>구매하기</span>
       </button>
       <button data-open-modal class="btn btn-effect" onclick="back()">
@@ -277,11 +284,20 @@
       modal.close();
     });
 
-    // Go back
+    // Move to uranos.php
     function back() {
       location.href = "uranos.php";
     }
+
+    // Move to uranos_buy.php
+    function buy(idx) {
+      location.href = "uranos_buy.php?idx=" + idx;
+    }
   </script>
 </body>
+
+<?php
+// }
+?>
 
 </html>

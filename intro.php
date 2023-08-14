@@ -48,10 +48,10 @@ if (isset($_SESSION['id'])) {
 </head>
 
 <?php
-if (!$login_status) {
-  echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-  echo "<script>location.href='login.php';</script>";
-} else {
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
 ?>
 
   <body id="body" style="opacity: 0">
@@ -78,7 +78,7 @@ if (!$login_status) {
   </body>
   
 <?php
-}
+// }
 ?>
 
 </html>

@@ -5,7 +5,7 @@
 
 <head>
   <?php include("./head.php") ?>
-  <title>TYCOON | THALASSA</title>
+  <title>TYCOON | URANOS</title>
   <link rel="stylesheet" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="./tycoon.css" />
   <link rel="stylesheet" type="text/css" href="./navbar.css" />
@@ -40,7 +40,7 @@ if ($con->connect_errno) {
 
   <!-- Ownership -->
   <?php
-  $query = "SELECT * FROM tb_tycoon_thalassa WHERE idx='$idx'";
+  $query = "SELECT * FROM tb_tycoon_uranos WHERE idx='$idx'";
   $result = $con->query($query);
   $row = $result->fetch_assoc();
 
@@ -108,11 +108,11 @@ if ($con->connect_errno) {
 
   <!-- Land Cube -->
   <?php
-  // Thalassa Normal
+  // Uranos Normal
   if ($land_status == 1) {
   ?>
-    <div class="cube_thalassa">
-      <div class="top_thalassa"></div>
+    <div class="cube_uranos">
+      <div class="top_uranos"></div>
       <div>
         <span style="--i: 0"></span>
         <span style="--i: 1"></span>
@@ -121,11 +121,11 @@ if ($con->connect_errno) {
       </div>
     </div>
   <?php
-    // Thalassa Double
+    // Uranos Double
   } elseif ($land_status == 2) {
   ?>
-    <div class="cube_thalassa_double">
-      <div class="top_thalassa_double"></div>
+    <div class="cube_uranos_double">
+      <div class="top_uranos_double"></div>
       <div>
         <span style="--i: 0"></span>
         <span style="--i: 1"></span>
@@ -134,11 +134,11 @@ if ($con->connect_errno) {
       </div>
     </div>
   <?php
-    // Thalassa Triple
+    // Uranos Triple
   } elseif ($land_status == 3) {
   ?>
-    <div class="cube_thalassa_triple">
-      <div class="top_thalassa_triple"></div>
+    <div class="cube_uranos_triple">
+      <div class="top_uranos_triple"></div>
       <div>
         <span style="--i: 0"></span>
         <span style="--i: 1"></span>
@@ -168,7 +168,7 @@ if ($con->connect_errno) {
   if ($land_status == 0) {
   ?>
     <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect" onclick="buy(<?= $idx ?>)">
+      <button data-open-modal class="btn btn-effect">
         <span>구매하기</span>
       </button>
       <button data-open-modal class="btn btn-effect" onclick="back()">
@@ -284,14 +284,9 @@ if ($con->connect_errno) {
       modal.close();
     });
 
-    // Move to thalassa.php
+    // Go back
     function back() {
-      location.href = "thalassa.php";
-    }
-
-    // Move to thalassa_buy.php
-    function buy(idx) {
-      location.href = "thalassa_buy.php?idx=" + idx;
+      location.href = "uranos.php";
     }
   </script>
 </body>

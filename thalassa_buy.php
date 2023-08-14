@@ -168,7 +168,7 @@ if ($con->connect_errno) {
   if ($land_status == 0) {
   ?>
     <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect" onclick="buy(<?= $idx ?>)">
+      <button data-open-modal class="btn btn-effect">
         <span>구매하기</span>
       </button>
       <button data-open-modal class="btn btn-effect" onclick="back()">
@@ -284,14 +284,9 @@ if ($con->connect_errno) {
       modal.close();
     });
 
-    // Move to thalassa.php
+    // Go back
     function back() {
       location.href = "thalassa.php";
-    }
-
-    // Move to thalassa_buy.php
-    function buy(idx) {
-      location.href = "thalassa_buy.php?idx=" + idx;
     }
   </script>
 </body>
