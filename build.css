@@ -1,0 +1,353 @@
+/* 
+* ──────────────────────────────────────
+* BUILD
+* ──────────────────────────────────────
+*/
+
+.description {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    height: 180px;
+    padding-top: 30px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.description_block {
+    width: 100px;
+    border: 1px solid transparent;
+}
+
+.description h1 {
+    margin-bottom: 2px;
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #f5f5f5;
+}
+
+.description p {
+    margin-bottom: 4px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #f5f5f5;
+}
+
+.description h4 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: #f5f5f5;
+}
+
+.description_buttons {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.description_img img {
+    max-width: 60px;
+}
+
+/* Button */
+.btn {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    color: #292929;
+    width: 140px;
+    height: 50px;
+    margin: 0px 10px;
+    padding: 0px 30px;
+    vertical-align: middle;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    transition: all 0.3s ease-out;
+}
+
+.btn span {
+    position: absolute;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+}
+
+.btn:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+.btn:hover p {
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Button Background */
+.btn-effect {
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-effect:hover {
+    border: 2px solid #fff;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 2px #292929 inset;
+}
+
+/* Highlight */
+.btn-effect:after {
+    background: #222;
+    border: 0px solid #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: 0.8;
+    position: absolute;
+    top: -50px;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+    width: 50px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 1;
+}
+
+.btn-effect:hover:after {
+    background: rgb(0, 109, 226);
+    border: 20px solid #fff;
+    opacity: 0;
+    left: 120%;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+}
+
+@media (max-width: 1080px) {
+    .description {
+        width: 1200px;
+        height: 120px;
+        margin-top: 30px;
+        padding-top: 30px;
+    }
+
+    .description_block {
+        width: 120px;
+    }
+
+    .description h1 {
+        font-size: 24px;
+        letter-spacing: -1px;
+    }
+
+    .description p {
+        margin-bottom: 4px;
+        font-size: 16px;
+        color: #f5f5f5;
+    }
+
+    .description h4 {
+        font-size: 26px;
+        color: #f5f5f5;
+    }
+}
+
+@media (max-width: 870px) {
+    body {
+        height: auto;
+        padding-top: 50px;
+    }
+
+    .description {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        padding-top: none;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        text-align: left;
+    }
+
+    .description_block {
+        display: flex;
+        flex-direction: row;
+        width: 400px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .description_name {
+        width: 100%;
+    }
+
+    .description_count {
+        text-align: right;
+        width: 100%;
+    }
+
+    .description h1 {
+        margin-bottom: 2px;
+        font-size: 32px;
+        letter-spacing: -2px;
+    }
+
+    .description p {
+        margin-bottom: 4px;
+        font-size: 18px;
+    }
+
+    .description h4 {
+        font-size: 38px;
+    }
+
+    .description_img img {
+        max-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        height: auto;
+        padding-top: 40px;
+    }
+
+    .cube {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_uranos {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_thalassa {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_ieros {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_uranos_double {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_thalassa_double {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_ieros_double {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_uranos_triple {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_thalassa_triple {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .cube_ieros_triple {
+        margin-top: 80px;
+        width: 200px;
+        height: 200px;
+    }
+
+    .ownership {
+        height: 60px;
+        margin-bottom: 50px;
+    }
+
+    .ownership_land {
+        margin-top: 15px;
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .ownership_owner {
+        font-weight: 500;
+        font-size: 16px;
+    }
+
+    .description_block {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+        margin-bottom: 20px;
+    }
+
+    .description h1 {
+        margin-bottom: 2px;
+        font-size: 26px;
+        letter-spacing: -2px;
+    }
+
+    .description p {
+        margin-bottom: 4px;
+        font-size: 16px;
+    }
+
+    .description h4 {
+        font-size: 30px;
+    }
+
+    .description_img img {
+        max-width: 80px;
+    }
+
+    .btn {
+        width: 130px;
+        height: 40px;
+        margin: 0px 10px;
+        padding: 0px 30px;
+        border-radius: 10px;
+    }
+
+    .btn span {
+        position: absolute;
+        cursor: pointer;
+        background-color: transparent;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 16px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -55%);
+    }
+}

@@ -78,7 +78,7 @@ if ($building_lv7 == NULL) {
   <link rel="stylesheet" type="text/css" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="./tycoon.css" />
   <link rel="stylesheet" type="text/css" href="./navbar.css" />
-  <link rel="stylesheet" type="text/css" href="buy_build.css">
+  <link rel="stylesheet" type="text/css" href="rent.css">
 </head>
 
 <body>
@@ -90,30 +90,30 @@ if ($building_lv7 == NULL) {
 
   <?php include("./navbar.php") ?>
 
-  <!-- Buyer -->
+  <!-- Tenant -->
   <?php
   // Temporary Member ID
   $temporary_id = "grandefidelite@gmail.com";
 
-  $query_buyer = "SELECT * FROM tb_member WHERE id='$temporary_id'";
-  $result_buyer = $con->query($query_buyer);
-  $row_buyer = $result_buyer->fetch_assoc();
+  $query_tenant = "SELECT * FROM tb_member WHERE id='$temporary_id'";
+  $result_tenant = $con->query($query_tenant);
+  $row_tenant = $result_tenant->fetch_assoc();
 
   // Member Nickname
-  $member_nick = $row_buyer['nick'];
+  $member_nick = $row_tenant['nick'];
 
   // Member Asset
-  $member_gold = $row_buyer['point'];
-  $member_red = $row_buyer['cash'];
+  $member_gold = $row_tenant['point'];
+  $member_red = $row_tenant['cash'];
   ?>
-  <div class="buyer">
-    <h3 class="buyer_name"><?php echo $member_nick ?>님의 보유자산</h3>
-    <div class="buyer_asset">
-      <div class="buyer_gold">
+  <div class="tenant">
+    <h3 class="tenant_name"><?php echo $member_nick ?>님의 보유자산</h3>
+    <div class="tenant_asset">
+      <div class="tenant_gold">
         <img src="./images/tycoon_gold.png" alt="gold" />
         <p><?php echo $member_gold ?></p>
       </div>
-      <div class="buyer_red">
+      <div class="tenant_red">
         <img src="./images/tycoon_red.png" alt="red" />
         <p><?php echo $member_red ?></p>
       </div>
@@ -197,13 +197,13 @@ if ($building_lv7 == NULL) {
     <button data-open-modal class="btn btn-effect">
       <span>
         <img src="./images/tycoon_gold.png" alt="gold" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
-        구매
+        사용
       </span>
     </button>
     <button data-open-modal class="btn btn-effect">
       <span>
         <img src="./images/tycoon_red.png" alt="red" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
-        구매
+        사용
       </span>
     </button>
     <button data-open-modal class="btn btn-effect" onclick="back()">

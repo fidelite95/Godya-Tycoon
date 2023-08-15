@@ -78,7 +78,7 @@ if ($building_lv7 == NULL) {
   <link rel="stylesheet" type="text/css" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="./tycoon.css" />
   <link rel="stylesheet" type="text/css" href="./navbar.css" />
-  <link rel="stylesheet" type="text/css" href="buy_build.css">
+  <link rel="stylesheet" type="text/css" href="build.css">
 </head>
 
 <body>
@@ -90,107 +90,37 @@ if ($building_lv7 == NULL) {
 
   <?php include("./navbar.php") ?>
 
-  <!-- Ownership -->
-  <div class="ownership">
-    <h1 class="ownership_land"><?php echo $land_code ?></h1>
-    <h3 class="ownership_owner">소유자 : <?php echo $member_id ?></h3>
-    <div class="ownership_price">
-      <div class="price_gold">
+  <!-- Buyer -->
+  <?php
+  // Temporary Member ID
+  $temporary_id = "grandefidelite@gmail.com";
+
+  $query_buyer = "SELECT * FROM tb_member WHERE id='$temporary_id'";
+  $result_buyer = $con->query($query_buyer);
+  $row_buyer = $result_buyer->fetch_assoc();
+
+  // Member Nickname
+  $member_nick = $row_buyer['nick'];
+
+  // Member Asset
+  $member_gold = $row_buyer['point'];
+  $member_red = $row_buyer['cash'];
+  ?>
+  <div class="buyer">
+    <h3 class="buyer_name"><?php echo $member_nick ?>님의 보유자산</h3>
+    <div class="buyer_asset">
+      <div class="buyer_gold">
         <img src="./images/tycoon_gold.png" alt="gold" />
-        <p><?php echo $price_gold ?></p>
+        <p><?php echo $member_gold ?></p>
       </div>
-      <div class="price_red">
+      <div class="buyer_red">
         <img src="./images/tycoon_red.png" alt="red" />
-        <p><?php echo $price_red ?></p>
+        <p><?php echo $member_red ?></p>
       </div>
     </div>
   </div>
 
-  <!-- Land Cube -->
-  <?php
-  // Uranos Normal
-  if ($land_status == 1) {
-  ?>
-    <div class="cube_uranos">
-      <div class="top_uranos"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
-      </div>
-    </div>
-  <?php
-    // Uranos Double
-  } elseif ($land_status == 2) {
-  ?>
-    <div class="cube_uranos_double">
-      <div class="top_uranos_double"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
-      </div>
-    </div>
-  <?php
-    // Uranos Triple
-  } elseif ($land_status == 3) {
-  ?>
-    <div class="cube_uranos_triple">
-      <div class="top_uranos_triple"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
-      </div>
-    </div>
-  <?php
-    // Not sold
-  } else {
-  ?>
-    <div class="cube">
-      <div class="top"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
-      </div>
-    </div>
-  <?php
-  }
-  ?>
-
-  <!-- Buttons -->
-  <?php
-  if ($land_status == 0) {
-  ?>
-    <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect" onclick="buy(<?= $idx ?>)">
-        <span>구매하기</span>
-      </button>
-      <button data-open-modal class="btn btn-effect" onclick="back()">
-        <span>취소</span>
-      </button>
-    </div>
-  <?php
-  } else {
-  ?>
-    <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect">
-        <span>건설하기</span>
-      </button>
-      <button data-open-modal class="btn btn-effect" onclick="back()">
-        <span>취소</span>
-      </button>
-    </div>
-  <?php
-  }
-  ?>
-
-  <!-- Description -->
+  <!-- Buliding List -->
   <div class="description">
     <div class="description_block">
       <div class="description_name">
@@ -269,6 +199,16 @@ if ($building_lv7 == NULL) {
         <h4><?php echo $building_lv7 ?></h4>
       </div>
     </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="description_buttons">
+    <button data-open-modal class="btn btn-effect">
+      <span>건설하기</span>
+    </button>
+    <button data-open-modal class="btn btn-effect" onclick="back()">
+      <span>취소</span>
+    </button>
   </div>
 
   <script>
