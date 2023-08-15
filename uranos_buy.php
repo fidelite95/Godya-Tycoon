@@ -1,22 +1,18 @@
-<?php include("./brand.php"); ?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <?php include("./head.php") ?>
-  <title>TYCOON | URANOS</title>
-  <link rel="stylesheet" href="cube.css" />
-  <link rel="stylesheet" type="text/css" href="./tycoon.css" />
-  <link rel="stylesheet" type="text/css" href="./navbar.css" />
-</head>
-
 <?php
+include("./brand.php");
+
+session_start();
+$login_id = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
+  $login_status = true;
+}
+
 // if (!$login_status) {
 //   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
 //   echo "<script>location.href='login.php';</script>";
 // } else {
 
+// GET an index from the previous page
 $idx = $_GET['idx'];
 
 // Retrieving data from a database
@@ -27,7 +23,63 @@ $con->query("SET NAMES 'UTF8'");
 if ($con->connect_errno) {
   die('Connection Error : ' . $con->connect_error);
 }
+
+// Territory Data
+$query = "SELECT * FROM tb_tycoon_uranos WHERE idx='$idx'";
+$result = $con->query($query);
+$row = $result->fetch_assoc();
+
+$land_code = $row['land_code'];
+$land_status = $row['land_status'];
+$member_id = $row['member_id'];
+if ($member_id == NULL) {
+  $member_id = '없음';
+}
+$price_gold = $row['price_gold'];
+$price_red = $row['price_red'];
+
+// Buildings
+$building_lv1 = $row['building_lv1'];
+$building_lv2 = $row['building_lv2'];
+$building_lv3 = $row['building_lv3'];
+$building_lv4 = $row['building_lv4'];
+$building_lv5 = $row['building_lv5'];
+$building_lv6 = $row['building_lv6'];
+$building_lv7 = $row['building_lv7'];
+if ($building_lv1 == NULL) {
+  $building_lv1 = 0;
+}
+if ($building_lv2 == NULL) {
+  $building_lv2 = 0;
+}
+if ($building_lv3 == NULL) {
+  $building_lv3 = 0;
+}
+if ($building_lv4 == NULL) {
+  $building_lv4 = 0;
+}
+if ($building_lv5 == NULL) {
+  $building_lv5 = 0;
+}
+if ($building_lv6 == NULL) {
+  $building_lv6 = 0;
+}
+if ($building_lv7 == NULL) {
+  $building_lv7 = 0;
+}
 ?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <?php include("./head.php") ?>
+  <title>TYCOON | <?php echo $land_code ?></title>
+  <link rel="stylesheet" type="text/css" href="cube.css" />
+  <link rel="stylesheet" type="text/css" href="./tycoon.css" />
+  <link rel="stylesheet" type="text/css" href="./navbar.css" />
+  <link rel="stylesheet" type="text/css" href="buy_build.css">
+</head>
 
 <body>
   <!-- Dialog -->
@@ -38,62 +90,39 @@ if ($con->connect_errno) {
 
   <?php include("./navbar.php") ?>
 
-  <!-- Ownership -->
+  <!-- Buyer -->
   <?php
-  $query = "SELECT * FROM tb_tycoon_uranos WHERE idx='$idx'";
-  $result = $con->query($query);
-  $row = $result->fetch_assoc();
+  // Temporary Member ID
+  $temporary_id = "grandefidelite@gmail.com";
 
-  // Land Code
-  $land_code = $row['land_code'];
-  $land_lv = 0;
+  $query_buyer = "SELECT * FROM tb_member WHERE id='$temporary_id'";
+  $result_buyer = $con->query($query_buyer);
+  $row_buyer = $result_buyer->fetch_assoc();
 
-  // Land Status
-  $land_status = $row['land_status'];
+  // Member Nickname
+  $member_nick = $row_buyer['nick'];
 
-  // Member ID
-  $member_id = $row['member_id'];
-  if ($member_id == NULL) {
-    $member_id = '없음';
-  }
-
-  // Prices
-  $price_gold = $row['price_gold'];
-  $price_red = $row['price_red'];
-
-  // Buildings
-  $building_lv1 = $row['building_lv1'];
-  $building_lv2 = $row['building_lv2'];
-  $building_lv3 = $row['building_lv3'];
-  $building_lv4 = $row['building_lv4'];
-  $building_lv5 = $row['building_lv5'];
-  $building_lv6 = $row['building_lv6'];
-  $building_lv7 = $row['building_lv7'];
-  if ($building_lv1 == NULL) {
-    $building_lv1 = 0;
-  }
-  if ($building_lv2 == NULL) {
-    $building_lv2 = 0;
-  }
-  if ($building_lv3 == NULL) {
-    $building_lv3 = 0;
-  }
-  if ($building_lv4 == NULL) {
-    $building_lv4 = 0;
-  }
-  if ($building_lv5 == NULL) {
-    $building_lv5 = 0;
-  }
-  if ($building_lv6 == NULL) {
-    $building_lv6 = 0;
-  }
-  if ($building_lv7 == NULL) {
-    $building_lv7 = 0;
-  }
+  // Member Asset
+  $member_gold = $row_buyer['point'];
+  $member_red = $row_buyer['cash'];
   ?>
-  <div class="ownership">
+  <div class="buyer">
+    <h3 class="buyer_name"><?php echo $member_nick ?>님의 보유자산</h3>
+    <div class="buyer_asset">
+      <div class="buyer_gold">
+        <img src="./images/tycoon_gold.png" alt="gold" />
+        <p><?php echo $member_gold ?></p>
+      </div>
+      <div class="buyer_red">
+        <img src="./images/tycoon_red.png" alt="red" />
+        <p><?php echo $member_red ?></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ownership -->
+  <div class="ownership_buy">
     <h1 class="ownership_land"><?php echo $land_code ?></h1>
-    <h3 class="ownership_owner">소유자 : <?php echo $member_id ?></h3>
     <div class="ownership_price">
       <div class="price_gold">
         <img src="./images/tycoon_gold.png" alt="gold" />
@@ -164,111 +193,22 @@ if ($con->connect_errno) {
   ?>
 
   <!-- Buttons -->
-  <?php
-  if ($land_status == 0) {
-  ?>
-    <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect">
-        <span>구매하기</span>
-      </button>
-      <button data-open-modal class="btn btn-effect" onclick="back()">
-        <span>취소</span>
-      </button>
-    </div>
-  <?php
-  } else {
-  ?>
-    <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect">
-        <span>건설하기</span>
-      </button>
-      <button data-open-modal class="btn btn-effect" onclick="back()">
-        <span>취소</span>
-      </button>
-    </div>
-  <?php
-  }
-  ?>
-
-  <!-- Description -->
-  <div class="description">
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv1.png" alt="tycoon">
-        </div>
-        <p>Lv1. 주택</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv1 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv2.png" alt="tycoon">
-        </div>
-        <p>Lv2. 학교</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv2 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv3.png" alt="tycoon">
-        </div>
-        <p>Lv3. 극장</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv3 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv4.png" alt="tycoon">
-        </div>
-        <p>Lv4. 병원</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv4 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv5.png" alt="tycoon">
-        </div>
-        <p>Lv5. 은행</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv5 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv6.png" alt="tycoon">
-        </div>
-        <p>Lv6. 대경기장</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv6 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv7.png" alt="tycoon">
-        </div>
-        <p>Lv7. 파르테논</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv7 ?></h4>
-      </div>
-    </div>
+  <div class="description_buttons">
+    <button data-open-modal class="btn btn-effect">
+      <span>
+        <img src="./images/tycoon_gold.png" alt="gold" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
+        구매
+      </span>
+    </button>
+    <button data-open-modal class="btn btn-effect">
+      <span>
+        <img src="./images/tycoon_red.png" alt="red" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
+        구매
+      </span>
+    </button>
+    <button data-open-modal class="btn btn-effect" onclick="back()">
+      <span>취소</span>
+    </button>
   </div>
 
   <script>

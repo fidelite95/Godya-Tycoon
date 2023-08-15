@@ -1,22 +1,18 @@
-<?php include("./brand.php"); ?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <?php include("./head.php") ?>
-  <title>TYCOON | URANOS</title>
-  <link rel="stylesheet" href="cube.css" />
-  <link rel="stylesheet" type="text/css" href="./tycoon.css" />
-  <link rel="stylesheet" type="text/css" href="./navbar.css" />
-</head>
-
 <?php
+include("./brand.php");
+
+session_start();
+$login_id = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
+  $login_status = true;
+}
+
 // if (!$login_status) {
 //   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
 //   echo "<script>location.href='login.php';</script>";
 // } else {
 
+// GET an index from the previous page
 $idx = $_GET['idx'];
 
 // Retrieving data from a database
@@ -27,7 +23,62 @@ $con->query("SET NAMES 'UTF8'");
 if ($con->connect_errno) {
   die('Connection Error : ' . $con->connect_error);
 }
+
+// Territory Data
+$query = "SELECT * FROM tb_tycoon_uranos WHERE idx='$idx'";
+$result = $con->query($query);
+$row = $result->fetch_assoc();
+
+$land_code = $row['land_code'];
+$land_status = $row['land_status'];
+$member_id = $row['member_id'];
+if ($member_id == NULL) {
+  $member_id = '없음';
+}
+$price_gold = $row['price_gold'];
+$price_red = $row['price_red'];
+
+// Buildings
+$building_lv1 = $row['building_lv1'];
+$building_lv2 = $row['building_lv2'];
+$building_lv3 = $row['building_lv3'];
+$building_lv4 = $row['building_lv4'];
+$building_lv5 = $row['building_lv5'];
+$building_lv6 = $row['building_lv6'];
+$building_lv7 = $row['building_lv7'];
+if ($building_lv1 == NULL) {
+  $building_lv1 = 0;
+}
+if ($building_lv2 == NULL) {
+  $building_lv2 = 0;
+}
+if ($building_lv3 == NULL) {
+  $building_lv3 = 0;
+}
+if ($building_lv4 == NULL) {
+  $building_lv4 = 0;
+}
+if ($building_lv5 == NULL) {
+  $building_lv5 = 0;
+}
+if ($building_lv6 == NULL) {
+  $building_lv6 = 0;
+}
+if ($building_lv7 == NULL) {
+  $building_lv7 = 0;
+}
 ?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <?php include("./head.php") ?>
+  <title>TYCOON | <?php echo $land_code ?></title>
+  <link rel="stylesheet" type="text/css" href="cube.css" />
+  <link rel="stylesheet" type="text/css" href="./tycoon.css" />
+  <link rel="stylesheet" type="text/css" href="./navbar.css" />
+</head>
 
 <body>
   <!-- Dialog -->
@@ -39,58 +90,6 @@ if ($con->connect_errno) {
   <?php include("./navbar.php") ?>
 
   <!-- Ownership -->
-  <?php
-  $query = "SELECT * FROM tb_tycoon_uranos WHERE idx='$idx'";
-  $result = $con->query($query);
-  $row = $result->fetch_assoc();
-
-  // Land Code
-  $land_code = $row['land_code'];
-  $land_lv = 0;
-
-  // Land Status
-  $land_status = $row['land_status'];
-
-  // Member ID
-  $member_id = $row['member_id'];
-  if ($member_id == NULL) {
-    $member_id = '없음';
-  }
-
-  // Prices
-  $price_gold = $row['price_gold'];
-  $price_red = $row['price_red'];
-
-  // Buildings
-  $building_lv1 = $row['building_lv1'];
-  $building_lv2 = $row['building_lv2'];
-  $building_lv3 = $row['building_lv3'];
-  $building_lv4 = $row['building_lv4'];
-  $building_lv5 = $row['building_lv5'];
-  $building_lv6 = $row['building_lv6'];
-  $building_lv7 = $row['building_lv7'];
-  if ($building_lv1 == NULL) {
-    $building_lv1 = 0;
-  }
-  if ($building_lv2 == NULL) {
-    $building_lv2 = 0;
-  }
-  if ($building_lv3 == NULL) {
-    $building_lv3 = 0;
-  }
-  if ($building_lv4 == NULL) {
-    $building_lv4 = 0;
-  }
-  if ($building_lv5 == NULL) {
-    $building_lv5 = 0;
-  }
-  if ($building_lv6 == NULL) {
-    $building_lv6 = 0;
-  }
-  if ($building_lv7 == NULL) {
-    $building_lv7 = 0;
-  }
-  ?>
   <div class="ownership">
     <h1 class="ownership_land"><?php echo $land_code ?></h1>
     <h3 class="ownership_owner">소유자 : <?php echo $member_id ?></h3>
@@ -179,7 +178,7 @@ if ($con->connect_errno) {
   } else {
   ?>
     <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect">
+      <button data-open-modal class="btn btn-effect" onclick="build(<?= $idx ?>)">
         <span>건설하기</span>
       </button>
       <button data-open-modal class="btn btn-effect" onclick="back()">
@@ -292,6 +291,11 @@ if ($con->connect_errno) {
     // Move to uranos_buy.php
     function buy(idx) {
       location.href = "uranos_buy.php?idx=" + idx;
+    }
+
+    // Move to uranos_build.php
+    function build(idx) {
+      location.href = "uranos_build.php?idx=" + idx;
     }
   </script>
 </body>

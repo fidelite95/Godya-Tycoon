@@ -1,4 +1,13 @@
-<?php include("./brand.php"); ?>
+<?php
+include("./brand.php");
+
+session_start();
+$login_id = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
+  $login_status = true;
+}
+
+?>
 
 <!DOCTYPE html>
 <html>
