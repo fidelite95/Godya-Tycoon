@@ -167,8 +167,8 @@ if ($building_lv7 == NULL) {
   if ($land_status == 0) {
   ?>
     <div class="description_buttons">
-      <button data-open-modal class="btn btn-effect" onclick="buy(<?= $idx ?>)">
-        <span>구매하기</span>
+      <button data-open-modal class="btn btn-effect" onclick="rent(<?= $idx ?>)">
+        <span>임대하기</span>
       </button>
       <button data-open-modal class="btn btn-effect" onclick="back()">
         <span>취소</span>
@@ -288,9 +288,9 @@ if ($building_lv7 == NULL) {
       location.href = "ieros.php";
     }
 
-    // Move to ieros_buy.php
-    function buy(idx) {
-      location.href = "ieros_buy.php?idx=" + idx;
+    // Move to ieros_rent.php
+    function rent(idx) {
+      location.href = "ieros_rent.php?idx=" + idx;
     }
 
     // Move to ieros_build.php
