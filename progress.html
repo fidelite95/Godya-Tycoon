@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Bar Example</title>
+    <link rel="stylesheet" href="progress.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="circular-progress">
+            <lottie-player src="https://lottie.host/fbf0fbe1-cebd-496f-89dd-3ef1281e36a9/r8GJRIt6of.json" background="transparent" speed="1"
+                style="width: 300px; height: 300px" loop autoplay direction="1" mode="normal"></lottie-player>
+        </div>
+        <span class="progress-value">Ongoing...</span>
+    </div>
+
+    <script>
+        let circularProgress = document.querySelector('.circular-progress');
+        let progressValue = document.querySelector('.progress-value');
+
+        let progressStartValue = 0;
+        let progressEndValue = 1000;
+        let speed = 10;
+        // Lv1 : 50
+        // Lv2 : 45
+        // Lv3 : 40
+        // Lv4 : 35
+        // Lv5 : 30
+        // Lv6 : 25
+        // Lv7 : 20
+        // Lv8 : 15
+        // Lv9 : 10
+        // Lv10 : 5
+
+        let progressCircle = setInterval(() => {
+            progressStartValue++;
+
+            circularProgress.style.background = `conic-gradient(rgba(125, 42, 232, 1) ${progressStartValue * 0.36}deg, rgba(0, 0, 0, 1) 0deg)`;
+
+            if (progressStartValue == progressEndValue) {
+                clearInterval(progressCircle);
+            }
+        }, speed);
+    </script>
+</body>
+
+</html>
