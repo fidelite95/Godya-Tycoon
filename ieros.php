@@ -55,6 +55,8 @@ if ($con->connect_errno) {
     <!-- Desktop                            -->
     <!-- ────────────────────────────────── -->
     <div class="tycoon-container-desktop">
+
+      <!-- 1st Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 0, 1";
@@ -70,12 +72,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_1" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -86,24 +86,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 2nd Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 1, 2";
@@ -119,12 +107,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_2" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -135,24 +121,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 3rd Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 3, 3";
@@ -168,12 +142,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_3" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -184,24 +156,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 4th Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 6, 4";
@@ -217,12 +177,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_4" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -233,24 +191,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 5th Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 10, 5";
@@ -266,12 +212,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_5" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -282,24 +226,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 6th Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 15, 6";
@@ -315,12 +247,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_6" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -331,24 +261,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 7th Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 21, 7";
@@ -364,12 +282,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_7" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -380,24 +296,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 8th Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 28, 8";
@@ -413,12 +317,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_8" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -429,24 +331,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 9th Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 36, 9";
@@ -462,12 +352,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_9" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -478,24 +366,12 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 10th Grade -->
       <div class="tycoon-row">
         <?php
         $query = "SELECT * FROM tb_tycoon_ieros ORDER BY idx LIMIT 45, 10";
@@ -511,12 +387,10 @@ if ($con->connect_errno) {
 
           // According to the "land_status"
           // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          // 1 : Sold
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
+              <div class="land_blank_10" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -527,24 +401,11 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_ieros_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
         <?php
           }
         } ?>
       </div>
+
     </div>
 
     <!-- ────────────────────────────────── -->
@@ -1037,7 +898,7 @@ if ($con->connect_errno) {
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
-        <?php
+            <?php
           }
         } ?>0
       </div>

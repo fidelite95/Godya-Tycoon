@@ -4,27 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progress Bar Example</title>
-    <link rel="stylesheet" href="progress.css">
+    <title>Mining Example</title>
+    <link rel="stylesheet" href="mining.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="circular-progress">
+    <div class="mn_container">
+        <div class="mn_progress">
             <lottie-player src="https://lottie.host/fbf0fbe1-cebd-496f-89dd-3ef1281e36a9/r8GJRIt6of.json" background="transparent" speed="1"
                 style="width: 300px; height: 300px" loop autoplay direction="1" mode="normal"></lottie-player>
         </div>
-        <span class="progress-value">Ongoing...</span>
+        <span class="mn_sign">Ongoing...</span>
     </div>
 
     <script>
-        let circularProgress = document.querySelector('.circular-progress');
-        let progressValue = document.querySelector('.progress-value');
-
+        let circularProgress = document.querySelector('.mn_progress');
         let progressStartValue = 0;
         let progressEndValue = 1000;
-        let speed = 10;
+        let speed = 5;
         // Lv1 : 50
         // Lv2 : 45
         // Lv3 : 40

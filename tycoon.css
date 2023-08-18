@@ -201,13 +201,15 @@
 * ──────────────────────────────────────
 */
 
-.land_blank {
+/* ─────────────────── Colors for each grade */
+
+.land_blank_10 {
   position: relative;
   width: 46%;
   height: 80%;
   margin: auto;
   color: white;
-  background: linear-gradient(-180deg, #fafafa, #ccc);
+  background: linear-gradient(-180deg, #ffffff, #d5d5d5);
   /* opacity: 0.9; */
   border: 1px solid rgba(255, 255, 255, 0.7);
   display: flex;
@@ -217,8 +219,170 @@
   transform: rotateZ(30deg);
 }
 
-.land_blank:before,
-.land_blank:after {
+.land_blank_9 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #ffffff, #c0c0c0);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_8 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #d5d5d5, #a5a5a5);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_7 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #c0c0c0, #909090);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_6 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #a5a5a5, #757575);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(250, 250, 250, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_5 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #909090, #606060);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(225, 225, 225, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_4 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #757575, #454545);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(200, 200, 200, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_3 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #606060, #303030);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(175, 175, 175, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_2 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #454545, #151515);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(150, 150, 150, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_1 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #303030, #000000);
+  /* opacity: 0.9; */
+  border: 1px solid rgba(125, 125, 125, 0.7);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_blank_10:before,
+.land_blank_10:after,
+.land_blank_9:before,
+.land_blank_9:after,
+.land_blank_8:before,
+.land_blank_8:after,
+.land_blank_7:before,
+.land_blank_7:after,
+.land_blank_6:before,
+.land_blank_6:after,
+.land_blank_5:before,
+.land_blank_5:after,
+.land_blank_4:before,
+.land_blank_4:after,
+.land_blank_3:before,
+.land_blank_3:after,
+.land_blank_2:before,
+.land_blank_2:after,
+.land_blank_1:before,
+.land_blank_1:after {
   position: absolute;
   content: "";
   background: inherit;
@@ -229,15 +393,42 @@
   transform-origin: center;
 }
 
-.land_blank:before {
+.land_blank_10:before,
+.land_blank_9:before,
+.land_blank_8:before,
+.land_blank_7:before,
+.land_blank_6:before,
+.land_blank_5:before,
+.land_blank_4:before,
+.land_blank_3:before,
+.land_blank_2:before,
+.land_blank_1:before {
   transform: rotateZ(60deg);
 }
 
-.land_blank:after {
+.land_blank_10:after,
+.land_blank_9:after,
+.land_blank_8:after,
+.land_blank_7:after,
+.land_blank_6:after,
+.land_blank_5:after,
+.land_blank_4:after,
+.land_blank_3:after,
+.land_blank_2:after,
+.land_blank_1:after {
   transform: rotateZ(-60deg);
 }
 
-.land_blank:hover {
+.land_blank_10:hover,
+.land_blank_9:hover,
+.land_blank_8:hover,
+.land_blank_7:hover,
+.land_blank_6:hover,
+.land_blank_5:hover,
+.land_blank_4:hover,
+.land_blank_3:hover,
+.land_blank_2:hover,
+.land_blank_1:hover {
   border-radius: 50px;
   transition: 0.6s;
   animation-duration: 1s;
@@ -246,7 +437,17 @@
 }
 
 @media (max-width: 768px) {
-  .land_blank:hover {
+
+  .land_blank_10:hover,
+  .land_blank_9:hover,
+  .land_blank_8:hover,
+  .land_blank_7:hover,
+  .land_blank_6:hover,
+  .land_blank_5:hover,
+  .land_blank_4:hover,
+  .land_blank_3:hover,
+  .land_blank_2:hover,
+  .land_blank_1:hover {
     border-radius: 50px;
     transition: 0.6s;
     animation-duration: 1.4s;
@@ -255,17 +456,44 @@
   }
 }
 
-.land_blank:hover:before {
+.land_blank_10:hover:before,
+.land_blank_9:hover:before,
+.land_blank_8:hover:before,
+.land_blank_7:hover:before,
+.land_blank_6:hover:before,
+.land_blank_5:hover:before,
+.land_blank_4:hover:before,
+.land_blank_3:hover:before,
+.land_blank_2:hover:before,
+.land_blank_1:hover:before {
   border-radius: 50px;
   transition: 0.6s;
 }
 
-.land_blank:hover:after {
+.land_blank_10:hover:after,
+.land_blank_9:hover:after,
+.land_blank_8:hover:after,
+.land_blank_7:hover:after,
+.land_blank_6:hover:after,
+.land_blank_5:hover:after,
+.land_blank_4:hover:after,
+.land_blank_3:hover:after,
+.land_blank_2:hover:after,
+.land_blank_1:hover:after {
   border-radius: 50px;
   transition: 0.6s;
 }
 
-.land_blank:hover .land_ownership {
+.land_blank_10:hover .land_ownership,
+.land_blank_9:hover .land_ownership,
+.land_blank_8:hover .land_ownership,
+.land_blank_7:hover .land_ownership,
+.land_blank_6:hover .land_ownership,
+.land_blank_5:hover .land_ownership,
+.land_blank_4:hover .land_ownership,
+.land_blank_3:hover .land_ownership,
+.land_blank_2:hover .land_ownership,
+.land_blank_1:hover .land_ownership {
   display: initial;
   position: absolute;
   top: -30px;
