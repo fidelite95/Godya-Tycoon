@@ -82,7 +82,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_1" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -117,7 +117,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_2" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -152,7 +152,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_3" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -187,7 +187,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_4" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -222,7 +222,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_5" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -257,7 +257,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_6" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -292,7 +292,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_7" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -327,7 +327,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_8" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -362,7 +362,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_9" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -397,7 +397,7 @@ if ($con->connect_errno) {
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_thalassa" onclick="detail(<?= $idx ?>)">
+              <div class="land_thalassa_10" onclick="detail(<?= $idx ?>)">
                 <span class="land_ownership"><?php echo $land_code ?></span>
               </div>
             </div>
@@ -405,7 +405,7 @@ if ($con->connect_errno) {
           }
         } ?>
       </div>
-      
+
     </div>
 
     <!-- ────────────────────────────────── -->

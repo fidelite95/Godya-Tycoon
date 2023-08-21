@@ -35,8 +35,8 @@ $member_id = $row['member_id'];
 if ($member_id == NULL) {
   $member_id = '없음';
 }
-$price_gold = $row['price_gold'];
-$price_red = $row['price_red'];
+$price_gold = number_format($row['price_gold']);
+$price_red = number_format($row['price_red']);
 
 // Buildings
 $building_lv1 = $row['building_lv1'];
@@ -107,50 +107,22 @@ if ($building_lv7 == NULL) {
 
   <!-- Land Cube -->
   <?php
-  // Thalassa Normal
-  if ($land_status == 1) {
-  ?>
-    <div class="cube_thalassa">
-      <div class="top_thalassa"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
-      </div>
-    </div>
-  <?php
-    // Thalassa Double
-  } elseif ($land_status == 2) {
-  ?>
-    <div class="cube_thalassa_double">
-      <div class="top_thalassa_double"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
-      </div>
-    </div>
-  <?php
-    // Thalassa Triple
-  } elseif ($land_status == 3) {
-  ?>
-    <div class="cube_thalassa_triple">
-      <div class="top_thalassa_triple"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
-      </div>
-    </div>
-  <?php
-    // Not sold
-  } else {
+  if ($land_status == 0) {
   ?>
     <div class="cube">
       <div class="top"></div>
+      <div>
+        <span style="--i: 0"></span>
+        <span style="--i: 1"></span>
+        <span style="--i: 2"></span>
+        <span style="--i: 3"></span>
+      </div>
+    </div>
+  <?php
+  } elseif ($land_status == 1) {
+  ?>
+    <div class="cube_uranos">
+      <div class="top_uranos"></div>
       <div>
         <span style="--i: 0"></span>
         <span style="--i: 1"></span>

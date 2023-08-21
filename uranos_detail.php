@@ -35,8 +35,9 @@ $member_id = $row['member_id'];
 if ($member_id == NULL) {
   $member_id = '없음';
 }
-$price_gold = $row['price_gold'];
-$price_red = $row['price_red'];
+$price_gold = number_format($row['price_gold']);
+$price_red = number_format($row['price_red']);
+
 
 // Buildings
 $building_lv1 = $row['building_lv1'];
@@ -107,58 +108,382 @@ if ($building_lv7 == NULL) {
 
   <!-- Land Cube -->
   <?php
-  // Uranos Normal
-  if ($land_status == 1) {
-  ?>
-    <div class="cube_uranos">
-      <div class="top_uranos"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
+  if ($land_status == 0) {
+    switch ($idx) {
+        // Grade 1
+      case 1:
+        echo '
+        <div class="cube_1">
+          <div class="top_1"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 2
+      case 2:
+      case 3:
+        echo '
+        <div class="cube_2">
+          <div class="top_2"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 3
+      case 4:
+      case 5:
+      case 6:
+        echo '
+        <div class="cube_3">
+          <div class="top_3"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 4
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+        echo '
+        <div class="cube_4">
+          <div class="top_4"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 5
+      case 11:
+      case 12:
+      case 13:
+      case 14:
+      case 15:
+        echo '
+        <div class="cube_5">
+          <div class="top_5"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 6
+      case 16:
+      case 17:
+      case 18:
+      case 19:
+      case 20:
+      case 21:
+        echo '
+        <div class="cube_6">
+          <div class="top_6"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 7
+      case 22:
+      case 23:
+      case 24:
+      case 25:
+      case 26:
+      case 27:
+      case 28:
+        echo '
+        <div class="cube_7">
+          <div class="top_7"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 8
+      case 29:
+      case 30:
+      case 31:
+      case 32:
+      case 33:
+      case 34:
+      case 35:
+      case 36:
+        echo '
+        <div class="cube_8">
+          <div class="top_8"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 9
+      case 37:
+      case 38:
+      case 39:
+      case 40:
+      case 41:
+      case 42:
+      case 43:
+      case 44:
+      case 45:
+        echo '
+        <div class="cube_9">
+          <div class="top_9"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+        // Grade 10
+      case 46:
+      case 47:
+      case 48:
+      case 49:
+      case 50:
+      case 51:
+      case 52:
+      case 53:
+      case 54:
+      case 55:
+        echo '
+        <div class="cube_10">
+          <div class="top_10"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
+    }
+  } elseif ($land_status == 1) {
+    switch ($idx) {
+        // Grade 1
+      case 1:
+        echo '
+      <div class="cube_uranos_1">
+        <div class="top_uranos_1"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
       </div>
-    </div>
-  <?php
-    // Uranos Double
-  } elseif ($land_status == 2) {
-  ?>
-    <div class="cube_uranos_double">
-      <div class="top_uranos_double"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
+      ';
+        break;
+        // Grade 2
+      case 2:
+      case 3:
+        echo '
+      <div class="cube_uranos_2">
+        <div class="top_uranos_2"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
       </div>
-    </div>
-  <?php
-    // Uranos Triple
-  } elseif ($land_status == 3) {
-  ?>
-    <div class="cube_uranos_triple">
-      <div class="top_uranos_triple"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
+      ';
+        break;
+        // Grade 3
+      case 4:
+      case 5:
+      case 6:
+        echo '
+      <div class="cube_uranos_3">
+        <div class="top_uranos_3"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
       </div>
-    </div>
-  <?php
-    // Not sold
-  } else {
-  ?>
-    <div class="cube">
-      <div class="top"></div>
-      <div>
-        <span style="--i: 0"></span>
-        <span style="--i: 1"></span>
-        <span style="--i: 2"></span>
-        <span style="--i: 3"></span>
+      ';
+        break;
+        // Grade 4
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+        echo '
+      <div class="cube_uranos_4">
+        <div class="top_uranos_4"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
       </div>
-    </div>
-  <?php
+      ';
+        break;
+        // Grade 5
+      case 11:
+      case 12:
+      case 13:
+      case 14:
+      case 15:
+        echo '
+      <div class="cube_uranos_5">
+        <div class="top_uranos_5"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
+      </div>
+      ';
+        break;
+        // Grade 6
+      case 16:
+      case 17:
+      case 18:
+      case 19:
+      case 20:
+      case 21:
+        echo '
+      <div class="cube_uranos_6">
+        <div class="top_uranos_6"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
+      </div>
+      ';
+        break;
+        // Grade 7
+      case 22:
+      case 23:
+      case 24:
+      case 25:
+      case 26:
+      case 27:
+      case 28:
+        echo '
+      <div class="cube_uranos_7">
+        <div class="top_uranos_7"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
+      </div>
+      ';
+        break;
+        // Grade 8
+      case 29:
+      case 30:
+      case 31:
+      case 32:
+      case 33:
+      case 34:
+      case 35:
+      case 36:
+        echo '
+      <div class="cube_uranos_8">
+        <div class="top_uranos_8"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
+      </div>
+      ';
+        break;
+        // Grade 9
+      case 37:
+      case 38:
+      case 39:
+      case 40:
+      case 41:
+      case 42:
+      case 43:
+      case 44:
+      case 45:
+        echo '
+      <div class="cube_uranos_9">
+        <div class="top_uranos_9"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
+      </div>
+      ';
+        break;
+        // Grade 10
+      case 46:
+      case 47:
+      case 48:
+      case 49:
+      case 50:
+      case 51:
+      case 52:
+      case 53:
+      case 54:
+      case 55:
+        echo '
+      <div class="cube_uranos_10">
+        <div class="top_uranos_10"></div>
+        <div>
+          <span style="--i: 0"></span>
+          <span style="--i: 1"></span>
+          <span style="--i: 2"></span>
+          <span style="--i: 3"></span>
+        </div>
+      </div>
+      ';
+        break;
+    }
   }
   ?>
 

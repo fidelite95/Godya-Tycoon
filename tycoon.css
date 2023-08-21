@@ -511,15 +511,15 @@
 * ──────────────────────────────────────
 */
 
-/* ─────────────────── Uranos Normal */
+/* ─────────────────── Colors for each grade */
 
-.land_uranos {
+.land_uranos_10 {
   position: relative;
   width: 46%;
   height: 80%;
   margin: auto;
   color: white;
-  background: linear-gradient(-180deg, #fff4b4, #eca100);
+  background: linear-gradient(-180deg, #FFFFFF, #FFFAD9);
   display: flex;
   align-content: center;
   justify-content: center;
@@ -527,8 +527,152 @@
   transform: rotateZ(30deg);
 }
 
-.land_uranos:before,
-.land_uranos:after {
+.land_uranos_9 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFFFFF, #FFEFAD);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_8 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFFAD9, #FFE05D);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_7 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFFAD9, #FFD934);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_6 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFEFAD, #FFCF00);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_5 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFFAD9, #FFB000);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_4 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFE6AE, #FFBA45);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_3 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFE6AE, #FF9900);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_2 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFE1BA, #FF6300);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_1 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFBC91, #FF5400);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_uranos_10:before,
+.land_uranos_10:after,
+.land_uranos_9:before,
+.land_uranos_9:after,
+.land_uranos_8:before,
+.land_uranos_8:after,
+.land_uranos_7:before,
+.land_uranos_7:after,
+.land_uranos_6:before,
+.land_uranos_6:after,
+.land_uranos_5:before,
+.land_uranos_5:after,
+.land_uranos_4:before,
+.land_uranos_4:after,
+.land_uranos_3:before,
+.land_uranos_3:after,
+.land_uranos_2:before,
+.land_uranos_2:after,
+.land_uranos_1:before,
+.land_uranos_1:after {
   position: absolute;
   content: "";
   background: inherit;
@@ -539,24 +683,61 @@
   transform-origin: center;
 }
 
-.land_uranos:before {
+.land_uranos_10:before,
+.land_uranos_9:before,
+.land_uranos_8:before,
+.land_uranos_7:before,
+.land_uranos_6:before,
+.land_uranos_5:before,
+.land_uranos_4:before,
+.land_uranos_3:before,
+.land_uranos_2:before,
+.land_uranos_1:before {
   transform: rotateZ(60deg);
 }
 
-.land_uranos:after {
+.land_uranos_10:after,
+.land_uranos_9:after,
+.land_uranos_8:after,
+.land_uranos_7:after,
+.land_uranos_6:after,
+.land_uranos_5:after,
+.land_uranos_4:after,
+.land_uranos_3:after,
+.land_uranos_2:after,
+.land_uranos_1:after {
   transform: rotateZ(-60deg);
 }
 
-.land_uranos:hover {
+.land_uranos_10:hover,
+.land_uranos_9:hover,
+.land_uranos_8:hover,
+.land_uranos_7:hover,
+.land_uranos_6:hover,
+.land_uranos_5:hover,
+.land_uranos_4:hover,
+.land_uranos_3:hover,
+.land_uranos_2:hover,
+.land_uranos_1:hover {
   border-radius: 50px;
   transition: 0.6s;
-  animation-duration: 1.4s;
+  animation-duration: 1s;
   animation-name: hoverLand;
   animation-iteration-count: infinite;
 }
 
 @media (max-width: 768px) {
-  .land_uranos:hover {
+
+  .land_uranos_10:hover,
+  .land_uranos_9:hover,
+  .land_uranos_8:hover,
+  .land_uranos_7:hover,
+  .land_uranos_6:hover,
+  .land_uranos_5:hover,
+  .land_uranos_4:hover,
+  .land_uranos_3:hover,
+  .land_uranos_2:hover,
+  .land_uranos_1:hover {
     border-radius: 50px;
     transition: 0.6s;
     animation-duration: 1.4s;
@@ -565,169 +746,44 @@
   }
 }
 
-.land_uranos:hover:before {
+.land_uranos_10:hover:before,
+.land_uranos_9:hover:before,
+.land_uranos_8:hover:before,
+.land_uranos_7:hover:before,
+.land_uranos_6:hover:before,
+.land_uranos_5:hover:before,
+.land_uranos_4:hover:before,
+.land_uranos_3:hover:before,
+.land_uranos_2:hover:before,
+.land_uranos_1:hover:before {
   border-radius: 50px;
   transition: 0.6s;
 }
 
-.land_uranos:hover:after {
+.land_uranos_10:hover:after,
+.land_uranos_9:hover:after,
+.land_uranos_8:hover:after,
+.land_uranos_7:hover:after,
+.land_uranos_6:hover:after,
+.land_uranos_5:hover:after,
+.land_uranos_4:hover:after,
+.land_uranos_3:hover:after,
+.land_uranos_2:hover:after,
+.land_uranos_1:hover:after {
   border-radius: 50px;
   transition: 0.6s;
 }
 
-.land_uranos:hover .land_ownership {
-  display: initial;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* ─────────────────── Uranos Double */
-
-.land_uranos_double {
-  position: relative;
-  width: 46%;
-  height: 80%;
-  margin: auto;
-  color: white;
-  background: linear-gradient(-180deg, #ffdca1, #ff8418);
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  transition: 0.4s;
-  transform: rotateZ(30deg);
-}
-
-.land_uranos_double:before,
-.land_uranos_double:after {
-  position: absolute;
-  content: "";
-  background: inherit;
-  height: 100%;
-  width: 100%;
-  border-radius: 0;
-  transition: 0.4s;
-  transform-origin: center;
-}
-
-.land_uranos_double:before {
-  transform: rotateZ(60deg);
-}
-
-.land_uranos_double:after {
-  transform: rotateZ(-60deg);
-}
-
-.land_uranos_double:hover {
-  border-radius: 50px;
-  transition: 0.6s;
-  animation-duration: 1.4s;
-  animation-name: hoverLand;
-  animation-iteration-count: infinite;
-}
-
-@media (max-width: 768px) {
-  .land_uranos_double:hover {
-    border-radius: 50px;
-    transition: 0.6s;
-    animation-duration: 1.4s;
-    animation-name: hoverLand-Mobile;
-    animation-iteration-count: infinite;
-  }
-}
-
-.land_uranos_double:hover:before {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_uranos_double:hover:after {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_uranos_double:hover .land_ownership {
-  display: initial;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* ─────────────────── Uranos Triple */
-
-.land_uranos_triple {
-  position: relative;
-  width: 46%;
-  height: 80%;
-  margin: auto;
-  color: white;
-  background: linear-gradient(-180deg, #ffb4a1, #ff4621);
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  transition: 0.4s;
-  transform: rotateZ(30deg);
-}
-
-.land_uranos_triple:before,
-.land_uranos_triple:after {
-  position: absolute;
-  content: "";
-  background: inherit;
-  height: 100%;
-  width: 100%;
-  border-radius: 0;
-  transition: 0.4s;
-  transform-origin: center;
-}
-
-.land_uranos_triple:before {
-  transform: rotateZ(60deg);
-}
-
-.land_uranos_triple:after {
-  transform: rotateZ(-60deg);
-}
-
-.land_uranos_triple:hover {
-  border-radius: 50px;
-  transition: 0.6s;
-  animation-duration: 1.4s;
-  animation-name: hoverLand;
-  animation-iteration-count: infinite;
-}
-
-@media (max-width: 768px) {
-  .land_uranos_triple:hover {
-    border-radius: 50px;
-    transition: 0.6s;
-    animation-duration: 1.4s;
-    animation-name: hoverLand-Mobile;
-    animation-iteration-count: infinite;
-  }
-}
-
-.land_uranos_triple:hover:before {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_uranos_triple:hover:after {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_uranos_triple:hover .land_ownership {
+.land_uranos_10:hover .land_ownership,
+.land_uranos_9:hover .land_ownership,
+.land_uranos_8:hover .land_ownership,
+.land_uranos_7:hover .land_ownership,
+.land_uranos_6:hover .land_ownership,
+.land_uranos_5:hover .land_ownership,
+.land_uranos_4:hover .land_ownership,
+.land_uranos_3:hover .land_ownership,
+.land_uranos_2:hover .land_ownership,
+.land_uranos_1:hover .land_ownership {
   display: initial;
   position: absolute;
   top: -30px;
@@ -745,15 +801,15 @@
 * ──────────────────────────────────────
 */
 
-/* ─────────────────── Thalassa Normal */
+/* ─────────────────── Colors for each grade */
 
-.land_thalassa {
+.land_thalassa_10 {
   position: relative;
   width: 46%;
   height: 80%;
   margin: auto;
   color: white;
-  background: linear-gradient(-180deg, #b4ecff, #07ade5);
+  background: linear-gradient(-180deg, #FFFFFF, #CFF2FF);
   display: flex;
   align-content: center;
   justify-content: center;
@@ -761,8 +817,152 @@
   transform: rotateZ(30deg);
 }
 
-.land_thalassa:before,
-.land_thalassa:after {
+.land_thalassa_9 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFFFFF, #9AE4FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_8 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #CFF2FF, #45CDFF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_7 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #CFF2FF, #14C0FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_6 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #9AE4FF, #28B8FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_5 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #BAE8FF, #19B2FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_4 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #BAE8FF, #198AFF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_3 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #C1DFFF, #2C7AFF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_2 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #C1DFFF, #1642FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_1 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #C1DFFF, #0A14FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_thalassa_10:before,
+.land_thalassa_10:after,
+.land_thalassa_9:before,
+.land_thalassa_9:after,
+.land_thalassa_8:before,
+.land_thalassa_8:after,
+.land_thalassa_7:before,
+.land_thalassa_7:after,
+.land_thalassa_6:before,
+.land_thalassa_6:after,
+.land_thalassa_5:before,
+.land_thalassa_5:after,
+.land_thalassa_4:before,
+.land_thalassa_4:after,
+.land_thalassa_3:before,
+.land_thalassa_3:after,
+.land_thalassa_2:before,
+.land_thalassa_2:after,
+.land_thalassa_1:before,
+.land_thalassa_1:after {
   position: absolute;
   content: "";
   background: inherit;
@@ -773,24 +973,61 @@
   transform-origin: center;
 }
 
-.land_thalassa:before {
+.land_thalassa_10:before,
+.land_thalassa_9:before,
+.land_thalassa_8:before,
+.land_thalassa_7:before,
+.land_thalassa_6:before,
+.land_thalassa_5:before,
+.land_thalassa_4:before,
+.land_thalassa_3:before,
+.land_thalassa_2:before,
+.land_thalassa_1:before {
   transform: rotateZ(60deg);
 }
 
-.land_thalassa:after {
+.land_thalassa_10:after,
+.land_thalassa_9:after,
+.land_thalassa_8:after,
+.land_thalassa_7:after,
+.land_thalassa_6:after,
+.land_thalassa_5:after,
+.land_thalassa_4:after,
+.land_thalassa_3:after,
+.land_thalassa_2:after,
+.land_thalassa_1:after {
   transform: rotateZ(-60deg);
 }
 
-.land_thalassa:hover {
+.land_thalassa_10:hover,
+.land_thalassa_9:hover,
+.land_thalassa_8:hover,
+.land_thalassa_7:hover,
+.land_thalassa_6:hover,
+.land_thalassa_5:hover,
+.land_thalassa_4:hover,
+.land_thalassa_3:hover,
+.land_thalassa_2:hover,
+.land_thalassa_1:hover {
   border-radius: 50px;
   transition: 0.6s;
-  animation-duration: 1.4s;
+  animation-duration: 1s;
   animation-name: hoverLand;
   animation-iteration-count: infinite;
 }
 
 @media (max-width: 768px) {
-  .land_thalassa:hover {
+
+  .land_thalassa_10:hover,
+  .land_thalassa_9:hover,
+  .land_thalassa_8:hover,
+  .land_thalassa_7:hover,
+  .land_thalassa_6:hover,
+  .land_thalassa_5:hover,
+  .land_thalassa_4:hover,
+  .land_thalassa_3:hover,
+  .land_thalassa_2:hover,
+  .land_thalassa_1:hover {
     border-radius: 50px;
     transition: 0.6s;
     animation-duration: 1.4s;
@@ -799,17 +1036,44 @@
   }
 }
 
-.land_thalassa:hover:before {
+.land_thalassa_10:hover:before,
+.land_thalassa_9:hover:before,
+.land_thalassa_8:hover:before,
+.land_thalassa_7:hover:before,
+.land_thalassa_6:hover:before,
+.land_thalassa_5:hover:before,
+.land_thalassa_4:hover:before,
+.land_thalassa_3:hover:before,
+.land_thalassa_2:hover:before,
+.land_thalassa_1:hover:before {
   border-radius: 50px;
   transition: 0.6s;
 }
 
-.land_thalassa:hover:after {
+.land_thalassa_10:hover:after,
+.land_thalassa_9:hover:after,
+.land_thalassa_8:hover:after,
+.land_thalassa_7:hover:after,
+.land_thalassa_6:hover:after,
+.land_thalassa_5:hover:after,
+.land_thalassa_4:hover:after,
+.land_thalassa_3:hover:after,
+.land_thalassa_2:hover:after,
+.land_thalassa_1:hover:after {
   border-radius: 50px;
   transition: 0.6s;
 }
 
-.land_thalassa:hover .land_ownership {
+.land_thalassa_10:hover .land_ownership,
+.land_thalassa_9:hover .land_ownership,
+.land_thalassa_8:hover .land_ownership,
+.land_thalassa_7:hover .land_ownership,
+.land_thalassa_6:hover .land_ownership,
+.land_thalassa_5:hover .land_ownership,
+.land_thalassa_4:hover .land_ownership,
+.land_thalassa_3:hover .land_ownership,
+.land_thalassa_2:hover .land_ownership,
+.land_thalassa_1:hover .land_ownership {
   display: initial;
   position: absolute;
   top: -30px;
@@ -821,173 +1085,21 @@
   color: #fff;
 }
 
-/* ─────────────────── Thalassa Double */
-
-.land_thalassa_double {
-  position: relative;
-  width: 46%;
-  height: 80%;
-  margin: auto;
-  color: white;
-  background: linear-gradient(-180deg, #b5d9ff, #0068d6);
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  transition: 0.4s;
-  transform: rotateZ(30deg);
-}
-
-.land_thalassa_double:before,
-.land_thalassa_double:after {
-  position: absolute;
-  content: "";
-  background: inherit;
-  height: 100%;
-  width: 100%;
-  border-radius: 0;
-  transition: 0.4s;
-  transform-origin: center;
-}
-
-.land_thalassa_double:before {
-  transform: rotateZ(60deg);
-}
-
-.land_thalassa_double:after {
-  transform: rotateZ(-60deg);
-}
-
-.land_thalassa_double:hover {
-  border-radius: 50px;
-  transition: 0.6s;
-  animation-duration: 1.4s;
-  animation-name: hoverLand;
-  animation-iteration-count: infinite;
-}
-
-@media (max-width: 768px) {
-  .land_thalassa_double:hover {
-    border-radius: 50px;
-    transition: 0.6s;
-    animation-duration: 1.4s;
-    animation-name: hoverLand-Mobile;
-    animation-iteration-count: infinite;
-  }
-}
-
-.land_thalassa_double:hover:before {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_thalassa_double:hover:after {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_thalassa_double:hover .land_ownership {
-  display: initial;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* ─────────────────── Thalassa Triple */
-
-.land_thalassa_triple {
-  position: relative;
-  width: 46%;
-  height: 80%;
-  margin: auto;
-  color: white;
-  background: linear-gradient(-180deg, #b2bcff, #0928ee);
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  transition: 0.4s;
-  transform: rotateZ(30deg);
-}
-
-.land_thalassa_triple:before,
-.land_thalassa_triple:after {
-  position: absolute;
-  content: "";
-  background: inherit;
-  height: 100%;
-  width: 100%;
-  border-radius: 0;
-  transition: 0.4s;
-  transform-origin: center;
-}
-
-.land_thalassa_triple:before {
-  transform: rotateZ(60deg);
-}
-
-.land_thalassa_triple:after {
-  transform: rotateZ(-60deg);
-}
-
-.land_thalassa_triple:hover {
-  border-radius: 50px;
-  transition: 0.6s;
-  animation-duration: 1.4s;
-  animation-name: hoverLand;
-  animation-iteration-count: infinite;
-}
-
-@media (max-width: 768px) {
-  .land_thalassa_triple:hover {
-    border-radius: 50px;
-    transition: 0.6s;
-    animation-duration: 1.4s;
-    animation-name: hoverLand-Mobile;
-    animation-iteration-count: infinite;
-  }
-}
-
-.land_thalassa_triple:hover:before {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_thalassa_triple:hover:after {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_thalassa_triple:hover .land_ownership {
-  display: initial;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* 
+/*
 * ──────────────────────────────────────
 * IEROS
 * ──────────────────────────────────────
 */
 
-/* ─────────────────── Ieros Normal */
+/* ─────────────────── Colors for each grade */
 
-.land_ieros {
+.land_ieros_10 {
   position: relative;
   width: 46%;
   height: 80%;
   margin: auto;
   color: white;
-  background: linear-gradient(-180deg, #dcc2ff, #700fef);
+  background: linear-gradient(-180deg, #FFFFFF, #E4CFFF);
   display: flex;
   align-content: center;
   justify-content: center;
@@ -995,8 +1107,152 @@
   transform: rotateZ(30deg);
 }
 
-.land_ieros:before,
-.land_ieros:after {
+.land_ieros_9 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #FFFFFF, #D3B1FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_8 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #E4CFFF, #BA85FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_7 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #E4CFFF, #A25BFF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_6 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #D6B7FF, #8F39FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_5 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #D6B7FF, #A81DFF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_4 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #D6B7FF, #9D00FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_3 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #E9BAFF, #BB00FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_2 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #E9BAFF, #FB00FF);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_1 {
+  position: relative;
+  width: 46%;
+  height: 80%;
+  margin: auto;
+  color: white;
+  background: linear-gradient(-180deg, #E9BAFF, #F800C6);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  transition: 0.4s;
+  transform: rotateZ(30deg);
+}
+
+.land_ieros_10:before,
+.land_ieros_10:after,
+.land_ieros_9:before,
+.land_ieros_9:after,
+.land_ieros_8:before,
+.land_ieros_8:after,
+.land_ieros_7:before,
+.land_ieros_7:after,
+.land_ieros_6:before,
+.land_ieros_6:after,
+.land_ieros_5:before,
+.land_ieros_5:after,
+.land_ieros_4:before,
+.land_ieros_4:after,
+.land_ieros_3:before,
+.land_ieros_3:after,
+.land_ieros_2:before,
+.land_ieros_2:after,
+.land_ieros_1:before,
+.land_ieros_1:after {
   position: absolute;
   content: "";
   background: inherit;
@@ -1007,24 +1263,61 @@
   transform-origin: center;
 }
 
-.land_ieros:before {
+.land_ieros_10:before,
+.land_ieros_9:before,
+.land_ieros_8:before,
+.land_ieros_7:before,
+.land_ieros_6:before,
+.land_ieros_5:before,
+.land_ieros_4:before,
+.land_ieros_3:before,
+.land_ieros_2:before,
+.land_ieros_1:before {
   transform: rotateZ(60deg);
 }
 
-.land_ieros:after {
+.land_ieros_10:after,
+.land_ieros_9:after,
+.land_ieros_8:after,
+.land_ieros_7:after,
+.land_ieros_6:after,
+.land_ieros_5:after,
+.land_ieros_4:after,
+.land_ieros_3:after,
+.land_ieros_2:after,
+.land_ieros_1:after {
   transform: rotateZ(-60deg);
 }
 
-.land_ieros:hover {
+.land_ieros_10:hover,
+.land_ieros_9:hover,
+.land_ieros_8:hover,
+.land_ieros_7:hover,
+.land_ieros_6:hover,
+.land_ieros_5:hover,
+.land_ieros_4:hover,
+.land_ieros_3:hover,
+.land_ieros_2:hover,
+.land_ieros_1:hover {
   border-radius: 50px;
   transition: 0.6s;
-  animation-duration: 1.4s;
+  animation-duration: 1s;
   animation-name: hoverLand;
   animation-iteration-count: infinite;
 }
 
 @media (max-width: 768px) {
-  .land_ieros:hover {
+
+  .land_ieros_10:hover,
+  .land_ieros_9:hover,
+  .land_ieros_8:hover,
+  .land_ieros_7:hover,
+  .land_ieros_6:hover,
+  .land_ieros_5:hover,
+  .land_ieros_4:hover,
+  .land_ieros_3:hover,
+  .land_ieros_2:hover,
+  .land_ieros_1:hover {
     border-radius: 50px;
     transition: 0.6s;
     animation-duration: 1.4s;
@@ -1033,171 +1326,49 @@
   }
 }
 
-.land_ieros:hover:before {
+.land_ieros_10:hover:before,
+.land_ieros_9:hover:before,
+.land_ieros_8:hover:before,
+.land_ieros_7:hover:before,
+.land_ieros_6:hover:before,
+.land_ieros_5:hover:before,
+.land_ieros_4:hover:before,
+.land_ieros_3:hover:before,
+.land_ieros_2:hover:before,
+.land_ieros_1:hover:before {
   border-radius: 50px;
   transition: 0.6s;
 }
 
-.land_ieros:hover:after {
+.land_ieros_10:hover:after,
+.land_ieros_9:hover:after,
+.land_ieros_8:hover:after,
+.land_ieros_7:hover:after,
+.land_ieros_6:hover:after,
+.land_ieros_5:hover:after,
+.land_ieros_4:hover:after,
+.land_ieros_3:hover:after,
+.land_ieros_2:hover:after,
+.land_ieros_1:hover:after {
   border-radius: 50px;
   transition: 0.6s;
 }
 
-.land_ieros:hover .land_ownership {
+.land_ieros_10:hover .land_ownership,
+.land_ieros_9:hover .land_ownership,
+.land_ieros_8:hover .land_ownership,
+.land_ieros_7:hover .land_ownership,
+.land_ieros_6:hover .land_ownership,
+.land_ieros_5:hover .land_ownership,
+.land_ieros_4:hover .land_ownership,
+.land_ieros_3:hover .land_ownership,
+.land_ieros_2:hover .land_ownership,
+.land_ieros_1:hover .land_ownership {
   display: initial;
   position: absolute;
   top: -30px;
-  transform: translateX(12%);
-  width: 80px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* ─────────────────── Ieros Double */
-
-.land_ieros_double {
-  position: relative;
-  width: 46%;
-  height: 80%;
-  margin: auto;
-  color: white;
-  background: linear-gradient(-180deg, #f4cdff, #ac00db);
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  transition: 0.4s;
-  transform: rotateZ(30deg);
-}
-
-.land_ieros_double:before,
-.land_ieros_double:after {
-  position: absolute;
-  content: "";
-  background: inherit;
-  height: 100%;
-  width: 100%;
-  border-radius: 0;
-  transition: 0.4s;
-  transform-origin: center;
-}
-
-.land_ieros_double:before {
-  transform: rotateZ(60deg);
-}
-
-.land_ieros_double:after {
-  transform: rotateZ(-60deg);
-}
-
-.land_ieros_double:hover {
-  border-radius: 50px;
-  transition: 0.6s;
-  animation-duration: 1.4s;
-  animation-name: hoverLand;
-  animation-iteration-count: infinite;
-}
-
-@media (max-width: 768px) {
-  .land_ieros_double:hover {
-    border-radius: 50px;
-    transition: 0.6s;
-    animation-duration: 1.4s;
-    animation-name: hoverLand-Mobile;
-    animation-iteration-count: infinite;
-  }
-}
-
-.land_ieros_double:hover:before {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_ieros_double:hover:after {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_ieros_double:hover .land_ownership {
-  display: initial;
-  position: absolute;
-  top: -30px;
-  transform: translateX(12%);
-  width: 80px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-/* ─────────────────── Ieros Triple */
-
-.land_ieros_triple {
-  position: relative;
-  width: 46%;
-  height: 80%;
-  margin: auto;
-  color: white;
-  background: linear-gradient(-180deg, #ffc4f6, #f50cd2);
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  transition: 0.4s;
-  transform: rotateZ(30deg);
-}
-
-.land_ieros_triple:before,
-.land_ieros_triple:after {
-  position: absolute;
-  content: "";
-  background: inherit;
-  height: 100%;
-  width: 100%;
-  border-radius: 0;
-  transition: 0.4s;
-  transform-origin: center;
-}
-
-.land_ieros_triple:before {
-  transform: rotateZ(60deg);
-}
-
-.land_ieros_triple:after {
-  transform: rotateZ(-60deg);
-}
-
-.land_ieros_triple:hover {
-  border-radius: 50px;
-  transition: 0.6s;
-  animation-duration: 1.4s;
-  animation-name: hoverLand;
-  animation-iteration-count: infinite;
-}
-
-@media (max-width: 768px) {
-  .land_ieros_triple:hover {
-    border-radius: 50px;
-    transition: 0.6s;
-    animation-duration: 1.4s;
-    animation-name: hoverLand-Mobile;
-    animation-iteration-count: infinite;
-  }
-}
-
-.land_ieros_triple:hover:before {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_ieros_triple:hover:after {
-  border-radius: 50px;
-  transition: 0.6s;
-}
-
-.land_ieros_triple:hover .land_ownership {
-  display: initial;
-  position: absolute;
-  top: -30px;
-  transform: translateX(12%);
+  left: 50%;
+  transform: translateX(-50%);
   width: 80px;
   font-size: 16px;
   font-weight: 700;

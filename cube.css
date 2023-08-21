@@ -32,7 +32,7 @@ body {
 .ownership {
   position: relative;
   display: block;
-  width: 300px;
+  width: 400px;
   height: 100px;
   margin-bottom: 120px;
   text-align: center;
@@ -454,7 +454,16 @@ body {
 * ──────────────────────────────────────
 */
 
-.cube {
+.cube_10,
+.cube_9,
+.cube_8,
+.cube_7,
+.cube_6,
+.cube_5,
+.cube_4,
+.cube_3,
+.cube_2,
+.cube_1 {
   position: relative;
   display: block;
   width: 200px;
@@ -469,12 +478,22 @@ body {
   0% {
     transform: rotateX(-30deg) rotateY(0deg);
   }
+
   100% {
     transform: rotateX(-30deg) rotateY(360deg);
   }
 }
 
-.cube div {
+.cube_10 div,
+.cube_9 div,
+.cube_8 div,
+.cube_7 div,
+.cube_6 div,
+.cube_5 div,
+.cube_4 div,
+.cube_3 div,
+.cube_2 div,
+.cube_1 div {
   position: absolute;
   top: 0;
   left: 0;
@@ -483,35 +502,140 @@ body {
   transform-style: preserve-3d;
 }
 
-.cube div span {
+.cube_10 div span,
+.cube_9 div span,
+.cube_8 div span,
+.cube_7 div span,
+.cube_6 div span,
+.cube_5 div span,
+.cube_4 div span,
+.cube_3 div span,
+.cube_2 div span,
+.cube_1 div span {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 30%;
-  background: linear-gradient(#d4d4d4, #fafafa);
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
   /* 300/2 = 150 */
 }
 
-.top {
+.cube_10 div span {
+  background: linear-gradient(#D5D5D5, #FFFFFF);
+}
+
+.cube_9 div span {
+  background: linear-gradient(#C0C0C0, #FFFFFF);
+}
+
+.cube_8 div span {
+  background: linear-gradient(#A5A5A5, #FFFFFF);
+}
+
+.cube_7 div span {
+  background: linear-gradient(#909090, #FFFFFF);
+}
+
+.cube_6 div span {
+  background: linear-gradient(#757575, #FFFFFF);
+}
+
+.cube_5 div span {
+  background: linear-gradient(#606060, #FFFFFF);
+}
+
+.cube_4 div span {
+  background: linear-gradient(#454545, #FFFFFF);
+}
+
+.cube_3 div span {
+  background: linear-gradient(#303030, #FFFFFF);
+}
+
+.cube_2 div span {
+  background: linear-gradient(#151515, #FFFFFF);
+}
+
+.cube_1 div span {
+  background: linear-gradient(#000000, #FFFFFF);
+}
+
+.top_10,
+.top_9,
+.top_8,
+.top_7,
+.top_6,
+.top_5,
+.top_4,
+.top_3,
+.top_2,
+.top_1 {
   position: absolute;
   top: 0;
   left: 0;
   width: 200px;
   height: 100px;
-  background-color: #ddd;
   transform: rotateX(90deg) translateZ(99px);
 }
 
-.top::before {
+.top_10 {
+  background-color: #D5D5D5;
+}
+
+.top_9 {
+  background-color: #C0C0C0;
+}
+
+.top_8 {
+  background-color: #A5A5A5;
+}
+
+.top_7 {
+  background-color: #909090;
+}
+
+.top_6 {
+  background-color: #757575;
+}
+
+.top_5 {
+  background-color: #606060;
+}
+
+.top_4 {
+  background-color: #454545;
+}
+
+.top_3 {
+  background-color: #303030;
+}
+
+.top_2 {
+  background-color: #151515;
+}
+
+.top_1 {
+  background-color: #000000;
+}
+
+.top_10::before,
+.top_9::before,
+.top_8::before,
+.top_7::before,
+.top_6::before,
+.top_5::before,
+.top_4::before,
+.top_3::before,
+.top_2::before,
+.top_1::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 200px;
   height: 200px;
-  background-color: #ddd;
+  background-color: #eee;
   transform: translateZ(-110px);
   filter: blur(20px);
   box-shadow: 0 0 120px rgba(221, 221, 221, 0.2),
@@ -524,9 +648,16 @@ body {
 * ──────────────────────────────────────
 */
 
-/* ─────────────────── Uranos Normal */
-
-.cube_uranos {
+.cube_uranos_10,
+.cube_uranos_9,
+.cube_uranos_8,
+.cube_uranos_7,
+.cube_uranos_6,
+.cube_uranos_5,
+.cube_uranos_4,
+.cube_uranos_3,
+.cube_uranos_2,
+.cube_uranos_1 {
   position: relative;
   display: block;
   width: 200px;
@@ -537,7 +668,16 @@ body {
   animation: animate 4s linear infinite;
 }
 
-.cube_uranos div {
+.cube_uranos_10 div,
+.cube_uranos_9 div,
+.cube_uranos_8 div,
+.cube_uranos_7 div,
+.cube_uranos_6 div,
+.cube_uranos_5 div,
+.cube_uranos_4 div,
+.cube_uranos_3 div,
+.cube_uranos_2 div,
+.cube_uranos_1 div {
   position: absolute;
   top: 0;
   left: 0;
@@ -546,149 +686,140 @@ body {
   transform-style: preserve-3d;
 }
 
-.cube_uranos div span {
+.cube_uranos_10 div span,
+.cube_uranos_9 div span,
+.cube_uranos_8 div span,
+.cube_uranos_7 div span,
+.cube_uranos_6 div span,
+.cube_uranos_5 div span,
+.cube_uranos_4 div span,
+.cube_uranos_3 div span,
+.cube_uranos_2 div span,
+.cube_uranos_1 div span {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 30%;
-  background: linear-gradient(#ffd736, #fffcea);
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
   /* 300/2 = 150 */
 }
 
-.top_uranos {
+.cube_uranos_10 div span {
+  background: linear-gradient(#FFFAD9, #FFFFFF);
+}
+
+.cube_uranos_9 div span {
+  background: linear-gradient(#FFEFAD, #FFFFFF);
+}
+
+.cube_uranos_8 div span {
+  background: linear-gradient(#FFE05D, #FFFFFF);
+}
+
+.cube_uranos_7 div span {
+  background: linear-gradient(#FFD934, #FFFFFF);
+}
+
+.cube_uranos_6 div span {
+  background: linear-gradient(#FFCF00, #FFFFFF);
+}
+
+.cube_uranos_5 div span {
+  background: linear-gradient(#FFB000, #FFFFFF);
+}
+
+.cube_uranos_4 div span {
+  background: linear-gradient(#FFBA45, #FFFFFF);
+}
+
+.cube_uranos_3 div span {
+  background: linear-gradient(#FF9900, #FFFFFF);
+}
+
+.cube_uranos_2 div span {
+  background: linear-gradient(#FF6300, #FFFFFF);
+}
+
+.cube_uranos_1 div span {
+  background: linear-gradient(#FF5400, #FFFFFF);
+}
+
+.top_uranos_10,
+.top_uranos_9,
+.top_uranos_8,
+.top_uranos_7,
+.top_uranos_6,
+.top_uranos_5,
+.top_uranos_4,
+.top_uranos_3,
+.top_uranos_2,
+.top_uranos_1 {
   position: absolute;
   top: 0;
   left: 0;
   width: 200px;
   height: 100px;
-  background-color: #ffd736;
   transform: rotateX(90deg) translateZ(99px);
 }
 
-.top_uranos::before {
+.top_uranos_10 {
+  background-color: #FFFAD9;
+}
+
+.top_uranos_9 {
+  background-color: #FFEFAD;
+}
+
+.top_uranos_8 {
+  background-color: #FFE05D;
+}
+
+.top_uranos_7 {
+  background-color: #FFD934;
+}
+
+.top_uranos_6 {
+  background-color: #FFCF00;
+}
+
+.top_uranos_5 {
+  background-color: #FFB000;
+}
+
+.top_uranos_4 {
+  background-color: #FFBA45;
+}
+
+.top_uranos_3 {
+  background-color: #FF9900;
+}
+
+.top_uranos_2 {
+  background-color: #FF6300;
+}
+
+.top_uranos_1 {
+  background-color: #FF5400;
+}
+
+.top_uranos_10::before,
+.top_uranos_9::before,
+.top_uranos_8::before,
+.top_uranos_7::before,
+.top_uranos_6::before,
+.top_uranos_5::before,
+.top_uranos_4::before,
+.top_uranos_3::before,
+.top_uranos_2::before,
+.top_uranos_1::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 200px;
   height: 200px;
-  background-color: #fff2c8;
-  transform: translateZ(-130px);
-  filter: blur(20px);
-  box-shadow: 0 0 120px rgba(255, 242, 200, 0.2),
-    0 0 200px rgba(255, 242, 200, 0.4), 0 0 300px rgba(255, 242, 200, 0.6);
-}
-
-/* ─────────────────── Uranos Double */
-
-.cube_uranos_double {
-  position: relative;
-  display: block;
-  width: 200px;
-  height: 200px;
-  z-index: -9;
-  transform-style: preserve-3d;
-  transform: rotateX(-30deg);
-  animation: animate 4s linear infinite;
-}
-
-.cube_uranos_double div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.cube_uranos_double div span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background: linear-gradient(#ff8418, #fffcea);
-  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
-  /* 300/2 = 150 */
-}
-
-.top_uranos_double {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100px;
-  background-color: #ff8e2b;
-  transform: rotateX(90deg) translateZ(99px);
-}
-
-.top_uranos_double::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background-color: #ffd9b8;
-  transform: translateZ(-130px);
-  filter: blur(20px);
-  box-shadow: 0 0 120px rgba(255, 242, 200, 0.2),
-    0 0 200px rgba(255, 242, 200, 0.4), 0 0 300px rgba(255, 242, 200, 0.6);
-}
-
-/* ─────────────────── Uranos Triple */
-
-.cube_uranos_triple {
-  position: relative;
-  display: block;
-  width: 200px;
-  height: 200px;
-  z-index: -9;
-  transform-style: preserve-3d;
-  transform: rotateX(-30deg);
-  animation: animate 4s linear infinite;
-}
-
-.cube_uranos_triple div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.cube_uranos_triple div span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background: linear-gradient(#ff4621, #fffcea);
-  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
-  /* 300/2 = 150 */
-}
-
-.top_uranos_triple {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100px;
-  background-color: #ff4621;
-  transform: rotateX(90deg) translateZ(99px);
-}
-
-.top_uranos_triple::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background-color: #ffd2c8;
+  background-color: #eee;
   transform: translateZ(-130px);
   filter: blur(20px);
   box-shadow: 0 0 120px rgba(255, 242, 200, 0.2),
