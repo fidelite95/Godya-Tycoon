@@ -42,7 +42,7 @@ body {
   text-align: center;
   position: relative;
   border-radius: 0px;
-  cursor: pointer;
+  cursor: default;
   width: 160px;
   height: 80px;
   text-decoration: none;

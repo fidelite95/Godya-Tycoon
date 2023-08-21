@@ -832,9 +832,16 @@ body {
 * ──────────────────────────────────────
 */
 
-/* ─────────────────── Thalassa Normal */
-
-.cube_thalassa {
+.cube_thalassa_10,
+.cube_thalassa_9,
+.cube_thalassa_8,
+.cube_thalassa_7,
+.cube_thalassa_6,
+.cube_thalassa_5,
+.cube_thalassa_4,
+.cube_thalassa_3,
+.cube_thalassa_2,
+.cube_thalassa_1 {
   position: relative;
   display: block;
   width: 200px;
@@ -845,7 +852,16 @@ body {
   animation: animate 4s linear infinite;
 }
 
-.cube_thalassa div {
+.cube_thalassa_10 div,
+.cube_thalassa_9 div,
+.cube_thalassa_8 div,
+.cube_thalassa_7 div,
+.cube_thalassa_6 div,
+.cube_thalassa_5 div,
+.cube_thalassa_4 div,
+.cube_thalassa_3 div,
+.cube_thalassa_2 div,
+.cube_thalassa_1 div {
   position: absolute;
   top: 0;
   left: 0;
@@ -854,153 +870,144 @@ body {
   transform-style: preserve-3d;
 }
 
-.cube_thalassa div span {
+.cube_thalassa_10 div span,
+.cube_thalassa_9 div span,
+.cube_thalassa_8 div span,
+.cube_thalassa_7 div span,
+.cube_thalassa_6 div span,
+.cube_thalassa_5 div span,
+.cube_thalassa_4 div span,
+.cube_thalassa_3 div span,
+.cube_thalassa_2 div span,
+.cube_thalassa_1 div span {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 30%;
-  background: linear-gradient(#15c1fb, #bfe6ff);
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
   /* 300/2 = 150 */
 }
 
-.top_thalassa {
+.cube_thalassa_10 div span {
+  background: linear-gradient(#CFF2FF, #FFFFFF);
+}
+
+.cube_thalassa_9 div span {
+  background: linear-gradient(#9AE4FF, #FFFFFF);
+}
+
+.cube_thalassa_8 div span {
+  background: linear-gradient(#45CDFF, #FFFFFF);
+}
+
+.cube_thalassa_7 div span {
+  background: linear-gradient(#14C0FF, #FFFFFF);
+}
+
+.cube_thalassa_6 div span {
+  background: linear-gradient(#28B8FF, #FFFFFF);
+}
+
+.cube_thalassa_5 div span {
+  background: linear-gradient(#19B2FF, #FFFFFF);
+}
+
+.cube_thalassa_4 div span {
+  background: linear-gradient(#198AFF, #FFFFFF);
+}
+
+.cube_thalassa_3 div span {
+  background: linear-gradient(#2C7AFF, #FFFFFF);
+}
+
+.cube_thalassa_2 div span {
+  background: linear-gradient(#1642FF, #FFFFFF);
+}
+
+.cube_thalassa_1 div span {
+  background: linear-gradient(#0A14FF, #FFFFFF);
+}
+
+.top_thalassa_10,
+.top_thalassa_9,
+.top_thalassa_8,
+.top_thalassa_7,
+.top_thalassa_6,
+.top_thalassa_5,
+.top_thalassa_4,
+.top_thalassa_3,
+.top_thalassa_2,
+.top_thalassa_1 {
   position: absolute;
   top: 0;
   left: 0;
   width: 200px;
   height: 100px;
-  background-color: #15c1fb;
   transform: rotateX(90deg) translateZ(99px);
 }
 
-.top_thalassa::before {
+.top_thalassa_10 {
+  background-color: #CFF2FF;
+}
+
+.top_thalassa_9 {
+  background-color: #9AE4FF;
+}
+
+.top_thalassa_8 {
+  background-color: #45CDFF;
+}
+
+.top_thalassa_7 {
+  background-color: #14C0FF;
+}
+
+.top_thalassa_6 {
+  background-color: #28B8FF;
+}
+
+.top_thalassa_5 {
+  background-color: #19B2FF;
+}
+
+.top_thalassa_4 {
+  background-color: #198AFF;
+}
+
+.top_thalassa_3 {
+  background-color: #2C7AFF;
+}
+
+.top_thalassa_2 {
+  background-color: #1642FF;
+}
+
+.top_thalassa_1 {
+  background-color: #0A14FF;
+}
+
+.top_thalassa_10::before,
+.top_thalassa_9::before,
+.top_thalassa_8::before,
+.top_thalassa_7::before,
+.top_thalassa_6::before,
+.top_thalassa_5::before,
+.top_thalassa_4::before,
+.top_thalassa_3::before,
+.top_thalassa_2::before,
+.top_thalassa_1::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 200px;
   height: 200px;
-  background-color: #d0f3ff;
+  background-color: #eee;
   transform: translateZ(-130px);
   filter: blur(20px);
-  box-shadow: 0 0 120px rgba(175, 225, 255, 0.2),
-    0 0 200px rgba(175, 225, 255, 0.4), 0 0 300px rgba(175, 225, 255, 0.6);
-}
-
-/* ─────────────────── Thalassa Double */
-
-.cube_thalassa_double {
-  position: relative;
-  display: block;
-  width: 200px;
-  height: 200px;
-  z-index: -9;
-  transform-style: preserve-3d;
-  transform: rotateX(-30deg);
-  animation: animate 4s linear infinite;
-}
-
-.cube_thalassa_double div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.cube_thalassa_double div span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background: linear-gradient(#007bff, #bfdeff);
-  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
-  /* 300/2 = 150 */
-}
-
-.top_thalassa_double {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100px;
-  background-color: #007bff;
-  transform: rotateX(90deg) translateZ(99px);
-}
-
-.top_thalassa_double::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background-color: #bedeff;
-  transform: translateZ(-130px);
-  filter: blur(20px);
-  box-shadow: 0 0 120px rgba(175, 225, 255, 0.2),
-    0 0 200px rgba(175, 225, 255, 0.4), 0 0 300px rgba(175, 225, 255, 0.6);
-}
-
-/* ─────────────────── Thalassa Triple */
-
-.cube_thalassa_triple {
-  position: relative;
-  display: block;
-  width: 200px;
-  height: 200px;
-  z-index: -9;
-  transform-style: preserve-3d;
-  transform: rotateX(-30deg);
-  animation: animate 4s linear infinite;
-}
-
-.cube_thalassa_triple div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.cube_thalassa_triple div span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background: linear-gradient(#1d3bff, #bfe6ff);
-  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
-  /* 300/2 = 150 */
-}
-
-.top_thalassa_triple {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100px;
-  background-color: #1d3bff;
-  transform: rotateX(90deg) translateZ(99px);
-}
-
-.top_thalassa_triple::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background-color: #c5ccff;
-  transform: translateZ(-130px);
-  filter: blur(20px);
-  box-shadow: 0 0 120px rgba(175, 225, 255, 0.2),
-    0 0 200px rgba(175, 225, 255, 0.4), 0 0 300px rgba(175, 225, 255, 0.6);
+  box-shadow: 0 0 120px rgba(255, 242, 200, 0.2),
+    0 0 200px rgba(255, 242, 200, 0.4), 0 0 300px rgba(255, 242, 200, 0.6);
 }
 
 /* 
@@ -1009,9 +1016,16 @@ body {
 * ──────────────────────────────────────
 */
 
-/* ─────────────────── Ieros Normal */
-
-.cube_ieros {
+.cube_ieros_10,
+.cube_ieros_9,
+.cube_ieros_8,
+.cube_ieros_7,
+.cube_ieros_6,
+.cube_ieros_5,
+.cube_ieros_4,
+.cube_ieros_3,
+.cube_ieros_2,
+.cube_ieros_1 {
   position: relative;
   display: block;
   width: 200px;
@@ -1022,7 +1036,16 @@ body {
   animation: animate 4s linear infinite;
 }
 
-.cube_ieros div {
+.cube_ieros_10 div,
+.cube_ieros_9 div,
+.cube_ieros_8 div,
+.cube_ieros_7 div,
+.cube_ieros_6 div,
+.cube_ieros_5 div,
+.cube_ieros_4 div,
+.cube_ieros_3 div,
+.cube_ieros_2 div,
+.cube_ieros_1 div {
   position: absolute;
   top: 0;
   left: 0;
@@ -1031,151 +1054,142 @@ body {
   transform-style: preserve-3d;
 }
 
-.cube_ieros div span {
+.cube_ieros_10 div span,
+.cube_ieros_9 div span,
+.cube_ieros_8 div span,
+.cube_ieros_7 div span,
+.cube_ieros_6 div span,
+.cube_ieros_5 div span,
+.cube_ieros_4 div span,
+.cube_ieros_3 div span,
+.cube_ieros_2 div span,
+.cube_ieros_1 div span {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 30%;
-  background: linear-gradient(#923fff, #e8ceff);
   transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
   /* 300/2 = 150 */
 }
 
-.top_ieros {
+.cube_ieros_10 div span {
+  background: linear-gradient(#E4CFFF, #FFFFFF);
+}
+
+.cube_ieros_9 div span {
+  background: linear-gradient(#D3B1FF, #FFFFFF);
+}
+
+.cube_ieros_8 div span {
+  background: linear-gradient(#BA85FF, #FFFFFF);
+}
+
+.cube_ieros_7 div span {
+  background: linear-gradient(#A25BFF, #FFFFFF);
+}
+
+.cube_ieros_6 div span {
+  background: linear-gradient(#8F39FF, #FFFFFF);
+}
+
+.cube_ieros_5 div span {
+  background: linear-gradient(#A81DFF, #FFFFFF);
+}
+
+.cube_ieros_4 div span {
+  background: linear-gradient(#9D00FF, #FFFFFF);
+}
+
+.cube_ieros_3 div span {
+  background: linear-gradient(#BB00FF, #FFFFFF);
+}
+
+.cube_ieros_2 div span {
+  background: linear-gradient(#FB00FF, #FFFFFF);
+}
+
+.cube_ieros_1 div span {
+  background: linear-gradient(#F800C6, #FFFFFF);
+}
+
+.top_ieros_10,
+.top_ieros_9,
+.top_ieros_8,
+.top_ieros_7,
+.top_ieros_6,
+.top_ieros_5,
+.top_ieros_4,
+.top_ieros_3,
+.top_ieros_2,
+.top_ieros_1 {
   position: absolute;
   top: 0;
   left: 0;
   width: 200px;
   height: 100px;
-  background-color: #923fff;
   transform: rotateX(90deg) translateZ(99px);
 }
 
-.top_ieros::before {
+.top_ieros_10 {
+  background-color: #E4CFFF;
+}
+
+.top_ieros_9 {
+  background-color: #D3B1FF;
+}
+
+.top_ieros_8 {
+  background-color: #BA85FF;
+}
+
+.top_ieros_7 {
+  background-color: #A25BFF;
+}
+
+.top_ieros_6 {
+  background-color: #8F39FF;
+}
+
+.top_ieros_5 {
+  background-color: #A81DFF;
+}
+
+.top_ieros_4 {
+  background-color: #9D00FF;
+}
+
+.top_ieros_3 {
+  background-color: #BB00FF;
+}
+
+.top_ieros_2 {
+  background-color: #FB00FF;
+}
+
+.top_ieros_1 {
+  background-color: #F800C6;
+}
+
+.top_ieros_10::before,
+.top_ieros_9::before,
+.top_ieros_8::before,
+.top_ieros_7::before,
+.top_ieros_6::before,
+.top_ieros_5::before,
+.top_ieros_4::before,
+.top_ieros_3::before,
+.top_ieros_2::before,
+.top_ieros_1::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 200px;
   height: 200px;
-  background-color: #dec5ff;
+  background-color: #eee;
   transform: translateZ(-130px);
   filter: blur(20px);
-  box-shadow: 0 0 120px rgba(232, 206, 255, 0.2),
-    0 0 200px rgba(232, 206, 255, 0.4), 0 0 300px rgba(232, 206, 255, 0.6);
-}
-
-/* ─────────────────── Ieros Double */
-
-.cube_ieros_double {
-  position: relative;
-  display: block;
-  width: 200px;
-  height: 200px;
-  z-index: -9;
-  transform-style: preserve-3d;
-  transform: rotateX(-30deg);
-  animation: animate 4s linear infinite;
-}
-
-.cube_ieros_double div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.cube_ieros_double div span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background: linear-gradient(#b906eb, #e8ceff);
-  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
-  /* 300/2 = 150 */
-}
-
-.top_ieros_double {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100px;
-  background-color: #b906eb;
-  transform: rotateX(90deg) translateZ(99px);
-}
-
-.top_ieros_double::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background-color: #f1beff;
-  transform: translateZ(-130px);
-  filter: blur(20px);
-  box-shadow: 0 0 120px rgba(232, 206, 255, 0.2),
-    0 0 200px rgba(232, 206, 255, 0.4), 0 0 300px rgba(232, 206, 255, 0.6);
-}
-
-/* ─────────────────── Ieros Triple */
-
-.cube_ieros_triple {
-  position: relative;
-  display: block;
-  width: 200px;
-  height: 200px;
-  z-index: -9;
-  transform-style: preserve-3d;
-  transform: rotateX(-30deg);
-  animation: animate 4s linear infinite;
-}
-
-.cube_ieros_triple div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-
-.cube_ieros_triple div span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 30%;
-  background: linear-gradient(#ff14dc, #e8ceff);
-  transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
-  /* 300/2 = 150 */
-}
-
-.top_ieros_triple {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100px;
-  background-color: #ff14dc;
-  transform: rotateX(90deg) translateZ(99px);
-}
-
-.top_ieros_triple::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background-color: #ffb3f4;
-  transform: translateZ(-130px);
-  filter: blur(20px);
-  box-shadow: 0 0 120px rgba(232, 206, 255, 0.2),
-    0 0 200px rgba(232, 206, 255, 0.4), 0 0 300px rgba(232, 206, 255, 0.6);
+  box-shadow: 0 0 120px rgba(255, 242, 200, 0.2),
+    0 0 200px rgba(255, 242, 200, 0.4), 0 0 300px rgba(255, 242, 200, 0.6);
 }
