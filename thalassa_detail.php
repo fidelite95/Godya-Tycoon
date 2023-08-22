@@ -37,36 +37,7 @@ if ($member_id == NULL) {
 }
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
-
-// Buildings
-$building_lv1 = $row['building_lv1'];
-$building_lv2 = $row['building_lv2'];
-$building_lv3 = $row['building_lv3'];
-$building_lv4 = $row['building_lv4'];
-$building_lv5 = $row['building_lv5'];
-$building_lv6 = $row['building_lv6'];
-$building_lv7 = $row['building_lv7'];
-if ($building_lv1 == NULL) {
-  $building_lv1 = 0;
-}
-if ($building_lv2 == NULL) {
-  $building_lv2 = 0;
-}
-if ($building_lv3 == NULL) {
-  $building_lv3 = 0;
-}
-if ($building_lv4 == NULL) {
-  $building_lv4 = 0;
-}
-if ($building_lv5 == NULL) {
-  $building_lv5 = 0;
-}
-if ($building_lv6 == NULL) {
-  $building_lv6 = 0;
-}
-if ($building_lv7 == NULL) {
-  $building_lv7 = 0;
-}
+$building = $row['building'];
 ?>
 
 <!DOCTYPE html>
@@ -76,8 +47,9 @@ if ($building_lv7 == NULL) {
   <?php include("./head.php") ?>
   <title>TYCOON | <?php echo $land_code ?></title>
   <link rel="stylesheet" type="text/css" href="cube.css" />
-  <link rel="stylesheet" type="text/css" href="./tycoon.css" />
-  <link rel="stylesheet" type="text/css" href="./navbar.css" />
+  <link rel="stylesheet" type="text/css" href="tycoon.css" />
+  <link rel="stylesheet" type="text/css" href="navbar.css" />
+  <link rel="stylesheet" type="text/css" href="building.css" />
 </head>
 
 <body>
@@ -490,7 +462,7 @@ if ($building_lv7 == NULL) {
   <?php
   if ($land_status == 0) {
   ?>
-    <div class="description_buttons">
+    <div class="buttons">
       <button data-open-modal class="btn btn-effect" onclick="rent(<?= $idx ?>)">
         <span>임대하기</span>
       </button>
@@ -499,9 +471,9 @@ if ($building_lv7 == NULL) {
       </button>
     </div>
   <?php
-  } else {
+  } elseif ($land_status == 1) {
   ?>
-    <div class="description_buttons">
+    <div class="buttons">
       <button data-open-modal class="btn btn-effect" onclick="build(<?= $idx ?>)">
         <span>건설하기</span>
       </button>
@@ -513,83 +485,17 @@ if ($building_lv7 == NULL) {
   }
   ?>
 
-  <!-- Description -->
+  <!-- Building -->
   <div class="description">
     <div class="description_block">
       <div class="description_name">
         <div class="description_img">
           <img src="./images/tycoon_lv1.png" alt="tycoon">
         </div>
-        <p>Lv1. 주택</p>
+        <p>건축</p>
       </div>
       <div class="description_count">
-        <h4><?php echo $building_lv1 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv2.png" alt="tycoon">
-        </div>
-        <p>Lv2. 학교</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv2 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv3.png" alt="tycoon">
-        </div>
-        <p>Lv3. 극장</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv3 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv4.png" alt="tycoon">
-        </div>
-        <p>Lv4. 병원</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv4 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv5.png" alt="tycoon">
-        </div>
-        <p>Lv5. 은행</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv5 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv6.png" alt="tycoon">
-        </div>
-        <p>Lv6. 대경기장</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv6 ?></h4>
-      </div>
-    </div>
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv7.png" alt="tycoon">
-        </div>
-        <p>Lv7. 파르테논</p>
-      </div>
-      <div class="description_count">
-        <h4><?php echo $building_lv7 ?></h4>
+        <h4><?php echo $building ?></h4>
       </div>
     </div>
   </div>
