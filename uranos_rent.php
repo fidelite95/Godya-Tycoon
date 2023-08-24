@@ -24,7 +24,6 @@ if ($con->connect_errno) {
   die('Connection Error : ' . $con->connect_error);
 }
 
-// Territory Data
 $query = "SELECT * FROM tb_tycoon_uranos WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
@@ -37,7 +36,12 @@ if ($member_id == NULL) {
 }
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
+
+$profit = $row['profit'];
+$profit_name = '';
+
 $building = $row['building'];
+$building_name = '';
 ?>
 
 <!DOCTYPE html>
@@ -70,23 +74,50 @@ $building = $row['building'];
   $result_tenant = $con->query($query_tenant);
   $row_tenant = $result_tenant->fetch_assoc();
 
-  // Member Nickname
-  $member_nick = $row_tenant['nick'];
+  //──────── Member Nickname
+  // $member_nick = $row_tenant['nick'];
+  $member_nick = "아슬란";
 
-  // Member Asset
-  $member_gold = number_format($row_tenant['point']);
-  $member_red = number_format($row_tenant['cash']);
+  //──────── Member Asset
+  // $member_gold = number_format($row_tenant['point']);
+  // $member_red = number_format($row_tenant['cash']);
+  $point = 8034678;
+  $cash = 7564;
+  $member_gold = number_format($point);
+  $member_red = number_format($cash);
+
+  //──────── Comparison (Gold)
+  $available_gold = false;
+  if ($member_gold >= $price_gold) {
+    $available_gold = true;
+  }
+
+  //──────── Comparison (Red)
+  $available_red = false;
+  if ($member_red >= $price_red) {
+    $available_red = true;
+  }
   ?>
   <div class="tenant">
     <h3 class="tenant_name"><?php echo $member_nick ?>님의 보유자산</h3>
     <div class="tenant_asset">
       <div class="tenant_gold">
-        <img src="./images/tycoon_gold.png" alt="gold" />
+        <img class="tenant_img" src="./images/tycoon_gold.png" alt="gold" />
         <p><?php echo $member_gold ?></p>
+        <?php
+        if ($available_gold == false) {
+          echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+        }
+        ?>
       </div>
       <div class="tenant_red">
-        <img src="./images/tycoon_red.png" alt="red" />
+        <img class="tenant_img" src="./images/tycoon_red.png" alt="red" />
         <p><?php echo $member_red ?></p>
+        <?php
+        if ($available_red == false) {
+          echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -108,11 +139,10 @@ $building = $row['building'];
 
   <!-- Land Cube -->
   <?php
-  if ($land_status == 0) {
-    switch ($idx) {
-        // Grade 1
-      case 1:
-        echo '
+  switch ($idx) {
+      // Grade 1
+    case 1:
+      echo '
         <div class="cube_1">
           <div class="top_1"></div>
           <div>
@@ -123,11 +153,11 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 2
-      case 2:
-      case 3:
-        echo '
+      break;
+      // Grade 2
+    case 2:
+    case 3:
+      echo '
         <div class="cube_2">
           <div class="top_2"></div>
           <div>
@@ -138,12 +168,12 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 3
-      case 4:
-      case 5:
-      case 6:
-        echo '
+      break;
+      // Grade 3
+    case 4:
+    case 5:
+    case 6:
+      echo '
         <div class="cube_3">
           <div class="top_3"></div>
           <div>
@@ -154,13 +184,13 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 4
-      case 7:
-      case 8:
-      case 9:
-      case 10:
-        echo '
+      break;
+      // Grade 4
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+      echo '
         <div class="cube_4">
           <div class="top_4"></div>
           <div>
@@ -171,14 +201,14 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 5
-      case 11:
-      case 12:
-      case 13:
-      case 14:
-      case 15:
-        echo '
+      break;
+      // Grade 5
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+      echo '
         <div class="cube_5">
           <div class="top_5"></div>
           <div>
@@ -189,15 +219,15 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 6
-      case 16:
-      case 17:
-      case 18:
-      case 19:
-      case 20:
-      case 21:
-        echo '
+      break;
+      // Grade 6
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+      echo '
         <div class="cube_6">
           <div class="top_6"></div>
           <div>
@@ -208,16 +238,16 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 7
-      case 22:
-      case 23:
-      case 24:
-      case 25:
-      case 26:
-      case 27:
-      case 28:
-        echo '
+      break;
+      // Grade 7
+    case 22:
+    case 23:
+    case 24:
+    case 25:
+    case 26:
+    case 27:
+    case 28:
+      echo '
         <div class="cube_7">
           <div class="top_7"></div>
           <div>
@@ -228,17 +258,17 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 8
-      case 29:
-      case 30:
-      case 31:
-      case 32:
-      case 33:
-      case 34:
-      case 35:
-      case 36:
-        echo '
+      break;
+      // Grade 8
+    case 29:
+    case 30:
+    case 31:
+    case 32:
+    case 33:
+    case 34:
+    case 35:
+    case 36:
+      echo '
         <div class="cube_8">
           <div class="top_8"></div>
           <div>
@@ -249,18 +279,18 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 9
-      case 37:
-      case 38:
-      case 39:
-      case 40:
-      case 41:
-      case 42:
-      case 43:
-      case 44:
-      case 45:
-        echo '
+      break;
+      // Grade 9
+    case 37:
+    case 38:
+    case 39:
+    case 40:
+    case 41:
+    case 42:
+    case 43:
+    case 44:
+    case 45:
+      echo '
         <div class="cube_9">
           <div class="top_9"></div>
           <div>
@@ -271,19 +301,19 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-        // Grade 10
-      case 46:
-      case 47:
-      case 48:
-      case 49:
-      case 50:
-      case 51:
-      case 52:
-      case 53:
-      case 54:
-      case 55:
-        echo '
+      break;
+      // Grade 10
+    case 46:
+    case 47:
+    case 48:
+    case 49:
+    case 50:
+    case 51:
+    case 52:
+    case 53:
+    case 54:
+    case 55:
+      echo '
         <div class="cube_10">
           <div class="top_10"></div>
           <div>
@@ -294,208 +324,27 @@ $building = $row['building'];
           </div>
         </div>
         ';
-        break;
-    }
-  } elseif ($land_status == 1) {
-    switch ($idx) {
-        // Grade 1
-      case 1:
-        echo '
-      <div class="cube_uranos_1">
-        <div class="top_uranos_1"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 2
-      case 2:
-      case 3:
-        echo '
-      <div class="cube_uranos_2">
-        <div class="top_uranos_2"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 3
-      case 4:
-      case 5:
-      case 6:
-        echo '
-      <div class="cube_uranos_3">
-        <div class="top_uranos_3"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 4
-      case 7:
-      case 8:
-      case 9:
-      case 10:
-        echo '
-      <div class="cube_uranos_4">
-        <div class="top_uranos_4"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 5
-      case 11:
-      case 12:
-      case 13:
-      case 14:
-      case 15:
-        echo '
-      <div class="cube_uranos_5">
-        <div class="top_uranos_5"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 6
-      case 16:
-      case 17:
-      case 18:
-      case 19:
-      case 20:
-      case 21:
-        echo '
-      <div class="cube_uranos_6">
-        <div class="top_uranos_6"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 7
-      case 22:
-      case 23:
-      case 24:
-      case 25:
-      case 26:
-      case 27:
-      case 28:
-        echo '
-      <div class="cube_uranos_7">
-        <div class="top_uranos_7"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 8
-      case 29:
-      case 30:
-      case 31:
-      case 32:
-      case 33:
-      case 34:
-      case 35:
-      case 36:
-        echo '
-      <div class="cube_uranos_8">
-        <div class="top_uranos_8"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 9
-      case 37:
-      case 38:
-      case 39:
-      case 40:
-      case 41:
-      case 42:
-      case 43:
-      case 44:
-      case 45:
-        echo '
-      <div class="cube_uranos_9">
-        <div class="top_uranos_9"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        // Grade 10
-      case 46:
-      case 47:
-      case 48:
-      case 49:
-      case 50:
-      case 51:
-      case 52:
-      case 53:
-      case 54:
-      case 55:
-        echo '
-      <div class="cube_uranos_10">
-        <div class="top_uranos_10"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-    }
+      break;
   }
   ?>
 
   <!-- Buttons -->
   <div class="buttons">
-    <button data-open-modal class="btn btn-effect">
+    <button data-open-modal class="btn btn-effect" onclick="<?php if ($available_gold == true) { ?>
+                                                              payWithGold(<?= $idx; ?>);
+                                                            <?php } else { ?>
+                                                              alert('골드 잔액이 부족합니다.');
+                                                            <?php } ?>">
       <span>
         <img src="./images/tycoon_gold.png" alt="gold" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
         사용
       </span>
     </button>
-    <button data-open-modal class="btn btn-effect">
+    <button data-open-modal class="btn btn-effect" onclick="<?php if ($available_red == true) { ?>
+                                                              payWithRed(<?= $idx; ?>);
+                                                            <?php } else { ?>
+                                                              alert('골드 잔액이 부족합니다.');
+                                                            <?php } ?>">
       <span>
         <img src="./images/tycoon_red.png" alt="red" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
         사용
@@ -522,6 +371,15 @@ $building = $row['building'];
     // Go back
     function back() {
       location.href = "uranos.php";
+    }
+
+    // Move to uranos_rent_ok.php
+    function payWithGold(idx) {
+      location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
+    }
+
+    function payWithRed(idx) {
+      location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=red";
     }
   </script>
 </body>

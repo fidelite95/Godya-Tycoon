@@ -24,7 +24,6 @@ if ($con->connect_errno) {
   die('Connection Error : ' . $con->connect_error);
 }
 
-// Territory Data
 $query = "SELECT * FROM tb_tycoon_uranos WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
@@ -35,9 +34,15 @@ $member_id = $row['member_id'];
 if ($member_id == NULL) {
   $member_id = '없음';
 }
+
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
+
+$profit = $row['profit'];
+$profit_name = '';
+
 $building = $row['building'];
+$building_name = '';
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +54,7 @@ $building = $row['building'];
   <link rel="stylesheet" type="text/css" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="tycoon.css" />
   <link rel="stylesheet" type="text/css" href="navbar.css" />
-  <link rel="stylesheet" type="text/css" href="building.css" />
+  <link rel="stylesheet" type="text/css" href="description.css" />
 </head>
 
 <body>
@@ -475,7 +480,13 @@ $building = $row['building'];
   ?>
     <div class="buttons">
       <button data-open-modal class="btn btn-effect" onclick="build(<?= $idx ?>)">
-        <span>건설하기</span>
+        <span>건축하기</span>
+      </button>
+      <button data-open-modal class="btn btn-effect" onclick="rate(<?= $idx ?>)">
+        <span>평가하기</span>
+      </button>
+      <button data-open-modal class="btn btn-effect" onclick="mine(<?= $idx ?>)">
+        <span>채굴하기</span>
       </button>
       <button data-open-modal class="btn btn-effect" onclick="back()">
         <span>취소</span>
@@ -485,17 +496,136 @@ $building = $row['building'];
   }
   ?>
 
-  <!-- Building -->
+  <!-- Description -->
   <div class="description">
-    <div class="description_block">
-      <div class="description_name">
-        <div class="description_img">
-          <img src="./images/tycoon_lv1.png" alt="tycoon">
-        </div>
-        <p>건축</p>
+    <div class="description_profit">
+      <div class="description_img">
+        <?php
+        switch ($profit) {
+            // None
+          case 0:
+            $profit_name = '없음';
+            echo '<img src="./images/rating/profit_lv0.png" alt="profit">';
+            break;
+            // Alpha
+          case 1:
+            $profit_name = '알파';
+            echo '<img src="./images/rating/profit_lv1.png" alt="profit">';
+            break;
+            // Beta
+          case 2:
+            $profit_name = '베타';
+            echo '<img src="./images/rating/profit_lv2.png" alt="profit">';
+            break;
+            // Gamma
+          case 3:
+            $profit_name = '감마';
+            echo '<img src="./images/rating/profit_lv3.png" alt="profit">';
+            break;
+            // Delta
+          case 4:
+            $profit_name = '델타';
+            echo '<img src="./images/rating/profit_lv4.png" alt="profit">';
+            break;
+            // Epsilon
+          case 5:
+            $profit_name = '엡실론';
+            echo '<img src="./images/rating/profit_lv5.png" alt="profit">';
+            break;
+            // Zeta
+          case 6:
+            $profit_name = '제타';
+            echo '<img src="./images/rating/profit_lv6.png" alt="profit">';
+            break;
+            // Eta
+          case 7:
+            $profit_name = '에타';
+            echo '<img src="./images/rating/profit_lv7.png" alt="profit">';
+            break;
+            // Theta
+          case 8:
+            $profit_name = '시타';
+            echo '<img src="./images/rating/profit_lv8.png" alt="profit">';
+            break;
+            // Iota
+          case 9:
+            $profit_name = '이오타';
+            echo '<img src="./images/rating/profit_lv9.png" alt="profit">';
+            break;
+            // Kappa
+          case 10:
+            $profit_name = '카파';
+            echo '<img src="./images/rating/profit_lv10.png" alt="profit">';
+            break;
+            // Lambda
+          case 11:
+            $profit_name = '람다';
+            echo '<img src="./images/rating/profit_lv11.png" alt="profit">';
+            break;
+            // Mu
+          case 12:
+            $profit_name = '뮤';
+            echo '<img src="./images/rating/profit_lv12.png" alt="profit">';
+            break;
+            // Nu
+          case 13:
+            $profit_name = '뉴';
+            echo '<img src="./images/rating/profit_lv13.png" alt="profit">';
+            break;
+            // Xi
+          case 14:
+            $profit_name = '크사이';
+            echo '<img src="./images/rating/profit_lv14.png" alt="profit">';
+            break;
+            // Omicron
+          case 15:
+            $profit_name = '오미크론';
+            echo '<img src="./images/rating/profit_lv15.png" alt="profit">';
+            break;
+          default:
+            $profit_name = 'ERROR';
+            break;
+        }
+        ?>
       </div>
-      <div class="description_count">
-        <h4><?php echo $building ?></h4>
+      <div class="description_detail">
+        <p>수익 등급<br />ㅡ</p>
+        <h4><?php echo $profit_name ?></h4>
+      </div>
+    </div>
+    <div class="description_building">
+      <div class="description_img">
+        <?php
+        switch ($building) {
+          case 0:
+            $building_name = '없음';
+            echo '<img src="./images/building/building_none.png" alt="building">';
+            break;
+          case 1:
+            $building_name = '콜로나';
+            echo '<img src="./images/building/building_kolona.png" alt="building">';
+            break;
+          case 2:
+            $building_name = '오데이온';
+            echo '<img src="./images/building/building_odeion.png" alt="building">';
+            break;
+          case 3:
+            $building_name = '스타디온';
+            echo '<img src="./images/building/building_stadion.png" alt="building">';
+            break;
+          case 4:
+            $building_name = '파르테논';
+            echo '<img src="./images/building/building_parthenon.png" alt="building">';
+            break;
+          default:
+            $building_name = 'ERROR';
+            break;
+        }
+        ?>
+      </div>
+      <div class="description_detail">
+        <p>건축 등급<br />ㅡ</p>
+        <h4><?php echo $building_name ?></h4>
       </div>
     </div>
   </div>
@@ -526,6 +656,16 @@ $building = $row['building'];
     // Move to uranos_build.php
     function build(idx) {
       location.href = "uranos_build.php?idx=" + idx;
+    }
+
+    // Move to uranos_rate.php
+    function mine(idx) {
+      location.href = "uranos_rate.php?idx=" + idx;
+    }
+
+    // Move to uranos_mine.php
+    function mine(idx) {
+      location.href = "uranos_mine.php?idx=" + idx;
     }
   </script>
 </body>
