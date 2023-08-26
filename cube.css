@@ -73,6 +73,19 @@ body {
   height: 30px;
 }
 
+.ownership_star {
+  width: 100%;
+}
+
+.ownership_star img {
+  margin-right: 10px;
+  width: 20px;
+}
+
+.ownership_star img:last-child {
+  margin-right: 0px;
+}
+
 .price_gold,
 .price_red {
   display: flex;

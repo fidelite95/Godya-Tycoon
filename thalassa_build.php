@@ -28,20 +28,41 @@ $query = "SELECT * FROM tb_tycoon_thalassa WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
+// Land Code
 $land_code = $row['land_code'];
+
+// Land Status : 0 (For sale), 1 (Sold)
 $land_status = $row['land_status'];
+
+// Member Index
+$member_idX = $row['member_idX'];
+
+// Member ID (Gmail)
 $member_id = $row['member_id'];
 if ($member_id == NULL) {
   $member_id = '없음';
 }
+
+// Price
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
 
+// Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
 
+// Building : _build.php
 $building = $row['building'];
 $building_name = '';
+
+// Mined resources
+$item1 = $row['item1'];
+$item2 = $row['item2'];
+$item3 = $row['item3'];
+$item4 = $row['item4'];
+$item5 = $row['item5'];
+$item6 = $row['item6'];
+$item7 = $row['item7'];
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +74,7 @@ $building_name = '';
   <link rel="stylesheet" type="text/css" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="tycoon.css" />
   <link rel="stylesheet" type="text/css" href="navbar.css" />
-  <link rel="stylesheet" type="text/css" href="rent.css">
+  <link rel="stylesheet" type="text/css" href="build.css">
 </head>
 
 <body>
@@ -74,23 +95,50 @@ $building_name = '';
   $result_tenant = $con->query($query_tenant);
   $row_tenant = $result_tenant->fetch_assoc();
 
-  // Member Nickname
-  $member_nick = $row_tenant['nick'];
+  //──────── Member Nickname
+  // $member_nick = $row_tenant['nick'];
+  $member_nick = "아슬란";
 
-  // Member Asset
-  $member_gold = number_format($row_tenant['point']);
-  $member_red = number_format($row_tenant['cash']);
+  //──────── Member Asset
+  // $member_gold = number_format($row_tenant['point']);
+  // $member_red = number_format($row_tenant['cash']);
+  $gold = 8034678;
+  $red = 7564;
+  $member_gold = number_format($gold);
+  $member_red = number_format($red);
+
+  //──────── Comparison (Gold)
+  $available_gold = false;
+  if ($gold >= $row['price_gold']) {
+    $available_gold = true;
+  }
+
+  //──────── Comparison (Red)
+  $available_red = false;
+  if ($red >= $row['price_red']) {
+    $available_red = true;
+  }
   ?>
   <div class="tenant">
     <h3 class="tenant_name"><?php echo $member_nick ?>님의 보유자산</h3>
     <div class="tenant_asset">
       <div class="tenant_gold">
-        <img src="./images/tycoon_gold.png" alt="gold" />
+        <img class="tenant_img" src="./images/tycoon_gold.png" alt="gold" />
         <p><?php echo $member_gold ?></p>
+        <?php
+        if ($available_gold == false) {
+          echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+        }
+        ?>
       </div>
       <div class="tenant_red">
-        <img src="./images/tycoon_red.png" alt="red" />
+        <img class="tenant_img" src="./images/tycoon_red.png" alt="red" />
         <p><?php echo $member_red ?></p>
+        <?php
+        if ($available_red == false) {
+          echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -303,13 +351,21 @@ $building_name = '';
 
   <!-- Buttons -->
   <div class="buttons">
-    <button data-open-modal class="btn btn-effect" onclick="payWithGold(<?= $idx; ?>)">
+    <button data-open-modal class="btn btn-effect" onclick="<?php if ($available_gold == true) { ?>
+                                                              payWithGold(<?= $idx; ?>);
+                                                            <?php } else { ?>
+                                                              alert('골드 잔액이 부족합니다.');
+                                                            <?php } ?>">
       <span>
         <img src="./images/tycoon_gold.png" alt="gold" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
         사용
       </span>
     </button>
-    <button data-open-modal class="btn btn-effect" onclick="payWithRed(<?= $idx; ?>)">
+    <button data-open-modal class="btn btn-effect" onclick="<?php if ($available_red == true) { ?>
+                                                              payWithRed(<?= $idx; ?>);
+                                                            <?php } else { ?>
+                                                              alert('레드베릴 잔액이 부족합니다.');
+                                                            <?php } ?>">
       <span>
         <img src="./images/tycoon_red.png" alt="red" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
         사용
@@ -338,13 +394,20 @@ $building_name = '';
       location.href = "thalassa.php";
     }
 
-    // Move to uranos_rent_ok.php
+    // Pay with Gold
     function payWithGold(idx) {
-      location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
+      let answer = confirm("골드로 결제하시겠습니까?");
+      if (answer == true) {
+        location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
+      }
     }
 
+    // Pay with Red beryl
     function payWithRed(idx) {
-      location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=red";
+      let answer = confirm("레드베릴로 결제하시겠습니까?");
+      if (answer == true) {
+        location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
+      }
     }
   </script>
 </body>

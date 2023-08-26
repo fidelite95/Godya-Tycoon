@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Clicker</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            background-color: black;
+        }
+
+        .bar-wrapper {
+            margin-top: 200px;
+            margin-left: 50px;
+            margin-right: 50px;
+            height: 3px;
+            background-color: transparent;
+            box-shadow: 0px 0px 30px 8px aquamarine;
+            border-radius: 50px;
+        }
+
+        #myBar {
+            height: 3px;
+            width: 1%;
+            display: block;
+            box-shadow: 0px 0px 20px 3px aquamarine;
+            background-color: aquamarine;
+            border-radius: 50px;
+        }
+
+        .btnBuild {
+            margin-top: 200px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 800;
+            color: whitesmoke;
+            border: 2px solid whitesmoke;
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bar-wrapper">
+        <div id="myBar"></div>
+    </div>
+
+    <button class="btnBuild" onclick="move()">Click Me</button>
+
+    <script>
+        var myBar = document.getElementById("myBar");
+        var width = 0;
+        var decrease = setInterval(() => {
+            if (width <= 0) {
+                width = 0;
+            } else {
+                width -= 0.1;
+                myBar.style.width = width + '%';
+            }
+        }, 5);
+
+        function move() {
+            if (width >= 95) {
+                clearInterval(decrease);
+                success();
+            } else {
+                width += 7;
+                myBar.style.width = width + '%';
+            }
+        }
+
+        function success() {
+            location.href = "clicker2.html";
+        }
+    </script>
+</body>
+
+</html>

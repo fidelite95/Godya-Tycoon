@@ -28,20 +28,41 @@ $query = "SELECT * FROM tb_tycoon_thalassa WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
+// Land Code
 $land_code = $row['land_code'];
+
+// Land Status : 0 (For sale), 1 (Sold)
 $land_status = $row['land_status'];
+
+// Member Index
+$member_idX = $row['member_idX'];
+
+// Member ID (Gmail)
 $member_id = $row['member_id'];
 if ($member_id == NULL) {
   $member_id = '없음';
 }
+
+// Price
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
 
+// Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
 
+// Building : _build.php
 $building = $row['building'];
 $building_name = '';
+
+// Mined resources
+$item1 = $row['item1'];
+$item2 = $row['item2'];
+$item3 = $row['item3'];
+$item4 = $row['item4'];
+$item5 = $row['item5'];
+$item6 = $row['item6'];
+$item7 = $row['item7'];
 ?>
 
 <!DOCTYPE html>
@@ -81,20 +102,20 @@ $building_name = '';
   //──────── Member Asset
   // $member_gold = number_format($row_tenant['point']);
   // $member_red = number_format($row_tenant['cash']);
-  $point = 8034678;
-  $cash = 7564;
-  $member_gold = number_format($point);
-  $member_red = number_format($cash);
+  $gold = 8034678;
+  $red = 7564;
+  $member_gold = number_format($gold);
+  $member_red = number_format($red);
 
   //──────── Comparison (Gold)
   $available_gold = false;
-  if ($member_gold >= $price_gold) {
+  if ($gold >= $row['price_gold']) {
     $available_gold = true;
   }
 
   //──────── Comparison (Red)
   $available_red = false;
-  if ($member_red >= $price_red) {
+  if ($red >= $row['price_red']) {
     $available_red = true;
   }
   ?>
@@ -343,7 +364,7 @@ $building_name = '';
     <button data-open-modal class="btn btn-effect" onclick="<?php if ($available_red == true) { ?>
                                                               payWithRed(<?= $idx; ?>);
                                                             <?php } else { ?>
-                                                              alert('골드 잔액이 부족합니다.');
+                                                              alert('레드베릴 잔액이 부족합니다.');
                                                             <?php } ?>">
       <span>
         <img src="./images/tycoon_red.png" alt="red" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
@@ -373,13 +394,20 @@ $building_name = '';
       location.href = "thalassa.php";
     }
 
-    // Move to uranos_rent_ok.php
+    // Pay with Gold
     function payWithGold(idx) {
-      location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
+      let answer = confirm("골드로 결제하시겠습니까?");
+      if (answer == true) {
+        location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
+      }
     }
 
+    // Pay with Red beryl
     function payWithRed(idx) {
-      location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=red";
+      let answer = confirm("레드베릴로 결제하시겠습니까?");
+      if (answer == true) {
+        location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
+      }
     }
   </script>
 </body>
