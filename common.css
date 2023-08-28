@@ -1,550 +1,147 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-/* font-family: 'Noto Sans KR', sans-serif; */
+/* 
+* ──────────────────────────────────────
+* Tenant
+* ──────────────────────────────────────
+*/
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-/* font-family: 'Roboto', sans-serif; */
-
-@font-face {
-    font-family: 'Pretendard-SemiBold';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Pretendard-ExtraBold';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');
-    font-weight: 800;
-    font-style: normal;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Noto Sans KR', sans-serif;
-    cursor: default;
-    background-color: #fff;
-}
-
-input {
-    outline: none;
-}
-
-/*
- * ──────────────────────────────
- * ANIMATION (FADE-IN)
- * ──────────────────────────────
- */
-
-.animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.fadeIn_1 {
-    animation-name: fadeIn;
-}
-
-.fadeIn_2 {
-    animation-name: fadeIn;
-    animation-delay: 0.2s;
-}
-
-.fadeIn_3 {
-    animation-name: fadeIn;
-    animation-delay: 0.4s;
-}
-
-.fadeIn_4 {
-    animation-name: fadeIn;
-    animation-delay: 0.6s;
-}
-
-.fadeIn_5 {
-    animation-name: fadeIn;
-    animation-delay: 0.8s;
-}
-
-.fadeIn_6 {
-    animation-name: fadeIn;
-    animation-delay: 1s;
-}
-
-.fadeIn_7 {
-    animation-name: fadeIn;
-    animation-delay: 1.2s;
-}
-
-.fadeIn_8 {
-    animation-name: fadeIn;
-    animation-delay: 1.4s;
-}
-
-.fadeIn_9 {
-    animation-name: fadeIn;
-    animation-delay: 1.6s;
-}
-
-.fadeIn_10 {
-    animation-name: fadeIn;
-    animation-delay: 1.8s;
-}
-
-/*
- * ──────────────────────────────
- * HEADER
- * ──────────────────────────────
- */
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.6s;
-    padding: 30px 80px;
-    z-index: 99;
-    font-family: 'Roboto', sans-serif;
-}
-
-.logo {
+.tenant {
     position: relative;
-    font-weight: 700;
-    background-color: transparent;
-    padding: 5px 15px;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: -2px;
-    cursor: pointer;
-    transition: all 0.4s;
-    font-family: 'Roboto', sans-serif;
-}
-
-.logo:hover {
-    color: #fff;
-    background-color: #292929;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.6s;
-}
-
-.logo img {
-    cursor: pointer;
-    width: 80px;
-    background-color: transparent;
-}
-
-.logo:hover img {
-    content: url('../images/sinia_logo_white.png');
-    width: 80px;
-}
-
-header ul {
-    background-color: transparent;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.6s;
-}
-
-header ul li {
-    background-color: transparent;
-    color: #292929;
-    margin-bottom: 5px;
-    height: 10px;
-    line-height: 30px;
-    position: relative;
-    list-style: none;
-    transition: all 0.3s;
-}
-
-header ul li:hover {
-    color: #292929;
-    cursor: pointer;
-    transform: translateY(-3px);
-}
-
-header ul li a {
-    background-color: transparent;
-    position: relative;
-    margin: 0 15px;
-    text-decoration: none;
-    color: #292929;
-    font-weight: 600;
-    transition: 0.6s;
-}
-
-header ul li a:hover {
-    cursor: pointer;
-    color: #292929;
-}
-
-header ul li a::after {
-    content: '';
-    width: 0;
-    height: 3px;
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #292929;
-    transition: width 0.3s;
-}
-
-header ul li a:hover::after {
-    width: 50%;
-}
-
-.signin {
-    background-color: transparent;
-    color: #292929;
-    font-size: 18px;
-    font-weight: 700;
-    padding: 5px 15px;
-    cursor: pointer;
-    text-decoration: none;
-    border: solid 3px rgba(255, 255, 255, 0);
-}
-
-.signin:hover {
-    color: #fff;
-    background-color: #292929;
-    border: none;
-    border-radius: 15px;
-    border: solid 3px rgba(41, 41, 41, 1);
-    cursor: pointer;
-    transition: all 0.6s;
-}
-
-/*
- * ──────────────────────────────
- * HEADER : .sticky
- * ──────────────────────────────
- */
-
-.sticky {
-    padding: 10px 80px;
-    background-color: #fff;
-    border-bottom: solid 1px #eee;
-}
-
-.sticky ul,
-.sticky ul li {
-    background-color: #fff;
-}
-
-.sticky ul li a {
-    color: #303030;
-    background-color: #fff;
-}
-
-.sticky ul li a:hover {
-    color: #303030;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.sticky ul li a::after {
-    content: '';
-    width: 0;
-    height: 3px;
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #303030;
-    transition: width 0.3s;
-}
-
-.sticky ul li a:hover::after {
-    width: 50%;
-}
-
-.sticky .signin {
-    color: #303030;
-    background-color: transparent;
-}
-
-.sticky .signin:hover {
-    background-color: #292929;
-    color: #fff;
-}
-
-/*
- * ──────────────────────────────
- * HEADER : Mobile Nav
- * ──────────────────────────────
- */
-
-.menu {
-    background-color: transparent;
-    display: none;
-    margin-bottom: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.menu img {
-    background-color: transparent;
-    width: 24px;
-    cursor: pointer;
-}
-
-.overlay {
-    background-color: transparent;
-    height: 50%;
-    width: 0;
-    position: fixed;
-    z-index: 999;
-    right: 0;
-    top: 20%;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
-    /* transform: translateX(20px); */
-    overflow-x: hidden;
-    transition: all 0.5s ease 0s;
-}
-
-.overlay--active {
-    width: 40%;
-}
-
-.overlay__content {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#navLink__signin {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-top: 25px;
-    border-radius: 10px;
-    color: #fff;
-    background-color: #292929;
-    border: solid 3px rgba(41, 41, 41, 1);
-}
-
-#navLink__signin:hover {
-    color: #fff;
-    background-color: rgba(82, 82, 82, 1);
-    border: none;
-    border-radius: 20px;
-    border: solid 3px rgba(41, 41, 41, 0);
-    cursor: pointer;
-    transition: all 0.6s;
-}
-
-.overlay a {
-    text-decoration: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 16px;
-    color: #292929;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 600;
     display: block;
-    transition: all 0.3s ease 0s;
-}
-
-.overlay a:hover {
-    cursor: pointer;
-    color: rgba(128, 128, 128, 0.8);
-}
-.overlay .close {
-    background-color: transparent;
-    position: absolute;
-    left: 10px;
-    font-size: 24px;
-    color: #292929;
-    cursor: pointer;
-}
-
-@media (max-width: 1024px) {
-    header ul,
-    .signin {
-        display: none;
-    }
-    .menu {
-        background-color: transparent;
-        display: initial;
-    }
-}
-
-@media (max-width: 720px) {
-    header {
-        padding: 20px 35px;
-    }
-
-    .sticky {
-        padding: 10px 35px;
-    }
-
-    .sticky .logo:hover {
-        border-radius: 12px;
-    }
-
-    .menu {
-        background-color: transparent;
-        font-size: 26px;
-        font-weight: 700;
-        padding: 0 8px;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
-    .overlay a {
-        padding-left: 5px;
-        padding-right: 5px;
-        padding-top: 15px;
-        padding-bottom: 15px;
-        font-size: 14px;
-    }
-}
-
-/*
- * ──────────────────────────────
- * INDEX_LOGIN.php
- * ──────────────────────────────
- */
-
- #signout {
-    text-decoration: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-top: 15px;
+    width: 300px;
+    height: 150px;
+    margin-bottom: 25px;
+    text-align: center;
+    border: 2px solid #f5f5f5;
     border-radius: 10px;
-    color: #292929;
-    font-size: 18px;
+}
+
+.tenant_name {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: "Noto Sans KR", sans-serif;
     font-weight: 700;
-    background-color: transparent;
-    border: solid 3px rgba(41, 41, 41, 1);
+    font-size: 20px;
+    color: #f5f5f5;
 }
 
-#signout:hover {
-    color: #292929;
-    background-color: transparent;
-    border: none;
-    border-radius: 20px;
-    border: solid 3px rgba(41, 41, 41, 1);
-    cursor: pointer;
-    transition: all 0.6s;
+.tenant_asset {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    translate: -45%;
+    width: 80%;
+    height: 30px;
 }
 
-#navLink__signout {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-top: 15px;
-    border-radius: 10px;
-    color: #292929;
-    background-color: #fff;
-    border: solid 3px rgba(41, 41, 41, 1);
+.tenant_gold,
+.tenant_red {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-#navLink__signout:hover {
-    color: #292929;
-    background-color: #fff;
-    border: none;
-    border-radius: 20px;
-    border: solid 3px rgba(41, 41, 41, 1);
-    cursor: pointer;
-    transition: all 0.6s;
-}
-
-.buttons__login {
-    display: inline;
-    background-color: transparent;
-}
-
-/*
- * ──────────────────────────────
- * FOOTER
- * ──────────────────────────────
- */
-
-.social-links {
-    cursor: pointer;
-    text-decoration: none;
-    margin: 10px 30px;
-}
-
-.social-links img {
+.tenant_img {
     width: 30px;
-    transition: all 0.3s;
+    margin-right: 10px;
 }
 
-.social-links:hover img {
-    cursor: pointer;
-    transform: translateY(-7px);
+.tenant_gold p,
+.tenant_red p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #f5f5f5;
 }
 
-.footer__logo {
-    background-color: transparent;
+.tenant_warning {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    transform: translateY(5px);
 }
 
-.footer__logo img {
-    background-color: transparent;
-    width: 100px;
+/* 
+* ──────────────────────────────────────
+* Building
+* ──────────────────────────────────────
+*/
+
+.building {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 250px;
+    margin-bottom: 25px;
+    text-align: center;
+    border: 2px solid #f5f5f5;
+    border-radius: 10px;
+    padding: 0px 20px;
 }
 
-.footer__links p {
-    background-color: transparent;
+.building_title {
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #f5f5f5;
 }
 
-.footer__links .footer__link {
-    cursor: pointer;
-    text-decoration: none;
-    color: #888;
-    background-color: transparent;
-    transition: all 0.2s;
+.building_desc {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
 }
 
-.footer__links .footer__link:hover {
-    color: #000;
+.building_img {
+    width: 50%;
 }
 
-@media (max-width: 1024px) {
-    #signout {
-        display: none;
-    }
-
-    .social-links img {
-        width: 28px;
-    }
+.building_img img {
+    height: 120px;
 }
 
-@media (max-width: 720px) {
-    .social-links img {
-        width: 25px;
-    }
+.building_img h4 {
+    color: #f5f5f5;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.building_price {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    color: #f5f5f5;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.building_gold,
+.building_red {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.building_gold p,
+.building_red p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #f5f5f5;
+}
+
+.building_price h4{
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
 }

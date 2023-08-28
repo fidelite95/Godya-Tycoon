@@ -6,9 +6,9 @@
 <head>
     <?php include("./head.php") ?>
     <title>TYCOON</title>
-    <link rel="stylesheet" type="text/css" href="./common.css" />
-    <link rel="stylesheet" type="text/css" href="./index.css" />
-    <link rel="stylesheet" type="text/css" href="./play.css">
+    <link rel="stylesheet" type="text/css" href="common.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="play.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -78,7 +78,7 @@
         // Video Autoplay
         document.getElementById('vid').play();
 
-        // Onclick Event
+        // Start
         function start() {
             location.href = "./login.php";
         }
@@ -86,8 +86,6 @@
 
     <!-- Audio Player -->
     <script src="play.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 
 </html>

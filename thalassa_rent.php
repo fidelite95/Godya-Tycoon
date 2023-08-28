@@ -24,7 +24,7 @@ if ($con->connect_errno) {
   die('Connection Error : ' . $con->connect_error);
 }
 
-$query = "SELECT * FROM tb_tycoon_thalassa WHERE idx='$idx'";
+$query = "SELECT * FROM tycoon_thalassa WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
@@ -63,6 +63,7 @@ $item4 = $row['item4'];
 $item5 = $row['item5'];
 $item6 = $row['item6'];
 $item7 = $row['item7'];
+$item8 = $row['item8'];
 ?>
 
 <!DOCTYPE html>
@@ -78,12 +79,6 @@ $item7 = $row['item7'];
 </head>
 
 <body>
-  <!-- Dialog -->
-  <!-- <dialog data-modal class="tycoon-modal">
-    <p>This is a modal!</p>
-    <button data-close-modal>Close</button>
-  </dialog> -->
-
   <?php include("./navbar.php") ?>
 
   <!-- Tenant -->
@@ -351,7 +346,7 @@ $item7 = $row['item7'];
 
   <!-- Buttons -->
   <div class="buttons">
-    <button data-open-modal class="btn btn-effect" onclick="<?php if ($available_gold == true) { ?>
+    <button class="btn btn-effect" onclick="<?php if ($available_gold == true) { ?>
                                                               payWithGold(<?= $idx; ?>);
                                                             <?php } else { ?>
                                                               alert('골드 잔액이 부족합니다.');
@@ -361,7 +356,7 @@ $item7 = $row['item7'];
         사용
       </span>
     </button>
-    <button data-open-modal class="btn btn-effect" onclick="<?php if ($available_red == true) { ?>
+    <button class="btn btn-effect" onclick="<?php if ($available_red == true) { ?>
                                                               payWithRed(<?= $idx; ?>);
                                                             <?php } else { ?>
                                                               alert('레드베릴 잔액이 부족합니다.');
@@ -371,27 +366,15 @@ $item7 = $row['item7'];
         사용
       </span>
     </button>
-    <button data-open-modal class="btn btn-effect" onclick="back()">
+    <button class="btn btn-effect" onclick="back(<?= $idx; ?>)">
       <span>취소</span>
     </button>
   </div>
 
   <script>
-    const openButton = document.querySelector("[data-open-modal]");
-    const closeButton = document.querySelector("[data-close-modal]");
-    const modal = document.querySelector("[data-modal]");
-
-    openButton.addEventListener("click", () => {
-      modal.showModal();
-    });
-
-    closeButton.addEventListener("click", () => {
-      modal.close();
-    });
-
     // Go back
-    function back() {
-      location.href = "thalassa.php";
+    function back(idx) {
+      location.href = "thalassa_detail.php?idx=" + idx;
     }
 
     // Pay with Gold
@@ -406,7 +389,7 @@ $item7 = $row['item7'];
     function payWithRed(idx) {
       let answer = confirm("레드베릴로 결제하시겠습니까?");
       if (answer == true) {
-        location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
+        location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=red";
       }
     }
   </script>

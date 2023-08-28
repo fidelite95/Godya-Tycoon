@@ -15,9 +15,9 @@ if (isset($_SESSION['id'])) {
 <head>
   <?php include("./head.php") ?>
   <title>TYCOON | URANOS</title>
-  <link rel="stylesheet" type="text/css" href="./tycoon.css" />
-  <link rel="stylesheet" type="text/css" href="./transition.css" />
-  <link rel="stylesheet" type="text/css" href="./navbar.css" />
+  <link rel="stylesheet" type="text/css" href="tycoon.css" />
+  <link rel="stylesheet" type="text/css" href="transition.css" />
+  <link rel="stylesheet" type="text/css" href="navbar.css" />
 </head>
 
 <?php
@@ -38,13 +38,6 @@ if ($con->connect_errno) {
 
 <body>
   <div class="container">
-    <!-- Dialog -->
-    <!-- <dialog data-modal class="tycoon-modal">
-      <p>This is a modal!</p>
-      <button data-close-modal>Close</button>
-    </dialog>
-    <button data-open-modal>Open</button> -->
-
     <video id="vid" autoplay="autoplay" muted="muted" loop>
       <source src="./videos/tycoon_background2.mp4" type="video/mp4" />
     </video>
@@ -59,7 +52,7 @@ if ($con->connect_errno) {
       <!-- 1st Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 0, 1";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 0, 1";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -94,7 +87,7 @@ if ($con->connect_errno) {
       <!-- 2nd Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 1, 2";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 1, 2";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -129,7 +122,7 @@ if ($con->connect_errno) {
       <!-- 3rd Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 3, 3";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 3, 3";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -164,7 +157,7 @@ if ($con->connect_errno) {
       <!-- 4th Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 6, 4";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 6, 4";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -199,7 +192,7 @@ if ($con->connect_errno) {
       <!-- 5th Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 10, 5";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 10, 5";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -234,7 +227,7 @@ if ($con->connect_errno) {
       <!-- 6th Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 15, 6";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 15, 6";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -269,7 +262,7 @@ if ($con->connect_errno) {
       <!-- 7th Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 21, 7";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 21, 7";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -304,7 +297,7 @@ if ($con->connect_errno) {
       <!-- 8th Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 28, 8";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 28, 8";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -339,7 +332,7 @@ if ($con->connect_errno) {
       <!-- 9th Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 36, 9";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 36, 9";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -374,7 +367,7 @@ if ($con->connect_errno) {
       <!-- 10th Grade -->
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 45, 10";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 45, 10";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -405,7 +398,7 @@ if ($con->connect_errno) {
           }
         } ?>
       </div>
-      
+
     </div>
 
     <!-- ────────────────────────────────── -->
@@ -414,7 +407,7 @@ if ($con->connect_errno) {
     <div class="tycoon-container-mobile">
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 0, 5";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 0, 5";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -463,7 +456,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 5, 6";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 5, 6";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -512,7 +505,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 11, 5";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 11, 5";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -561,7 +554,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 16, 6";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 16, 6";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -610,7 +603,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 22, 5";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 22, 5";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -659,7 +652,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 27, 6";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 27, 6";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -708,7 +701,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 33, 5";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 33, 5";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -757,7 +750,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 38, 6";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 38, 6";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -806,7 +799,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 44, 5";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 44, 5";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -855,7 +848,7 @@ if ($con->connect_errno) {
       </div>
       <div class="tycoon-row">
         <?php
-        $query = "SELECT * FROM tb_tycoon_uranos ORDER BY idx LIMIT 49, 6";
+        $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 49, 6";
         $result = $con->query($query);
 
         while ($row = $result->fetch_assoc()) {
@@ -906,18 +899,6 @@ if ($con->connect_errno) {
   </div>
 
   <script>
-    const openButton = document.querySelector("[data-open-modal]");
-    const closeButton = document.querySelector("[data-close-modal]");
-    const modal = document.querySelector("[data-modal]");
-
-    openButton.addEventListener("click", () => {
-      modal.showModal();
-    });
-
-    closeButton.addEventListener("click", () => {
-      modal.close();
-    });
-
     // Move to uranos_detail.php
     function detail(idx) {
       location.href = "uranos_detail.php?idx=" + idx;

@@ -24,7 +24,7 @@ if ($con->connect_errno) {
   die('Connection Error : ' . $con->connect_error);
 }
 
-$query = "SELECT * FROM tb_tycoon_thalassa WHERE idx='$idx'";
+$query = "SELECT * FROM tycoon_thalassa WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
@@ -63,6 +63,7 @@ $item4 = $row['item4'];
 $item5 = $row['item5'];
 $item6 = $row['item6'];
 $item7 = $row['item7'];
+$item8 = $row['item8'];
 ?>
 
 <!DOCTYPE html>
@@ -78,12 +79,6 @@ $item7 = $row['item7'];
 </head>
 
 <body>
-  <!-- Dialog -->
-  <!-- <dialog data-modal class="tycoon-modal">
-    <p>This is a modal!</p>
-    <button data-close-modal>Close</button>
-  </dialog> -->
-
   <?php include("./navbar.php") ?>
 
   <!-- Ownership -->
@@ -666,10 +661,10 @@ $item7 = $row['item7'];
   if ($land_status == 0) {
   ?>
     <div class="buttons">
-      <button data-open-modal class="btn btn-effect" onclick="rent(<?= $idx ?>)">
+      <button class="btn btn-effect" onclick="rent(<?= $idx ?>)">
         <span>임대하기</span>
       </button>
-      <button data-open-modal class="btn btn-effect" onclick="back()">
+      <button class="btn btn-effect" onclick="back()">
         <span>취소</span>
       </button>
     </div>
@@ -677,16 +672,16 @@ $item7 = $row['item7'];
   } elseif ($land_status == 1) {
   ?>
     <div class="buttons">
-      <button data-open-modal class="btn btn-effect" onclick="build(<?= $idx ?>)">
+      <button class="btn btn-effect" onclick="build(<?= $idx ?>)">
         <span>건설하기</span>
       </button>
-      <button data-open-modal class="btn btn-effect" onclick="rate(<?= $idx ?>)">
+      <button class="btn btn-effect" onclick="rate(<?= $idx ?>)">
         <span>승급하기</span>
       </button>
-      <button data-open-modal class="btn btn-effect" onclick="mine(<?= $idx ?>)">
+      <button class="btn btn-effect" onclick="mine(<?= $idx ?>)">
         <span>채굴하기</span>
       </button>
-      <button data-open-modal class="btn btn-effect" onclick="back()">
+      <button class="btn btn-effect" onclick="back()">
         <span>취소</span>
       </button>
     </div>
@@ -829,18 +824,6 @@ $item7 = $row['item7'];
   </div>
 
   <script>
-    const openButton = document.querySelector("[data-open-modal]");
-    const closeButton = document.querySelector("[data-close-modal]");
-    const modal = document.querySelector("[data-modal]");
-
-    openButton.addEventListener("click", () => {
-      modal.showModal();
-    });
-
-    closeButton.addEventListener("click", () => {
-      modal.close();
-    });
-
     // Move to thalassa.php
     function back() {
       location.href = "thalassa.php";

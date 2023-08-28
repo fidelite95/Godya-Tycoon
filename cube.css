@@ -47,6 +47,15 @@ body {
   text-align: center;
 }
 
+.ownership_build {
+  position: relative;
+  display: block;
+  width: 400px;
+  height: 100px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .ownership_land {
   margin-top: 15px;
   font-family: 'Sofia Sans', sans-serif;
