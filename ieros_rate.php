@@ -102,16 +102,373 @@ $item8 = $row['item8'];
   $member_gold = number_format($gold);
   $member_red = number_format($red);
 
+  // Pricing list <Rate>
+  // 0 -> 1  (Alpha) : 40,000 (GOLD) 200 (RED)
+  // 1 -> 2  (Beta) : 80,000 (GOLD) 400 (RED)
+  // 2 -> 3  (Gamma) : 120,000 (GOLD) 600 (RED)
+  // 3 -> 4  (Delta) : 160,000 (GOLD) 800 (RED)
+  // 4 -> 5  (Epsilon) : 200,000 (GOLD) 1,000 (RED)
+  // 5 -> 6  (Zeta) : 460,000 (GOLD) 1,400 (RED)
+  // 6 -> 7  (Eta) : 720,000 (GOLD) 1,800 (RED)
+  // 7 -> 8  (Theta) : 980,000 (GOLD) 2,200 (RED)
+  // 8 -> 9  (Iota) : 1,240,000 (GOLD) 2,600 (RED)
+  // 9 -> 10  (Kappa) : 1,500,000 (GOLD) 3,000 (RED)
+  // 10 -> 11  (Lambda) : 2,600,000 (GOLD) 3,800 (RED)
+  // 11 -> 12  (Mu) : 3,700,000 (GOLD) 4,600 (RED)
+  // 12 -> 13  (Nu) : 4,800,000 (GOLD) 5,400 (RED)
+  // 13 -> 14  (Xi) : 5,900,000 (GOLD) 6,200 (RED)
+  // 14 -> 15  (Omicron) : 7,000,000 (GOLD) 7,000 (RED)
+  $price_gold_lv1 = 40000;
+  $price_gold_lv2 = 80000;
+  $price_gold_lv3 = 120000;
+  $price_gold_lv4 = 160000;
+  $price_gold_lv5 = 200000;
+  $price_gold_lv6 = 460000;
+  $price_gold_lv7 = 720000;
+  $price_gold_lv8 = 980000;
+  $price_gold_lv9 = 1240000;
+  $price_gold_lv10 = 1500000;
+  $price_gold_lv11 = 2600000;
+  $price_gold_lv12 = 3700000;
+  $price_gold_lv13 = 4800000;
+  $price_gold_lv14 = 5900000;
+  $price_gold_lv15 = 7000000;
+  $price_red_lv1 = 200;
+  $price_red_lv2 = 400;
+  $price_red_lv3 = 600;
+  $price_red_lv4 = 800;
+  $price_red_lv5 = 1000;
+  $price_red_lv6 = 1400;
+  $price_red_lv7 = 1800;
+  $price_red_lv8 = 2200;
+  $price_red_lv9 = 2600;
+  $price_red_lv10 = 3000;
+  $price_red_lv11 = 3800;
+  $price_red_lv12 = 4600;
+  $price_red_lv13 = 5400;
+  $price_red_lv14 = 6200;
+  $price_red_lv15 = 7000;
+
   //──────── Comparison (Gold)
-  $available_gold = false;
-  if ($gold >= $row['price_gold']) {
-    $available_gold = true;
+  $available_gold_lv1 = false;
+  $available_gold_lv2 = false;
+  $available_gold_lv3 = false;
+  $available_gold_lv4 = false;
+  $available_gold_lv5 = false;
+  $available_gold_lv6 = false;
+  $available_gold_lv7 = false;
+  $available_gold_lv8 = false;
+  $available_gold_lv9 = false;
+  $available_gold_lv10 = false;
+  $available_gold_lv11 = false;
+  $available_gold_lv12 = false;
+  $available_gold_lv13 = false;
+  $available_gold_lv14 = false;
+  $available_gold_lv15 = false;
+  $maximum_level_gold = false;
+  switch ($profit) {
+    case 0:
+      if ($gold >= $price_gold_lv1) {
+        $available_gold_lv1 = true;
+      } else {
+        $available_gold_lv1 = false;
+      }
+      break;
+    case 1:
+      if ($gold >= $price_gold_lv2) {
+        $available_gold_lv2 = true;
+      } else {
+        $available_gold_lv2 = false;
+      }
+      break;
+    case 2:
+      if ($gold >= $price_gold_lv3) {
+        $available_gold_lv3 = true;
+      } else {
+        $available_gold_lv3 = false;
+      }
+      break;
+    case 3:
+      if ($gold >= $price_gold_lv4) {
+        $available_gold_lv4 = true;
+      } else {
+        $available_gold_lv4 = false;
+      }
+      break;
+    case 4:
+      if ($gold >= $price_gold_lv5) {
+        $available_gold_lv5 = true;
+      } else {
+        $available_gold_lv5 = false;
+      }
+      break;
+    case 5:
+      if ($gold >= $price_gold_lv6) {
+        $available_gold_lv6 = true;
+      } else {
+        $available_gold_lv6 = false;
+      }
+      break;
+    case 6:
+      if ($gold >= $price_gold_lv7) {
+        $available_gold_lv7 = true;
+      } else {
+        $available_gold_lv7 = false;
+      }
+      break;
+    case 7:
+      if ($gold >= $price_gold_lv8) {
+        $available_gold_lv8 = true;
+      } else {
+        $available_gold_lv8 = false;
+      }
+      break;
+    case 8:
+      if ($gold >= $price_gold_lv9) {
+        $available_gold_lv9 = true;
+      } else {
+        $available_gold_lv9 = false;
+      }
+      break;
+    case 9:
+      if ($gold >= $price_gold_lv10) {
+        $available_gold_lv10 = true;
+      } else {
+        $available_gold_lv10 = false;
+      }
+      break;
+    case 10:
+      if ($gold >= $price_gold_lv11) {
+        $available_gold_lv11 = true;
+      } else {
+        $available_gold_lv11 = false;
+      }
+      break;
+    case 11:
+      if ($gold >= $price_gold_lv12) {
+        $available_gold_lv12 = true;
+      } else {
+        $available_gold_lv12 = false;
+      }
+      break;
+    case 12:
+      if ($gold >= $price_gold_lv13) {
+        $available_gold_lv13 = true;
+      } else {
+        $available_gold_lv13 = false;
+      }
+      break;
+    case 13:
+      if ($gold >= $price_gold_lv14) {
+        $available_gold_lv14 = true;
+      } else {
+        $available_gold_lv14 = false;
+      }
+      break;
+    case 14:
+      if ($gold >= $price_gold_lv15) {
+        $available_gold_lv15 = true;
+      } else {
+        $available_gold_lv15 = false;
+      }
+      break;
+    case 15:
+      $available_gold_lv1 = false;
+      $available_gold_lv2 = false;
+      $available_gold_lv3 = false;
+      $available_gold_lv4 = false;
+      $available_gold_lv5 = false;
+      $available_gold_lv6 = false;
+      $available_gold_lv7 = false;
+      $available_gold_lv8 = false;
+      $available_gold_lv9 = false;
+      $available_gold_lv10 = false;
+      $available_gold_lv11 = false;
+      $available_gold_lv12 = false;
+      $available_gold_lv13 = false;
+      $available_gold_lv14 = false;
+      $available_gold_lv15 = false;
+      $maximum_level_gold = true;
+      break;
+    default:
+      $available_gold_lv1 = false;
+      $available_gold_lv2 = false;
+      $available_gold_lv3 = false;
+      $available_gold_lv4 = false;
+      $available_gold_lv5 = false;
+      $available_gold_lv6 = false;
+      $available_gold_lv7 = false;
+      $available_gold_lv8 = false;
+      $available_gold_lv9 = false;
+      $available_gold_lv10 = false;
+      $available_gold_lv11 = false;
+      $available_gold_lv12 = false;
+      $available_gold_lv13 = false;
+      $available_gold_lv14 = false;
+      $available_gold_lv15 = false;
+      $maximum_level_gold = false;
+      break;
   }
 
   //──────── Comparison (Red)
-  $available_red = false;
-  if ($red >= $row['price_red']) {
-    $available_red = true;
+  $available_red_lv1 = false;
+  $available_red_lv2 = false;
+  $available_red_lv3 = false;
+  $available_red_lv4 = false;
+  $available_red_lv5 = false;
+  $available_red_lv6 = false;
+  $available_red_lv7 = false;
+  $available_red_lv8 = false;
+  $available_red_lv9 = false;
+  $available_red_lv10 = false;
+  $available_red_lv11 = false;
+  $available_red_lv12 = false;
+  $available_red_lv13 = false;
+  $available_red_lv14 = false;
+  $available_red_lv15 = false;
+  $maximum_level_red = false;
+  switch ($profit) {
+    case 0:
+      if ($gold >= $price_red_lv1) {
+        $available_red_lv1 = true;
+      } else {
+        $available_red_lv1 = false;
+      }
+      break;
+    case 1:
+      if ($gold >= $price_red_lv2) {
+        $available_red_lv2 = true;
+      } else {
+        $available_red_lv2 = false;
+      }
+      break;
+    case 2:
+      if ($gold >= $price_red_lv3) {
+        $available_red_lv3 = true;
+      } else {
+        $available_red_lv3 = false;
+      }
+      break;
+    case 3:
+      if ($gold >= $price_red_lv4) {
+        $available_red_lv4 = true;
+      } else {
+        $available_red_lv4 = false;
+      }
+      break;
+    case 4:
+      if ($gold >= $price_red_lv5) {
+        $available_red_lv5 = true;
+      } else {
+        $available_red_lv5 = false;
+      }
+      break;
+    case 5:
+      if ($gold >= $price_red_lv6) {
+        $available_red_lv6 = true;
+      } else {
+        $available_red_lv6 = false;
+      }
+      break;
+    case 6:
+      if ($gold >= $price_red_lv7) {
+        $available_red_lv7 = true;
+      } else {
+        $available_red_lv7 = false;
+      }
+      break;
+    case 7:
+      if ($gold >= $price_red_lv8) {
+        $available_red_lv8 = true;
+      } else {
+        $available_red_lv8 = false;
+      }
+      break;
+    case 8:
+      if ($gold >= $price_red_lv9) {
+        $available_red_lv9 = true;
+      } else {
+        $available_red_lv9 = false;
+      }
+      break;
+    case 9:
+      if ($gold >= $price_red_lv10) {
+        $available_red_lv10 = true;
+      } else {
+        $available_red_lv10 = false;
+      }
+      break;
+    case 10:
+      if ($gold >= $price_red_lv11) {
+        $available_red_lv11 = true;
+      } else {
+        $available_red_lv11 = false;
+      }
+      break;
+    case 11:
+      if ($gold >= $price_red_lv12) {
+        $available_red_lv12 = true;
+      } else {
+        $available_red_lv12 = false;
+      }
+      break;
+    case 12:
+      if ($gold >= $price_red_lv13) {
+        $available_red_lv13 = true;
+      } else {
+        $available_red_lv13 = false;
+      }
+      break;
+    case 13:
+      if ($gold >= $price_red_lv14) {
+        $available_red_lv14 = true;
+      } else {
+        $available_red_lv14 = false;
+      }
+      break;
+    case 14:
+      if ($gold >= $price_red_lv15) {
+        $available_red_lv15 = true;
+      } else {
+        $available_red_lv15 = false;
+      }
+      break;
+    case 15:
+      $available_red_lv1 = false;
+      $available_red_lv2 = false;
+      $available_red_lv3 = false;
+      $available_red_lv4 = false;
+      $available_red_lv5 = false;
+      $available_red_lv6 = false;
+      $available_red_lv7 = false;
+      $available_red_lv8 = false;
+      $available_red_lv9 = false;
+      $available_red_lv10 = false;
+      $available_red_lv11 = false;
+      $available_red_lv12 = false;
+      $available_red_lv13 = false;
+      $available_red_lv14 = false;
+      $available_red_lv15 = false;
+      $maximum_level_red = true;
+      break;
+    default:
+      $available_red_lv1 = false;
+      $available_red_lv2 = false;
+      $available_red_lv3 = false;
+      $available_red_lv4 = false;
+      $available_red_lv5 = false;
+      $available_red_lv6 = false;
+      $available_red_lv7 = false;
+      $available_red_lv8 = false;
+      $available_red_lv9 = false;
+      $available_red_lv10 = false;
+      $available_red_lv11 = false;
+      $available_red_lv12 = false;
+      $available_red_lv13 = false;
+      $available_red_lv14 = false;
+      $available_red_lv15 = false;
+      $maximum_level_red = false;
+      break;
   }
   ?>
   <div class="tenant">
@@ -121,8 +478,84 @@ $item8 = $row['item8'];
         <img class="tenant_img" src="./images/tycoon_gold.png" alt="gold" />
         <p><?php echo $member_gold ?></p>
         <?php
-        if ($available_gold == false) {
-          echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+        switch ($profit) {
+          case 0:
+            if ($available_gold_lv1 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 1:
+            if ($available_gold_lv2 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 2:
+            if ($available_gold_lv3 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 3:
+            if ($available_gold_lv4 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 4:
+            if ($available_gold_lv5 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 5:
+            if ($available_gold_lv6 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 6:
+            if ($available_gold_lv7 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 7:
+            if ($available_gold_lv8 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 8:
+            if ($available_gold_lv9 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 9:
+            if ($available_gold_lv10 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 10:
+            if ($available_gold_lv11 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 11:
+            if ($available_gold_lv12 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 12:
+            if ($available_gold_lv13 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 13:
+            if ($available_gold_lv14 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 14:
+            if ($available_gold_lv15 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          default:
+            break;
         }
         ?>
       </div>
@@ -130,8 +563,84 @@ $item8 = $row['item8'];
         <img class="tenant_img" src="./images/tycoon_red.png" alt="red" />
         <p><?php echo $member_red ?></p>
         <?php
-        if ($available_red == false) {
-          echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+        switch ($profit) {
+          case 0:
+            if ($available_red_lv1 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 1:
+            if ($available_red_lv2 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 2:
+            if ($available_red_lv3 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 3:
+            if ($available_red_lv4 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 4:
+            if ($available_red_lv5 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 5:
+            if ($available_red_lv6 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 6:
+            if ($available_red_lv7 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 7:
+            if ($available_red_lv8 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 8:
+            if ($available_red_lv9 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 9:
+            if ($available_red_lv10 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 10:
+            if ($available_red_lv11 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 11:
+            if ($available_red_lv12 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 12:
+            if ($available_red_lv13 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 13:
+            if ($available_red_lv14 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          case 14:
+            if ($available_red_lv15 == false) {
+              echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
+            }
+            break;
+          default:
+            break;
         }
         ?>
       </div>
@@ -139,210 +648,397 @@ $item8 = $row['item8'];
   </div>
 
   <!-- Ownership -->
-  <div class="ownership_buy">
+  <div class="ownership_build">
     <h1 class="ownership_land"><?php echo $land_code ?></h1>
-    <div class="ownership_price">
-      <div class="price_gold">
-        <img src="./images/tycoon_gold.png" alt="gold" />
-        <p><?php echo $price_gold ?></p>
+    <?php
+    switch ($idx) {
+        // Grade 1
+      case 1:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 2
+      case 2:
+      case 3:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 3
+      case 4:
+      case 5:
+      case 6:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 4
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 5
+      case 11:
+      case 12:
+      case 13:
+      case 14:
+      case 15:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 6
+      case 16:
+      case 17:
+      case 18:
+      case 19:
+      case 20:
+      case 21:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 7
+      case 22:
+      case 23:
+      case 24:
+      case 25:
+      case 26:
+      case 27:
+      case 28:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 8
+      case 29:
+      case 30:
+      case 31:
+      case 32:
+      case 33:
+      case 34:
+      case 35:
+      case 36:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 9
+      case 37:
+      case 38:
+      case 39:
+      case 40:
+      case 41:
+      case 42:
+      case 43:
+      case 44:
+      case 45:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+        // Grade 10
+      case 46:
+      case 47:
+      case 48:
+      case 49:
+      case 50:
+      case 51:
+      case 52:
+      case 53:
+      case 54:
+      case 55:
+        echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+        break;
+    }
+    ?>
+  </div>
+
+  <!-- Rating Status -->
+  <div class="building">
+    <h3 class="building_title">현재 영토의 수익 등급</h3>
+    <div class="building_desc">
+      <div class="building_img">
+        <?php
+        switch ($profit) {
+            // None
+          case 0:
+            $profit_name = '없음';
+            echo '<img src="./images/rating/profit_lv0.png" alt="profit">';
+            break;
+            // Alpha
+          case 1:
+            $profit_name = '알파';
+            echo '<img src="./images/rating/profit_lv1.png" alt="profit">';
+            break;
+            // Beta
+          case 2:
+            $profit_name = '베타';
+            echo '<img src="./images/rating/profit_lv2.png" alt="profit">';
+            break;
+            // Gamma
+          case 3:
+            $profit_name = '감마';
+            echo '<img src="./images/rating/profit_lv3.png" alt="profit">';
+            break;
+            // Delta
+          case 4:
+            $profit_name = '델타';
+            echo '<img src="./images/rating/profit_lv4.png" alt="profit">';
+            break;
+            // Epsilon
+          case 5:
+            $profit_name = '엡실론';
+            echo '<img src="./images/rating/profit_lv5.png" alt="profit">';
+            break;
+            // Zeta
+          case 6:
+            $profit_name = '제타';
+            echo '<img src="./images/rating/profit_lv6.png" alt="profit">';
+            break;
+            // Eta
+          case 7:
+            $profit_name = '에타';
+            echo '<img src="./images/rating/profit_lv7.png" alt="profit">';
+            break;
+            // Theta
+          case 8:
+            $profit_name = '시타';
+            echo '<img src="./images/rating/profit_lv8.png" alt="profit">';
+            break;
+            // Iota
+          case 9:
+            $profit_name = '이오타';
+            echo '<img src="./images/rating/profit_lv9.png" alt="profit">';
+            break;
+            // Kappa
+          case 10:
+            $profit_name = '카파';
+            echo '<img src="./images/rating/profit_lv10.png" alt="profit">';
+            break;
+            // Lambda
+          case 11:
+            $profit_name = '람다';
+            echo '<img src="./images/rating/profit_lv11.png" alt="profit">';
+            break;
+            // Mu
+          case 12:
+            $profit_name = '뮤';
+            echo '<img src="./images/rating/profit_lv12.png" alt="profit">';
+            break;
+            // Nu
+          case 13:
+            $profit_name = '뉴';
+            echo '<img src="./images/rating/profit_lv13.png" alt="profit">';
+            break;
+            // Xi
+          case 14:
+            $profit_name = '크사이';
+            echo '<img src="./images/rating/profit_lv14.png" alt="profit">';
+            break;
+            // Omicron
+          case 15:
+            $profit_name = '오미크론';
+            echo '<img src="./images/rating/profit_lv15.png" alt="profit">';
+            break;
+          default:
+            $profit_name = 'ERROR';
+            break;
+        }
+        ?>
+        <h4><?php echo $profit_name ?></h4>
       </div>
-      <div class="price_red">
-        <img src="./images/tycoon_red.png" alt="red" />
-        <p><?php echo $price_red ?></p>
+      <div class="building_price">
+        <div class="building_gold">
+          <img class="tenant_img" src="./images/tycoon_gold.png" alt="gold" />
+          <p><?php
+              switch ($profit) {
+                case 0:
+                  echo number_format($price_gold_lv1);
+                  break;
+                case 1:
+                  echo number_format($price_gold_lv2);
+                  break;
+                case 2:
+                  echo number_format($price_gold_lv3);
+                  break;
+                case 3:
+                  echo number_format($price_gold_lv4);
+                  break;
+                case 4:
+                  echo number_format($price_gold_lv5);
+                  break;
+                case 5:
+                  echo number_format($price_gold_lv6);
+                  break;
+                case 6:
+                  echo number_format($price_gold_lv7);
+                  break;
+                case 7:
+                  echo number_format($price_gold_lv8);
+                  break;
+                case 8:
+                  echo number_format($price_gold_lv9);
+                  break;
+                case 9:
+                  echo number_format($price_gold_lv10);
+                  break;
+                case 10:
+                  echo number_format($price_gold_lv11);
+                  break;
+                case 11:
+                  echo number_format($price_gold_lv12);
+                  break;
+                case 12:
+                  echo number_format($price_gold_lv13);
+                  break;
+                case 13:
+                  echo number_format($price_gold_lv14);
+                  break;
+                case 14:
+                  echo number_format($price_gold_lv15);
+                  break;
+                case 15:
+                  echo '최고 등급';
+                  break;
+                default:
+                  break;
+              }
+              ?></p>
+        </div>
+        <div class="building_red">
+          <img class="tenant_img" src="./images/tycoon_red.png" alt="red" />
+          <p><?php
+              switch ($profit) {
+                case 0:
+                  echo number_format($price_red_lv1);
+                  break;
+                case 1:
+                  echo number_format($price_red_lv2);
+                  break;
+                case 2:
+                  echo number_format($price_red_lv3);
+                  break;
+                case 3:
+                  echo number_format($price_red_lv4);
+                  break;
+                case 4:
+                  echo number_format($price_red_lv5);
+                  break;
+                case 5:
+                  echo number_format($price_red_lv6);
+                  break;
+                case 6:
+                  echo number_format($price_red_lv7);
+                  break;
+                case 7:
+                  echo number_format($price_red_lv8);
+                  break;
+                case 8:
+                  echo number_format($price_red_lv9);
+                  break;
+                case 9:
+                  echo number_format($price_red_lv10);
+                  break;
+                case 10:
+                  echo number_format($price_red_lv11);
+                  break;
+                case 11:
+                  echo number_format($price_red_lv12);
+                  break;
+                case 12:
+                  echo number_format($price_red_lv13);
+                  break;
+                case 13:
+                  echo number_format($price_red_lv14);
+                  break;
+                case 14:
+                  echo number_format($price_red_lv15);
+                  break;
+                case 15:
+                  echo '최고 등급';
+                  break;
+                default:
+                  break;
+              }
+              ?></p>
+        </div>
+        <h4>ㅡ<br />승급에 필요한 비용</h4>
       </div>
     </div>
   </div>
-
-  <!-- Land Cube -->
-  <?php
-  switch ($idx) {
-      // Grade 1
-    case 1:
-      echo '
-        <div class="cube_1">
-          <div class="top_1"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 2
-    case 2:
-    case 3:
-      echo '
-        <div class="cube_2">
-          <div class="top_2"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 3
-    case 4:
-    case 5:
-    case 6:
-      echo '
-        <div class="cube_3">
-          <div class="top_3"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 4
-    case 7:
-    case 8:
-    case 9:
-    case 10:
-      echo '
-        <div class="cube_4">
-          <div class="top_4"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 5
-    case 11:
-    case 12:
-    case 13:
-    case 14:
-    case 15:
-      echo '
-        <div class="cube_5">
-          <div class="top_5"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 6
-    case 16:
-    case 17:
-    case 18:
-    case 19:
-    case 20:
-    case 21:
-      echo '
-        <div class="cube_6">
-          <div class="top_6"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 7
-    case 22:
-    case 23:
-    case 24:
-    case 25:
-    case 26:
-    case 27:
-    case 28:
-      echo '
-        <div class="cube_7">
-          <div class="top_7"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 8
-    case 29:
-    case 30:
-    case 31:
-    case 32:
-    case 33:
-    case 34:
-    case 35:
-    case 36:
-      echo '
-        <div class="cube_8">
-          <div class="top_8"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 9
-    case 37:
-    case 38:
-    case 39:
-    case 40:
-    case 41:
-    case 42:
-    case 43:
-    case 44:
-    case 45:
-      echo '
-        <div class="cube_9">
-          <div class="top_9"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-      // Grade 10
-    case 46:
-    case 47:
-    case 48:
-    case 49:
-    case 50:
-    case 51:
-    case 52:
-    case 53:
-    case 54:
-    case 55:
-      echo '
-        <div class="cube_10">
-          <div class="top_10"></div>
-          <div>
-            <span style="--i: 0"></span>
-            <span style="--i: 1"></span>
-            <span style="--i: 2"></span>
-            <span style="--i: 3"></span>
-          </div>
-        </div>
-        ';
-      break;
-  }
-  ?>
 
   <!-- Buttons -->
   <div class="buttons">

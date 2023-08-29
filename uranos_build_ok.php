@@ -30,7 +30,8 @@ $land_code = $row['land_code'];
 $land_status = $row['land_status'];
 
 // Member Index
-$member_idX = $row['member_idX'];
+$member_idx = $row['member_idx'];
+echo "<h1>$member_idx</h1>";
 
 // Member ID (Gmail)
 $member_id = $row['member_id'];
@@ -38,23 +39,9 @@ if ($member_id == NULL) {
     $member_id = '없음';
 }
 
-// Profitability : _rate.php
-$profit = $row['profit'];
-$profit_name = '';
-
 // Building : _build.php
 $building = $row['building'];
 $building_name = '';
-
-// Mined resources
-$item1 = $row['item1'];
-$item2 = $row['item2'];
-$item3 = $row['item3'];
-$item4 = $row['item4'];
-$item5 = $row['item5'];
-$item6 = $row['item6'];
-$item7 = $row['item7'];
-$item8 = $row['item8'];
 
 // ────────────────────────────────────────────────
 // Tenant Data
@@ -145,11 +132,72 @@ if ($coin == 'gold') {
 
 echo "<h1>GOLD = $final_price_gold // RED = $final_price_red</h1>";
 
-$building_update = $building + 1;
-$query_update = "UPDATE tycoon_uranos
-SET building='$building_update'
-WHERE idx='$idx'";
-mysqli_query($con, $query_update);
+$now = date('Y-m-d H:i:s');
+echo "<h1>$now</h1>";
+if ($coin == 'gold') {
+    // tycoon_uranos
+    $building_update = $building + 1;
+    $query_update = "UPDATE tycoon_uranos
+    SET building='$building_update'
+    WHERE idx='$idx'";
+    mysqli_query($con, $query_update);
 
-$query_record = "UPDATE tycoon_rent_history
-SET ";
+    // tycoon_build_history
+    $query_record = "INSERT INTO tycoon_build_history (
+        member_idx,
+        member_id,
+        land_code,
+        region,
+        payment,
+        price,
+        build_date,
+        content,
+        previous_level,
+        future_level
+        ) VALUES (
+            '$member_idx',
+            '$member_id',
+            '$land_code',
+            'uranos',
+            'gold',
+            '$final_price_gold',
+            '$now',
+            '골드 결제 & 건설 성공',
+            '$building',
+            '$building_update'
+        )";
+    mysqli_query($con, $query_record);
+} elseif ($coin == 'red') {
+    // tycoon_uranos
+    $building_update = $building + 1;
+    $query_update = "UPDATE tycoon_uranos
+    SET building='$building_update'
+    WHERE idx='$idx'";
+    mysqli_query($con, $query_update);
+
+    // tycoon_build_history
+    $query_record = "INSERT INTO tycoon_build_history (
+        member_idx,
+        member_id,
+        land_code,
+        region,
+        payment,
+        price,
+        build_date,
+        content,
+        previous_level,
+        future_level
+        ) VALUES (
+            '$member_idx',
+            '$member_id',
+            '$land_code',
+            'uranos',
+            'red',
+            '$final_price_red',
+            '$now',
+            '레드베릴 결제 & 건설 성공',
+            '$building',
+            '$building_update'
+        )";
+    mysqli_query($con, $query_record);
+}
