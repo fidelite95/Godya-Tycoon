@@ -38,10 +38,6 @@ if ($member_id == NULL) {
     $member_id = '없음';
 }
 
-// Price
-$price_gold = number_format($row['price_gold']);
-$price_red = number_format($row['price_red']);
-
 // Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
@@ -58,6 +54,7 @@ $item4 = $row['item4'];
 $item5 = $row['item5'];
 $item6 = $row['item6'];
 $item7 = $row['item7'];
+$item8 = $row['item8'];
 
 // ────────────────────────────────────────────────
 // Tenant Data
@@ -83,10 +80,10 @@ $member_gold = number_format($gold);
 $member_red = number_format($red);
 
 //──────── Pricing list <Build>
-// 0 -> 1 : 200,000 (GOLD) 1,000 (RED)
-// 1 -> 2 : 800,000 (GOLD) 2,000 (RED)
-// 2 -> 3 : 1,500,000 (GOLD) 3,000 (RED)
-// 3 -> 4 : 2,500,000 (GOLD) 4,000 (RED)
+// 0 -> 1 (Kolona) : 200,000 (GOLD) 1,000 (RED)
+// 1 -> 2 (Odeion) : 800,000 (GOLD) 2,000 (RED)
+// 2 -> 3 (Stadion) : 1,500,000 (GOLD) 3,000 (RED)
+// 3 -> 4 (Parthenon) : 2,500,000 (GOLD) 4,000 (RED)
 $price_gold_lv1 = 200000;
 $price_gold_lv2 = 800000;
 $price_gold_lv3 = 1500000;
@@ -147,3 +144,12 @@ if ($coin == 'gold') {
 // ────────────────────────────────────────────────
 
 echo "<h1>GOLD = $final_price_gold // RED = $final_price_red</h1>";
+
+$building_update = $building + 1;
+$query_update = "UPDATE tycoon_uranos
+SET building='$building_update'
+WHERE idx='$idx'";
+mysqli_query($con, $query_update);
+
+$query_record = "UPDATE tycoon_rent_history
+SET ";

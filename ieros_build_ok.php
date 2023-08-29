@@ -38,10 +38,6 @@ if ($member_id == NULL) {
     $member_id = '없음';
 }
 
-// Price
-$price_gold = number_format($row['price_gold']);
-$price_red = number_format($row['price_red']);
-
 // Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
@@ -58,6 +54,7 @@ $item4 = $row['item4'];
 $item5 = $row['item5'];
 $item6 = $row['item6'];
 $item7 = $row['item7'];
+$item8 = $row['item8'];
 
 // ────────────────────────────────────────────────
 // Tenant Data
@@ -147,3 +144,9 @@ if ($coin == 'gold') {
 // ────────────────────────────────────────────────
 
 echo "<h1>GOLD = $final_price_gold // RED = $final_price_red</h1>";
+
+$building_update = $building + 1;
+$query_update = "UPDATE tycoon_ieros
+SET building='$building_update'
+WHERE idx='$idx'";
+mysqli_query($con, $query_update);

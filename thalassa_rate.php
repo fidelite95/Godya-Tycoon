@@ -63,6 +63,7 @@ $item4 = $row['item4'];
 $item5 = $row['item5'];
 $item6 = $row['item6'];
 $item7 = $row['item7'];
+$item8 = $row['item8'];
 ?>
 
 <!DOCTYPE html>
@@ -345,8 +346,10 @@ $item7 = $row['item7'];
 
   <!-- Buttons -->
   <div class="buttons">
-    <button class="btn btn-effect" onclick="<?php if ($available_gold == true) { ?>
+    <button class="btn btn-effect" onclick="<?php if ($available_gold_lv1 == true || $available_gold_lv2 == true || $available_gold_lv3 == true || $available_gold_lv4 == true || $available_gold_lv5 == true || $available_gold_lv6 == true || $available_gold_lv7 == true || $available_gold_lv8 == true || $available_gold_lv9 == true || $available_gold_lv10 == true || $available_gold_lv11 == true || $available_gold_lv12 == true || $available_gold_lv13 == true || $available_gold_lv14 == true || $available_gold_lv15 == true) { ?>
                                                               payWithGold(<?= $idx; ?>);
+                                                            <?php } elseif ($maximum_level_gold == true) { ?>
+                                                              alert('최고 등급을 달성했습니다.');
                                                             <?php } else { ?>
                                                               alert('골드 잔액이 부족합니다.');
                                                             <?php } ?>">
@@ -355,8 +358,10 @@ $item7 = $row['item7'];
         사용
       </span>
     </button>
-    <button class="btn btn-effect" onclick="<?php if ($available_red == true) { ?>
+    <button class="btn btn-effect" onclick="<?php if ($available_red_lv1 == true || $available_red_lv2 == true || $available_red_lv3 == true || $available_red_lv4 == true || $available_red_lv5 == true || $available_red_lv6 == true || $available_red_lv7 == true || $available_red_lv8 == true || $available_red_lv9 == true || $available_red_lv10 == true || $available_red_lv11 == true || $available_red_lv12 == true || $available_red_lv13 == true || $available_red_lv14 == true || $available_red_lv15 == true) { ?>
                                                               payWithRed(<?= $idx; ?>);
+                                                            <?php } elseif ($maximum_level_red == true) { ?>
+                                                              alert('최고 등급을 달성했습니다.');
                                                             <?php } else { ?>
                                                               alert('레드베릴 잔액이 부족합니다.');
                                                             <?php } ?>">
@@ -380,7 +385,7 @@ $item7 = $row['item7'];
     function payWithGold(idx) {
       let answer = confirm("골드로 결제하시겠습니까?");
       if (answer == true) {
-        location.href = "thalassa_rent_ok.php?idx=" + idx + "&coin=gold";
+        location.href = "thalassa_rate_ok.php?idx=" + idx + "&coin=gold";
       }
     }
 
@@ -388,7 +393,7 @@ $item7 = $row['item7'];
     function payWithRed(idx) {
       let answer = confirm("레드베릴로 결제하시겠습니까?");
       if (answer == true) {
-        location.href = "thalassa_rent_ok.php?idx=" + idx + "&coin=gold";
+        location.href = "thalassa_rate_ok.php?idx=" + idx + "&coin=red";
       }
     }
   </script>

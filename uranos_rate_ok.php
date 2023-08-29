@@ -19,7 +19,7 @@ if ($con->connect_errno) {
 // Land Data
 // ────────────────────────────────────────────────
 
-$query = "SELECT * FROM tycoon_thalassa WHERE idx='$idx'";
+$query = "SELECT * FROM tycoon_uranos WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
@@ -37,6 +37,10 @@ $member_id = $row['member_id'];
 if ($member_id == NULL) {
     $member_id = '없음';
 }
+
+// Price
+$price_gold = number_format($row['price_gold']);
+$price_red = number_format($row['price_red']);
 
 // Profitability : _rate.php
 $profit = $row['profit'];
@@ -79,24 +83,57 @@ $red = 7564;
 $member_gold = number_format($gold);
 $member_red = number_format($red);
 
-//──────── Pricing list <Build>
-// 0 -> 1 : 200,000 (GOLD) 1,000 (RED)
-// 1 -> 2 : 800,000 (GOLD) 2,000 (RED)
-// 2 -> 3 : 1,500,000 (GOLD) 3,000 (RED)
-// 3 -> 4 : 2,500,000 (GOLD) 4,000 (RED)
-$price_gold_lv1 = 200000;
-$price_gold_lv2 = 800000;
-$price_gold_lv3 = 1500000;
-$price_gold_lv4 = 2500000;
-$price_red_lv1 = 1000;
-$price_red_lv2 = 2000;
-$price_red_lv3 = 3000;
-$price_red_lv4 = 4000;
+// Pricing list <Rate>
+// 0 -> 1  (Alpha) : 40,000 (GOLD) 200 (RED)
+// 1 -> 2  (Beta) : 80,000 (GOLD) 400 (RED)
+// 2 -> 3  (Gamma) : 120,000 (GOLD) 600 (RED)
+// 3 -> 4  (Delta) : 160,000 (GOLD) 800 (RED)
+// 4 -> 5  (Epsilon) : 200,000 (GOLD) 1,000 (RED)
+// 5 -> 6  (Zeta) : 460,000 (GOLD) 1,400 (RED)
+// 6 -> 7  (Eta) : 720,000 (GOLD) 1,800 (RED)
+// 7 -> 8  (Theta) : 980,000 (GOLD) 2,200 (RED)
+// 8 -> 9  (Iota) : 1,240,000 (GOLD) 2,600 (RED)
+// 9 -> 10  (Kappa) : 1,500,000 (GOLD) 3,000 (RED)
+// 10 -> 11  (Lambda) : 2,600,000 (GOLD) 3,800 (RED)
+// 11 -> 12  (Mu) : 3,700,000 (GOLD) 4,600 (RED)
+// 12 -> 13  (Nu) : 4,800,000 (GOLD) 5,400 (RED)
+// 13 -> 14  (Xi) : 5,900,000 (GOLD) 6,200 (RED)
+// 14 -> 15  (Omicron) : 7,000,000 (GOLD) 7,000 (RED)
+$price_gold_lv1 = 40000;
+$price_gold_lv2 = 80000;
+$price_gold_lv3 = 120000;
+$price_gold_lv4 = 160000;
+$price_gold_lv5 = 200000;
+$price_gold_lv6 = 460000;
+$price_gold_lv7 = 720000;
+$price_gold_lv8 = 980000;
+$price_gold_lv9 = 1240000;
+$price_gold_lv10 = 1500000;
+$price_gold_lv11 = 2600000;
+$price_gold_lv12 = 3700000;
+$price_gold_lv13 = 4800000;
+$price_gold_lv14 = 5900000;
+$price_gold_lv15 = 7000000;
+$price_red_lv1 = 200;
+$price_red_lv2 = 400;
+$price_red_lv3 = 600;
+$price_red_lv4 = 800;
+$price_red_lv5 = 1000;
+$price_red_lv6 = 1400;
+$price_red_lv7 = 1800;
+$price_red_lv8 = 2200;
+$price_red_lv9 = 2600;
+$price_red_lv10 = 3000;
+$price_red_lv11 = 3800;
+$price_red_lv12 = 4600;
+$price_red_lv13 = 5400;
+$price_red_lv14 = 6200;
+$price_red_lv15 = 7000;
 $final_price_gold = 0;
 $final_price_red = 0;
 
 if ($coin == 'gold') {
-    switch ($building) {
+    switch ($profit) {
         case 0:
             $final_price_gold = $price_gold_lv1;
             break;
@@ -110,6 +147,39 @@ if ($coin == 'gold') {
             $final_price_gold = $price_gold_lv4;
             break;
         case 4:
+            $final_price_gold = $price_gold_lv5;
+            break;
+        case 5:
+            $final_price_gold = $price_gold_lv6;
+            break;
+        case 6:
+            $final_price_gold = $price_gold_lv7;
+            break;
+        case 7:
+            $final_price_gold = $price_gold_lv8;
+            break;
+        case 8:
+            $final_price_gold = $price_gold_lv9;
+            break;
+        case 9:
+            $final_price_gold = $price_gold_lv10;
+            break;
+        case 10:
+            $final_price_gold = $price_gold_lv11;
+            break;
+        case 11:
+            $final_price_gold = $price_gold_lv12;
+            break;
+        case 12:
+            $final_price_gold = $price_gold_lv13;
+            break;
+        case 13:
+            $final_price_gold = $price_gold_lv14;
+            break;
+        case 14:
+            $final_price_gold = $price_gold_lv15;
+            break;
+        case 15:
             $final_price_gold = 0;
             break;
         default:
@@ -117,7 +187,7 @@ if ($coin == 'gold') {
             break;
     }
 } elseif ($coin == 'red') {
-    switch ($building) {
+    switch ($profit) {
         case 0:
             $final_price_red = $price_red_lv1;
             break;
@@ -131,6 +201,39 @@ if ($coin == 'gold') {
             $final_price_red = $price_red_lv4;
             break;
         case 4:
+            $final_price_red = $price_red_lv5;
+            break;
+        case 5:
+            $final_price_red = $price_red_lv6;
+            break;
+        case 6:
+            $final_price_red = $price_red_lv7;
+            break;
+        case 7:
+            $final_price_red = $price_red_lv8;
+            break;
+        case 8:
+            $final_price_red = $price_red_lv9;
+            break;
+        case 9:
+            $final_price_red = $price_red_lv10;
+            break;
+        case 10:
+            $final_price_red = $price_red_lv11;
+            break;
+        case 11:
+            $final_price_red = $price_red_lv12;
+            break;
+        case 12:
+            $final_price_red = $price_red_lv13;
+            break;
+        case 13:
+            $final_price_red = $price_red_lv14;
+            break;
+        case 14:
+            $final_price_red = $price_red_lv15;
+            break;
+        case 15:
             $final_price_red = 0;
             break;
         default:
@@ -144,9 +247,3 @@ if ($coin == 'gold') {
 // ────────────────────────────────────────────────
 
 echo "<h1>GOLD = $final_price_gold // RED = $final_price_red</h1>";
-
-$building_update = $building + 1;
-$query_update = "UPDATE tycoon_thalassa
-SET building='$building_update'
-WHERE idx='$idx'";
-mysqli_query($con, $query_update);
