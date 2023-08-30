@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Clicker</title>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <style>
         * {
             padding: 0;
@@ -15,9 +16,9 @@
         }
 
         .bar-wrapper {
-            margin-top: 200px;
-            margin-left: 50px;
-            margin-right: 50px;
+            margin-top: 100px;
+            margin-left: 200px;
+            margin-right: 200px;
             height: 3px;
             background-color: transparent;
             box-shadow: 0px 0px 30px 8px aquamarine;
@@ -34,7 +35,7 @@
         }
 
         .btnBuild {
-            margin-top: 200px;
+            margin-top: 100px;
             padding: 10px 20px;
             font-size: 18px;
             font-weight: 800;
@@ -46,11 +47,14 @@
 </head>
 
 <body>
+    <lottie-player src="./json/white_cubes.json" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay
+        direction="1" mode="normal"></lottie-player>
+
     <div class="bar-wrapper">
         <div id="myBar"></div>
     </div>
 
-    <button class="btnBuild" onclick="move()">Click Me</button>
+    <button class="btnBuild" onclick="move()">CLICK</button>
 
     <script>
         var myBar = document.getElementById("myBar");

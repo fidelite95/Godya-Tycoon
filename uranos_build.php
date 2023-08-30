@@ -590,7 +590,7 @@ $item8 = $row['item8'];
     function payWithGold(idx) {
       let answer = confirm("골드로 결제하시겠습니까?");
       if (answer == true) {
-        location.href = "uranos_build_ok.php?idx=" + idx + "&coin=gold";
+        location.href = "uranos_build_process.php?idx=" + idx + "&coin=gold";
       }
     }
 
@@ -598,7 +598,7 @@ $item8 = $row['item8'];
     function payWithRed(idx) {
       let answer = confirm("레드베릴로 결제하시겠습니까?");
       if (answer == true) {
-        location.href = "uranos_build_ok.php?idx=" + idx + "&coin=red";
+        location.href = "uranos_build_process.php?idx=" + idx + "&coin=red";
       }
     }
   </script>

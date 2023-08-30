@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    background: rgb(0, 0, 0);
+    /* background: linear-gradient(37deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(34, 34, 34, 1) 95%); */
+}
+
+/* 
+* ──────────────────────────────────────
+* Buttons
+* ──────────────────────────────────────
+*/
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Button */
+.btn {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    color: #292929;
+    width: 140px;
+    height: 50px;
+    margin: 0px 10px;
+    padding: 0px 30px;
+    vertical-align: middle;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 700;
+    transition: all 0.3s ease-out;
+}
+
+.btn span {
+    position: absolute;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+}
+
+.btn:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+.btn:hover p {
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Button Background */
+.btn-effect {
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0px 0px 0px 1px #fff inset;
+    background-color: transparent;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-effect:hover {
+    border: 2px solid #fff;
+    background-color: transparent;
+    box-shadow: 0px 0px 0px 2px #292929 inset;
+}
+
+/* Highlight */
+.btn-effect:after {
+    background: #222;
+    border: 0px solid #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: 0.8;
+    position: absolute;
+    top: -50px;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+    width: 50px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 1;
+}
+
+.btn-effect:hover:after {
+    background: rgb(0, 109, 226);
+    border: 20px solid #fff;
+    opacity: 0;
+    left: 120%;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+}
+
+/* BUILD PROCESS */
+
+.build_process {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    padding: 0px 200px;
+}
+
+.build_ok {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    padding: 0px 200px;
+}
+
+.build_process h1,
+.build_ok h1 {
+    margin-top: 50px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: whitesmoke;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.build_process p,
+.build_ok p {
+    margin-top: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.bar_wrapper_uranos {
+    margin-top: 70px;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    box-shadow: 0px 0px 30px 8px #ffe365;
+    border-radius: 50px;
+}
+
+#barUranos {
+    height: 3px;
+    width: 1%;
+    display: block;
+    box-shadow: 0px 0px 20px 3px #ffe365;
+    background-color: #ffe365;
+    border-radius: 50px;
+}
+
+.bar_wrapper_thalassa {
+    margin-top: 70px;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    box-shadow: 0px 0px 30px 8px #47c2ff;
+    border-radius: 50px;
+}
+
+#barThalassa {
+    height: 3px;
+    width: 1%;
+    display: block;
+    box-shadow: 0px 0px 20px 3px #47c2ff;
+    background-color: #47c2ff;
+    border-radius: 50px;
+}
+
+.bar_wrapper_ieros {
+    margin-top: 70px;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    box-shadow: 0px 0px 30px 8px #af5eff;
+    border-radius: 50px;
+}
+
+#barIeros {
+    height: 3px;
+    width: 1%;
+    display: block;
+    box-shadow: 0px 0px 20px 3px #af5eff;
+    background-color: #af5eff;
+    border-radius: 50px;
+}
+
+.btnBuild {
+    margin-top: 70px;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: 700;
+    color: whitesmoke;
+    border: 3px solid whitesmoke;
+    background-color: transparent;
+    border-radius: 0px;
+    transition: all 0.1s;
+}
+
+.btnBuild:hover {
+    border-radius: 20px;
+}
+
+.btnBuild:active {
+    box-shadow: 0px 0px 30px 10px whitesmoke;
+}
