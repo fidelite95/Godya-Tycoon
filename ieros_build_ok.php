@@ -1,4 +1,16 @@
 <?php
+include("./brand.php");
+
+session_start();
+$login_id = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
+    $login_status = true;
+}
+
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
 
 // GET an index from the previous page
 $idx = $_GET['idx'];
@@ -31,7 +43,6 @@ $land_status = $row['land_status'];
 
 // Member Index
 $member_idx = $row['member_idx'];
-echo "<h1>$member_idx</h1>";
 
 // Member ID (Gmail)
 $member_id = $row['member_id'];
@@ -125,22 +136,76 @@ if ($coin == 'gold') {
             break;
     }
 }
+?>
 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <?php include("./head.php") ?>
+    <title>TYCOON | <?php echo $land_code ?></title>
+    <link rel="stylesheet" type="text/css" href="process.css" />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+
+<body>
+    <div class="build_ok">
+        <lottie-player src="./json/success.json" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay direction="1" mode="normal">
+        </lottie-player>
+
+        <h1>축하드립니다!</h1>
+        <p>건설 등급이 상승되었습니다.</p>
+
+        <button class="btn btn-effect" style="margin-top: 40px;" onclick="back(<?= $idx; ?>)"><span>돌아가기</span></button>
+    </div>
+
+    <script>
+        // Go back
+        function back(idx) {
+            location.href = "ieros_detail.php?idx=" + idx;
+        }
+    </script>
+</body>
+
+</html>
+
+<?php
 // ────────────────────────────────────────────────
 // Calculation + SQL UPDATE
 // ────────────────────────────────────────────────
 
-echo "<h1>GOLD = $final_price_gold // RED = $final_price_red</h1>";
-
 $now = date('Y-m-d H:i:s');
-echo "<h1>$now</h1>";
+$building_update = $building + 1;
 if ($coin == 'gold') {
     // tycoon_ieros
-    $building_update = $building + 1;
-    $query_update = "UPDATE tycoon_ieros
-    SET building='$building_update'
-    WHERE idx='$idx'";
-    mysqli_query($con, $query_update);
+    switch ($building_update) {
+        case 1:
+            $query_update = "UPDATE tycoon_ieros
+            SET building='$building_update', item2='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 2:
+            $query_update = "UPDATE tycoon_ieros
+            SET building='$building_update', item3='open', item4='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 3:
+            $query_update = "UPDATE tycoon_ieros
+            SET building='$building_update', item5='open', item6='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 4:
+            $query_update = "UPDATE tycoon_ieros
+            SET building='$building_update', item7='open', item8='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        default:
+            break;
+    }
 
     // tycoon_build_history
     $query_record = "INSERT INTO tycoon_build_history (
@@ -166,14 +231,38 @@ if ($coin == 'gold') {
             '$building',
             '$building_update'
         )";
-    mysqli_query($con, $query_record);
+    // mysqli_query($con, $query_record);
+    mysqli_close($con);
 } elseif ($coin == 'red') {
     // tycoon_ieros
-    $building_update = $building + 1;
-    $query_update = "UPDATE tycoon_ieros
-    SET building='$building_update'
-    WHERE idx='$idx'";
-    mysqli_query($con, $query_update);
+    switch ($building_update) {
+        case 1:
+            $query_update = "UPDATE tycoon_ieros
+            SET building='$building_update', item2='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 2:
+            $query_update = "UPDATE tycoon_ieros
+            SET building='$building_update', item3='open', item4='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 3:
+            $query_update = "UPDATE tycoon_ieros
+            SET building='$building_update', item5='open', item6='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 4:
+            $query_update = "UPDATE tycoon_ieros
+            SET building='$building_update', item7='open', item8='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        default:
+            break;
+    }
 
     // tycoon_build_history
     $query_record = "INSERT INTO tycoon_build_history (
@@ -199,5 +288,9 @@ if ($coin == 'gold') {
             '$building',
             '$building_update'
         )";
-    mysqli_query($con, $query_record);
+    // mysqli_query($con, $query_record);
+    mysqli_close($con);
 }
+
+mysqli_close($con);
+?>

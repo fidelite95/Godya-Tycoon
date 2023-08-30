@@ -827,10 +827,10 @@ $item8 = $row['item8'];
   </div>
 
   <!-- Rating Status -->
-  <div class="building">
-    <h3 class="building_title">현재 영토의 수익 등급</h3>
-    <div class="building_desc">
-      <div class="building_img">
+  <div class="rating">
+    <h3 class="rating_title">현재 영토의 수익 등급</h3>
+    <div class="rating_desc">
+      <div class="rating_img">
         <?php
         switch ($profit) {
             // None
@@ -920,8 +920,8 @@ $item8 = $row['item8'];
         ?>
         <h4><?php echo $profit_name ?></h4>
       </div>
-      <div class="building_price">
-        <div class="building_gold">
+      <div class="rating_price">
+        <div class="rating_gold">
           <img class="tenant_img" src="./images/tycoon_gold.png" alt="gold" />
           <p><?php
               switch ($profit) {
@@ -978,7 +978,7 @@ $item8 = $row['item8'];
               }
               ?></p>
         </div>
-        <div class="building_red">
+        <div class="rating_red">
           <img class="tenant_img" src="./images/tycoon_red.png" alt="red" />
           <p><?php
               switch ($profit) {

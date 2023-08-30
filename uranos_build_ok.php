@@ -178,10 +178,34 @@ $now = date('Y-m-d H:i:s');
 $building_update = $building + 1;
 if ($coin == 'gold') {
     // tycoon_uranos
-    $query_update = "UPDATE tycoon_uranos
-    SET building='$building_update'
-    WHERE idx='$idx'";
-    mysqli_query($con, $query_update);
+    switch ($building_update) {
+        case 1:
+            $query_update = "UPDATE tycoon_uranos
+            SET building='$building_update', item2='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 2:
+            $query_update = "UPDATE tycoon_uranos
+            SET building='$building_update', item3='open', item4='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 3:
+            $query_update = "UPDATE tycoon_uranos
+            SET building='$building_update', item5='open', item6='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 4:
+            $query_update = "UPDATE tycoon_uranos
+            SET building='$building_update', item7='open', item8='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        default:
+            break;
+    }
 
     // tycoon_build_history
     $query_record = "INSERT INTO tycoon_build_history (
@@ -211,10 +235,34 @@ if ($coin == 'gold') {
     mysqli_close($con);
 } elseif ($coin == 'red') {
     // tycoon_uranos
-    $query_update = "UPDATE tycoon_uranos
-    SET building='$building_update'
-    WHERE idx='$idx'";
-    mysqli_query($con, $query_update);
+    switch ($building_update) {
+        case 1:
+            $query_update = "UPDATE tycoon_uranos
+            SET building='$building_update', item2='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 2:
+            $query_update = "UPDATE tycoon_uranos
+            SET building='$building_update', item3='open', item4='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 3:
+            $query_update = "UPDATE tycoon_uranos
+            SET building='$building_update', item5='open', item6='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        case 4:
+            $query_update = "UPDATE tycoon_uranos
+            SET building='$building_update', item7='open', item8='open'
+            WHERE idx='$idx'";
+            mysqli_query($con, $query_update);
+            break;
+        default:
+            break;
+    }
 
     // tycoon_build_history
     $query_record = "INSERT INTO tycoon_build_history (

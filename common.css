@@ -146,8 +146,158 @@
     color: #f5f5f5;
 }
 
-.building_price h4{
+.building_price h4 {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 700;
     font-size: 18px;
+}
+
+/* 
+* ──────────────────────────────────────
+* Rating
+* ──────────────────────────────────────
+*/
+
+.rating {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 250px;
+    margin-bottom: 25px;
+    text-align: center;
+    border: 2px solid #f5f5f5;
+    border-radius: 10px;
+    padding: 0px 20px;
+}
+
+.rating_title {
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #f5f5f5;
+}
+
+.rating_desc {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+}
+
+.rating_img {
+    width: 50%;
+}
+
+.rating_img img {
+    height: 120px;
+}
+
+.rating_img h4 {
+    color: #f5f5f5;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.rating_price {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    color: #f5f5f5;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.rating_gold,
+.rating_red {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.rating_gold p,
+.rating_red p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #f5f5f5;
+}
+
+.rating_price h4 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* 
+* ──────────────────────────────────────
+* Mining
+* ──────────────────────────────────────
+*/
+
+.mining {
+    position: relative;
+    display: block;
+    width: 700px;
+    height: 200px;
+    margin-bottom: 25px;
+    text-align: center;
+    border: 2px solid #f5f5f5;
+    border-radius: 10px;
+    padding: 0px 20px;
+}
+
+.mining_desc {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.mining_img {
+    width: 100%;
+}
+
+.mining_img img {
+    height: 65px;
+    margin-right: 10px;
+}
+
+.mining_img img:last-child {
+    margin-right: 0px;
+}
+
+.mining_img h4 {
+    color: #f5f5f5;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.mining_price {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    color: #f5f5f5;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    padding-top: 10px;
+    padding-left: 50px;
+}
+
+.mining_gold,
+.mining_red {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
 }

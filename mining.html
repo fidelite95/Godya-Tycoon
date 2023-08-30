@@ -5,44 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mining Example</title>
-    <link rel="stylesheet" href="mining.css">
+    <link rel="stylesheet" href="process.css">
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body>
-    <div class="mn_container">
-        <div class="mn_progress">
-            <lottie-player src="./json/white_polygon.json" background="transparent" speed="1" style="width: 300px; height: 300px" loop
-                autoplay direction="1" mode="normal"></lottie-player>
+    <div class="mining_container">
+        <div class="mining_progress">
+            <lottie-player style="margin-bottom: 40px; margin-left: 10px;" src="./json/yellow_gemstone.json" background="transparent"
+                speed="1" style="width: 350px; height: 350px" loop autoplay direction="1" mode="normal"></lottie-player>
         </div>
-        <span class="mn_sign">Ongoing...</span>
+        <h1>자원을 채굴하고 있습니다.</h1>
+        <p>채굴 시간 : 50초</p>
     </div>
 
     <script>
-        let circularProgress = document.querySelector('.mn_progress');
+        let circularProgress = document.querySelector('.mining_progress');
         let progressStartValue = 0;
         let progressEndValue = 1000;
+
+        // According to the Land Grade
+        // Grade 1 : 50
+        // Grade 2 : 45
+        // Grade 3 : 40
+        // Grade 4 : 35
+        // Grade 5 : 30
+        // Grade 6 : 25
+        // Grade 7 : 20
+        // Grade 8 : 15
+        // Grade 9 : 10
+        // Grade 10 : 5
         let speed = 50;
-        // Lv1 : 50
-        // Lv2 : 45
-        // Lv3 : 40
-        // Lv4 : 35
-        // Lv5 : 30
-        // Lv6 : 25
-        // Lv7 : 20
-        // Lv8 : 15
-        // Lv9 : 10
-        // Lv10 : 5
 
         let progressCircle = setInterval(() => {
             progressStartValue++;
-
-            circularProgress.style.background = `conic-gradient(rgba(125, 42, 232, 1) ${progressStartValue * 0.36}deg, rgba(0, 0, 0, 1) 0deg)`;
-
+            circularProgress.style.background = `conic-gradient(#ffffff ${progressStartValue * 0.36}deg, #000000 0deg)`;
             if (progressStartValue == progressEndValue) {
                 clearInterval(progressCircle);
             }
         }, speed);
+
+        function successWithGold(idx) {
+            location.href = "uranos_build_ok.php?idx=" + idx + "&coin=gold";
+        }
+
+        function successWithRed(idx) {
+            location.href = "uranos_build_ok.php?idx=" + idx + "&coin=red";
+        }
     </script>
 </body>
 
