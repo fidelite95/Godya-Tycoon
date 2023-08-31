@@ -1,10 +1,8 @@
 <?php
 
-// GET an index from the previous page
-$idx = $_GET['idx'];
-
-// GET a payment method from the previous page
-$coin = $_GET['coin'];
+// Get data from the SESSION
+$idx = $_SESSION['idx'];
+$coin = $_SESSION['coin'];
 
 // Retrieving data from a database
 $con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
@@ -229,7 +227,8 @@ if ($coin == 'gold') {
 // Calculation + SQL UPDATE
 // ────────────────────────────────────────────────
 
-echo "<h1>GOLD = $final_price_gold // RED = $final_price_red</h1>";
+// echo "<h1>GOLD = $final_price_gold // RED = $final_price_red</h1>";
+echo "<h1>idx = $idx // Coin = $coin</h1>";
 
 $now = date('Y-m-d H:i:s');
 echo "<h1>$now</h1>";
@@ -239,7 +238,7 @@ if ($coin == 'gold') {
     $query_update = "UPDATE tycoon_uranos
     SET profit='$profit_update'
     WHERE idx='$idx'";
-    mysqli_query($con, $query_update);
+    // mysqli_query($con, $query_update);
 
     // tycoon_build_history
     $query_record = "INSERT INTO tycoon_rate_history (
@@ -265,14 +264,14 @@ if ($coin == 'gold') {
             '$profit',
             '$profit_update'
         )";
-    mysqli_query($con, $query_record);
+    // mysqli_query($con, $query_record);
 } elseif ($coin == 'red') {
     // tycoon_uranos
     $profit_update = $profit + 1;
     $query_update = "UPDATE tycoon_uranos
     SET profit='$profit_update'
     WHERE idx='$idx'";
-    mysqli_query($con, $query_update);
+    // mysqli_query($con, $query_update);
 
     // tycoon_rate_history
     $query_record = "INSERT INTO tycoon_rate_history (
@@ -298,5 +297,5 @@ if ($coin == 'gold') {
             '$profit',
             '$profit_update'
         )";
-    mysqli_query($con, $query_record);
+    // mysqli_query($con, $query_record);
 }

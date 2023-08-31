@@ -238,6 +238,7 @@ body {
 * ──────────────────────────────────────
 */
 
+/* rate_process */
 .rate_process {
     display: flex;
     flex-direction: column;
@@ -263,6 +264,183 @@ body {
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 50px;
+}
+
+/* rate_process2 */
+.rate_wrapper {
+    padding: 25px;
+    border-radius: 10px;
+    background: transparent;
+}
+
+.cards_lv1,
+.cards_lv2,
+.cards_lv3,
+.cards_lv4,
+.cards_lv5,
+.card_lv1,
+.card_lv2,
+.card_lv3,
+.card_lv4,
+.card_lv5,
+.view {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards_lv1,
+.cards_lv2,
+.cards_lv3,
+.cards_lv4,
+.cards_lv5 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.cards_lv1 {
+    /* 2 X 2 */
+    width: 200px;
+    height: 200px;
+}
+
+.cards_lv2 {
+    /* 3 X 4 */
+    width: 300px;
+    height: 400px;
+}
+
+.cards_lv3 {
+    /* 3 X 6 */
+    width: 300px;
+    height: 600px;
+}
+
+.cards_lv4 {
+    /* 4 X 6 */
+    width: 400px;
+    height: 600px;
+}
+
+.cards_lv5 {
+    /* 5 X 6 */
+    width: 500px;
+    height: 600px;
+}
+
+.card_lv1,
+.card_lv2,
+.card_lv3,
+.card_lv4,
+.card_lv5 {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    position: relative;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.card_lv1 {
+    /* 2 X 2 */
+    width: calc(100% / 2 - 10px);
+    height: calc(100% / 2 - 10px);
+}
+
+.card_lv2 {
+    /* 3 X 4 */
+    width: calc(100% / 3 - 10px);
+    height: calc(100% / 4 - 10px);
+}
+
+.card_lv3 {
+    /* 3 X 6 */
+    width: calc(100% / 3 - 10px);
+    height: calc(100% / 6 - 10px);
+}
+
+.card_lv4 {
+    /* 4 X 6 */
+    width: calc(100% / 4 - 10px);
+    height: calc(100% / 6 - 10px);
+}
+
+.card_lv5 {
+    /* 5 X 6 */
+    width: calc(100% / 5 - 10px);
+    height: calc(100% / 6 - 10px);
+}
+
+.card_lv1.shake,
+.card_lv2.shake,
+.card_lv3.shake,
+.card_lv4.shake,
+.card_lv5.shake {
+    animation: shake 0.25s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-10px);
+    }
+
+    40% {
+        transform: translateX(10px);
+    }
+
+    60% {
+        transform: translateX(-8px);
+    }
+
+    80% {
+        transform: translateX(8px);
+    }
+}
+
+.view {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+    pointer-events: none;
+    backface-visibility: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.25s linear;
+}
+
+.front-view img {
+    width: 18px;
+}
+
+.back-view img {
+    max-width: 55px;
+}
+
+.back-view {
+    transform: rotateY(-180deg);
+}
+
+.card_lv1.flip .back-view,
+.card_lv2.flip .back-view,
+.card_lv3.flip .back-view,
+.card_lv4.flip .back-view,
+.card_lv5.flip .back-view {
+    transform: rotateY(0);
+}
+
+.card_lv1.flip .front-view,
+.card_lv2.flip .front-view,
+.card_lv3.flip .front-view,
+.card_lv4.flip .front-view,
+.card_lv5.flip .front-view {
+    transform: rotateY(180deg);
 }
 
 /* 
