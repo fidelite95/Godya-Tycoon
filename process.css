@@ -234,6 +234,39 @@ body {
 
 /* 
 * ──────────────────────────────────────
+* Rate
+* ──────────────────────────────────────
+*/
+
+.rate_process {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    padding: 0px 200px;
+}
+
+.rate_process h1 {
+    margin-top: 30px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: whitesmoke;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.rate_process p {
+    margin-top: 10px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: whitesmoke;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+
+/* 
+* ──────────────────────────────────────
 * Mine
 * ──────────────────────────────────────
 */
