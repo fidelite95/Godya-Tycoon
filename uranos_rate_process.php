@@ -116,95 +116,111 @@ switch ($profit) {
     <h1>영토 신용평가 승급</h1>
     <p>주어진 카드 게임을 완료하고 승급에 성공하세요!</p>
 
-    <form action="uranos_rate_process2.php?idx=<?= $idx; ?>" method="POST">
-      <?php
-      if ($coin == 'gold') {
-        switch ($card_game_level) {
-          case 1:
-            echo '
-            <input type="hidden" name="coin" value="gold"/>
-            <input type="hidden" name="level" value="1"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+    <?php
+    if ($coin == 'gold') {
+      switch ($card_game_level) {
+        case 1:
+          echo '
+            <form action="uranos_rate_lv1.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="gold"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
             ';
-            break;
-          case 2:
-            echo '
-            <input type="hidden" name="coin" value="gold"/>
-            <input type="hidden" name="level" value="2"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+          break;
+        case 2:
+          echo '
+            <form action="uranos_rate_lv2.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="gold"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
             ';
-            break;
-          case 3:
-            echo '
-            <input type="hidden" name="coin" value="gold"/>
-            <input type="hidden" name="level" value="3"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+          break;
+        case 3:
+          echo '
+            <form action="uranos_rate_lv3.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="gold"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
             ';
-            break;
-          case 4:
-            echo '
-            <input type="hidden" name="coin" value="gold"/>
-            <input type="hidden" name="level" value="4"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+          break;
+        case 4:
+          echo '
+            <form action="uranos_rate_lv4.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="gold"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
             ';
-            break;
-          case 5:
-            echo '
-            <input type="hidden" name="coin" value="gold"/>
-            <input type="hidden" name="level" value="5"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+          break;
+        case 5:
+          echo '
+            <form action="uranos_rate_lv5.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="gold"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
             ';
-            break;
-          default:
-            break;
-        }
-      } elseif ($coin == 'red') {
-        switch ($card_game_level) {
-          case 1:
-            echo '
-            <input type="hidden" name="coin" value="red"/>
-            <input type="hidden" name="level" value="1"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
-            ';
-            break;
-          case 2:
-            echo '
-            <input type="hidden" name="coin" value="red"/>
-            <input type="hidden" name="level" value="2"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
-            ';
-            break;
-          case 3:
-            echo '
-            <input type="hidden" name="coin" value="red"/>
-            <input type="hidden" name="level" value="3"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
-            ';
-            break;
-          case 4:
-            echo '
-            <input type="hidden" name="coin" value="red"/>
-            <input type="hidden" name="level" value="4"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
-            ';
-            break;
-          case 5:
-            echo '
-            <input type="hidden" name="coin" value="red"/>
-            <input type="hidden" name="level" value="5"/>
-            <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
-            ';
-            break;
-          default:
-            break;
-        }
+          break;
+        default:
+          break;
       }
-      ?>
-    </form>
+    } elseif ($coin == 'red') {
+      switch ($card_game_level) {
+        case 1:
+          echo '
+            <form action="uranos_rate_lv1.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="red"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
+            ';
+          break;
+        case 2:
+          echo '
+            <form action="uranos_rate_lv2.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="red"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
+            ';
+          break;
+        case 3:
+          echo '
+            <form action="uranos_rate_lv3.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="red"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
+            ';
+          break;
+        case 4:
+          echo '
+            <form action="uranos_rate_lv4.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="red"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
+            ';
+          break;
+        case 5:
+          echo '
+            <form action="uranos_rate_lv5.php" method="POST">
+              <input type="hidden" name="idx" value="' . $idx . '"/>
+              <input type="hidden" name="coin" value="red"/>
+              <button type="submit" class="btn btn-effect"><span>시작하기</span></button>
+            </form>
+            ';
+          break;
+        default:
+          break;
+      }
+    }
+    ?>
   </div>
 
-  <script>
-  </script>
 </body>
 
 <?php

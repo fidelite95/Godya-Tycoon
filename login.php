@@ -40,14 +40,11 @@
             <div class="main__wrapper">
                 <h1>T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N
                 </h1>
+                <!-- Login Form -->
                 <form class="login__form" action="login_ok.php" method="post">
                     <div class="login__box">
-                        <label for="inputId" class="form-label" style="margin-right: 30px;">ID :</label>
+                        <label for="inputId" class="form-label" style="margin-right: 30px;">신이야 ID :</label>
                         <input name="inputId" type="text" class="form-control" id="inputId" />
-                    </div>
-                    <div class="login__box">
-                        <label for="inputPw" class="form-label">PW :</label>
-                        <input name="inputPw" type="password" class="form-control" id="inputPw" />
                     </div>
                     <button class="btn btn-effect" type="submit">
                         <span>로그인</span>

@@ -3,28 +3,21 @@ include("./brand.php");
 
 session_start();
 
-// $login_id = $_SESSION['id'];
-// if (isset($_SESSION['id'])) {
-//   $login_status = true;
-// }
+$login_id = $_SESSION['id'];
+if (isset($_SESSION['id'])) {
+  $login_status = true;
+}
 
 // if (!$login_status) {
 //   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
 //   echo "<script>location.href='login.php';</script>";
 // } else {
 
-// GET an index from the previous page
-$idx = $_GET['idx'];
+# POST an index from the previous page
+$idx = $_POST['idx'];
 
-// GET a payment method from the previous page
+# POST a payment method from the previous page
 $coin = $_POST['coin'];
-
-// GET a payment method from the previous page
-$level = $_POST['level'];
-
-// Pass the variables to next page
-$_SESSION['idx'] = $idx;
-$_SESSION['coin'] = $coin;
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +27,24 @@ $_SESSION['coin'] = $coin;
   <?php include("./head.php") ?>
   <title>TYCOON | <?php echo $land_code ?></title>
   <link rel="stylesheet" type="text/css" href="process.css" />
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
 <body>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal_content">
+      <p>승급을 완료하시겠습니까?</p>
+      <button class="btn btn-effect" id="btnSuccess"><span>완료하기</span></button>
+    </div>
+  </div>
+
   <div class="rate_wrapper">
+
+    <form>
+      <input type="hidden" name="idx" id="idx" value="<?= $idx; ?>">
+      <input type="hidden" name="coin" id="coin" value="<?= $coin; ?>">
+    </form>
 
     <!-- Level 1 -->
     <ul class="cards_lv1">
@@ -79,7 +85,6 @@ $_SESSION['coin'] = $coin;
   </div>
 
   <script>
-    // const cards_lv1 = document.querySelectorAll('.card_lv1');
     const cards = document.querySelectorAll('.card_lv1');
 
     let matched = 0;
@@ -148,8 +153,27 @@ $_SESSION['coin'] = $coin;
     }
 
     function finish() {
-      location.href = 'uranos_rate_ok.php';
+      modal.style.display = "block";
     }
+
+    const modal = document.getElementById("myModal");
+    const btnSuccess = document.getElementById("btnSuccess");
+
+    function success(idx, coin) {
+      location.href = "uranos_rate_ok.php?idx=" + idx + "&coin=" + coin;
+    }
+
+    btnSuccess.addEventListener("click", () => {
+      let idx = document.getElementById('idx').value;
+      let coin = document.getElementById('coin').value;
+      success(idx, coin);
+    })
+
+    window.addEventListener("click", () => {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    })
 
     shuffleCard();
 
