@@ -30,21 +30,25 @@ $coin = $_POST['coin'];
 </head>
 
 <body>
-  <!-- The Modal -->
+
+  <!-- Modal Start -->
   <div id="myModal" class="modal">
-    <!-- Modal content -->
     <div class="modal_content">
       <p>승급을 완료하시겠습니까?</p>
       <button class="btn btn-effect" id="btnSuccess"><span>완료하기</span></button>
     </div>
   </div>
+  <!-- Modal End -->
 
+  <!-- Form Start : Storing Data on Client -->
+  <form>
+    <input type="hidden" name="idx" id="idx" value="<?= $idx; ?>">
+    <input type="hidden" name="coin" id="coin" value="<?= $coin; ?>">
+  </form>
+  <!-- Form End -->
+
+  <!-- Page Start -->
   <div class="rate_wrapper">
-
-    <form>
-      <input type="hidden" name="idx" id="idx" value="<?= $idx; ?>">
-      <input type="hidden" name="coin" id="coin" value="<?= $coin; ?>">
-    </form>
 
     <!-- Level 1 -->
     <ul class="cards_lv1">
@@ -83,6 +87,7 @@ $coin = $_POST['coin'];
     </ul>
 
   </div>
+  <!-- Page End -->
 
   <script>
     const cards = document.querySelectorAll('.card_lv1');
@@ -167,13 +172,13 @@ $coin = $_POST['coin'];
       let idx = document.getElementById('idx').value;
       let coin = document.getElementById('coin').value;
       success(idx, coin);
-    })
+    });
 
     window.addEventListener("click", () => {
       if (event.target == modal) {
         modal.style.display = "none";
       }
-    })
+    });
 
     shuffleCard();
 
@@ -181,6 +186,7 @@ $coin = $_POST['coin'];
       card.addEventListener('click', flipCard);
     });
   </script>
+
 </body>
 
 <?php

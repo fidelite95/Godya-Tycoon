@@ -1,10 +1,12 @@
 <?php
-include("./brand.php");
-
+# 로그인 세션
+# Login Session
 session_start();
 $login_id = $_SESSION['id'];
 if (isset($_SESSION['id'])) {
   $login_status = true;
+} else {
+  $login_status = false;
 }
 
 // if (!$login_status) {
@@ -12,50 +14,66 @@ if (isset($_SESSION['id'])) {
 //   echo "<script>location.href='login.php';</script>";
 // } else {
 
-// GET an index from the previous page
+include("./brand.php");
+
+# GET 방식으로 받은 데이터 : idx
+# GET an index from the previous page
 $idx = $_GET['idx'];
 
-// Retrieving data from a database
+# 데이터베이스 연결
+# Connecting to a database
 $con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
 mysqli_query($con, 'SET NAMES utf8');
 $con->query("SET NAMES 'UTF8'");
 
+# 데이터베이스 연결 시 에러가 발생한 경우
+# If an error occurs when connecting to the database
 if ($con->connect_errno) {
   die('Connection Error : ' . $con->connect_error);
 }
 
+# 영토 데이터 조회
+# Retrieving territory data
 $query = "SELECT * FROM tycoon_ieros WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
-// Land Code
+# 영토 고유코드
+# Land Code
 $land_code = $row['land_code'];
 
-// Land Status : 0 (For sale), 1 (Sold)
+# 영토 판매상태 : 0 (판매중), 1 (판매됨)
+# Land Status : 0 (For sale), 1 (Sold)
 $land_status = $row['land_status'];
 
-// Member Index
+# 사용자 인덱스
+# User Index
 $member_idX = $row['member_idX'];
 
-// Member ID (Gmail)
+# 사용자 ID (구글 이메일)
+# User Account (Gmail)
 $member_id = $row['member_id'];
 if ($member_id == NULL) {
   $member_id = '없음';
 }
 
-// Price
+# 영토 가격
+# Land Price
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
 
-// Profitability : _rate.php
+# 수익 등급
+# Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
 
-// Building : _build.php
+# 건설 등급
+# Building : _build.php
 $building = $row['building'];
 $building_name = '';
 
-// Mined resources
+# 채굴 아이템 슬롯
+# Mined resources
 $item1 = $row['item1'];
 $item2 = $row['item2'];
 $item3 = $row['item3'];
@@ -76,25 +94,66 @@ $item8 = $row['item8'];
   <link rel="stylesheet" type="text/css" href="tycoon.css" />
   <link rel="stylesheet" type="text/css" href="navbar.css" />
   <link rel="stylesheet" type="text/css" href="common.css" />
+  <link rel="stylesheet" type="text/css" href="modal.css" />
 </head>
 
 <body>
-  <?php include("./navbar.php") ?>
 
-  <!-- Tenant -->
+  <!-- 모달 시작 -->
+  <!-- Modal Start -->
+  <div id="modalGold" class="modal">
+    <div class="modal_content">
+      <p>골드로 결제하시겠습니까?</p>
+      <button class="btn btn-effect" id="btnGold"><span>결제하기</span></button>
+    </div>
+  </div>
+  <!-- 모달 끝 -->
+  <!-- Modal End -->
+
+  <!-- 모달 시작 -->
+  <!-- Modal Start -->
+  <div id="modalRed" class="modal">
+    <div class="modal_content">
+      <p>레드베릴로 결제하시겠습니까?</p>
+      <button class="btn btn-effect" id="btnRed"><span>결제하기</span></button>
+    </div>
+  </div>
+  <!-- 모달 끝 -->
+  <!-- Modal End -->
+
+  <!-- 데이터 저장을 위한 FORM 시작 -->
+  <!-- Form Start : Storing Data on Client -->
+  <form>
+    <input type="hidden" name="idx" id="idx" value="<?= $idx; ?>">
+  </form>
+  <!-- 데이터 저장을 위한 FORM 끝 -->
+  <!-- Form End -->
+
+  <!-- 네비게이션바 시작 -->
+  <!-- Navbar Start -->
+  <?php include("./navbar.php") ?>
+  <!-- 네비게이션바 끝 -->
+  <!-- Navbar End -->
+
+  <!-- 임차인 컴포넌트 시작 -->
+  <!-- Tenant Component Start -->
   <?php
   // Temporary Member ID
   $temporary_id = "grandefidelite@gmail.com";
 
+  # 임차인 데이터 조회
+  # Retrieving tenant data
   $query_tenant = "SELECT * FROM tb_member WHERE id='$temporary_id'";
   $result_tenant = $con->query($query_tenant);
   $row_tenant = $result_tenant->fetch_assoc();
 
-  //──────── Member Nickname
+  # 사용자 닉네임
+  # Member Nickname
   // $member_nick = $row_tenant['nick'];
   $member_nick = "아슬란";
 
-  //──────── Member Asset
+  # 사용자 자산
+  # Member Asset
   // $member_gold = number_format($row_tenant['point']);
   // $member_red = number_format($row_tenant['cash']);
   $gold = 8034678;
@@ -102,11 +161,12 @@ $item8 = $row['item8'];
   $member_gold = number_format($gold);
   $member_red = number_format($red);
 
-  //──────── Pricing list <Build>
-  // 0 -> 1 : 200,000 (GOLD) 1,000 (RED)
-  // 1 -> 2 : 800,000 (GOLD) 2,000 (RED)
-  // 2 -> 3 : 1,500,000 (GOLD) 3,000 (RED)
-  // 3 -> 4 : 2,500,000 (GOLD) 4,000 (RED)
+  # 건설 가격표
+  # Pricing list <Build>
+  # 0 -> 1 : 200,000 (GOLD) 1,000 (RED)
+  # 1 -> 2 : 800,000 (GOLD) 2,000 (RED)
+  # 2 -> 3 : 1,500,000 (GOLD) 3,000 (RED)
+  # 3 -> 4 : 2,500,000 (GOLD) 4,000 (RED)
   $price_gold_lv1 = 200000;
   $price_gold_lv2 = 800000;
   $price_gold_lv3 = 1500000;
@@ -116,7 +176,8 @@ $item8 = $row['item8'];
   $price_red_lv3 = 3000;
   $price_red_lv4 = 4000;
 
-  //──────── Comparison (Gold)
+  # 구매 가능여부 확인 (골드)
+  # Checking for availability (Gold)
   $available_gold_lv1 = false;
   $available_gold_lv2 = false;
   $available_gold_lv3 = false;
@@ -124,6 +185,8 @@ $item8 = $row['item8'];
   $maximum_level_gold = false;
   switch ($building) {
     case 0:
+      # 레벨 1 (콜로나)
+      # LEVEL 1 (Kolona)
       if ($gold >= $price_gold_lv1) {
         $available_gold_lv1 = true;
       } else {
@@ -131,6 +194,8 @@ $item8 = $row['item8'];
       }
       break;
     case 1:
+      # 레벨 2 (오데이온)
+      # LEVEL 2 (Odeion)
       if ($gold >= $price_gold_lv2) {
         $available_gold_lv2 = true;
       } else {
@@ -138,6 +203,8 @@ $item8 = $row['item8'];
       }
       break;
     case 2:
+      # 레벨 3 (스타디온)
+      # LEVEL 3 (Stadion)
       if ($gold >= $price_gold_lv3) {
         $available_gold_lv3 = true;
       } else {
@@ -145,6 +212,8 @@ $item8 = $row['item8'];
       }
       break;
     case 3:
+      # 레벨 4 (파르테논)
+      # LEVEL 4 (Parthenon)
       if ($gold >= $price_gold_lv4) {
         $available_gold_lv4 = true;
       } else {
@@ -152,6 +221,8 @@ $item8 = $row['item8'];
       }
       break;
     case 4:
+      # 최고 레벨 달성 & 결제 불가
+      # Highest level reached & Unable to pay
       $available_gold_lv1 = false;
       $available_gold_lv2 = false;
       $available_gold_lv3 = false;
@@ -159,6 +230,8 @@ $item8 = $row['item8'];
       $maximum_level_gold = true;
       break;
     default:
+      # 디폴트 : 결제 불가
+      # Default : Unable to pay
       $available_gold_lv1 = false;
       $available_gold_lv2 = false;
       $available_gold_lv3 = false;
@@ -166,7 +239,8 @@ $item8 = $row['item8'];
       break;
   }
 
-  //──────── Comparison (Red)
+  # 구매 가능여부 확인 (레드베릴)
+  # Checking for availability (Red Beryl)
   $available_red_lv1 = false;
   $available_red_lv2 = false;
   $available_red_lv3 = false;
@@ -174,6 +248,8 @@ $item8 = $row['item8'];
   $maximum_level_red = false;
   switch ($building) {
     case 0:
+      # 레벨 1 (콜로나)
+      # LEVEL 1 (Kolona)
       if ($red >= $price_red_lv1) {
         $available_red_lv1 = true;
       } else {
@@ -181,6 +257,8 @@ $item8 = $row['item8'];
       }
       break;
     case 1:
+      # 레벨 2 (오데이온)
+      # LEVEL 2 (Odeion)
       if ($red >= $price_red_lv2) {
         $available_red_lv2 = true;
       } else {
@@ -188,6 +266,8 @@ $item8 = $row['item8'];
       }
       break;
     case 2:
+      # 레벨 3 (스타디온)
+      # LEVEL 3 (Stadion)
       if ($red >= $price_red_lv3) {
         $available_red_lv3 = true;
       } else {
@@ -195,6 +275,8 @@ $item8 = $row['item8'];
       }
       break;
     case 3:
+      # 레벨 4 (파르테논)
+      # LEVEL 4 (Parthenon)
       if ($red >= $price_red_lv4) {
         $available_red_lv4 = true;
       } else {
@@ -202,6 +284,8 @@ $item8 = $row['item8'];
       }
       break;
     case 4:
+      # 최고 레벨 달성 & 결제 불가
+      # Highest level reached & Unable to pay
       $available_red_lv1 = false;
       $available_red_lv2 = false;
       $available_red_lv3 = false;
@@ -209,6 +293,8 @@ $item8 = $row['item8'];
       $maximum_level_red = true;
       break;
     default:
+      # 디폴트 : 결제 불가
+      # Default : Unable to pay
       $available_red_lv1 = false;
       $available_red_lv2 = false;
       $available_red_lv3 = false;
@@ -219,10 +305,15 @@ $item8 = $row['item8'];
   <div class="tenant">
     <h3 class="tenant_name"><?php echo $member_nick ?>님의 보유자산</h3>
     <div class="tenant_asset">
+
+      <!-- 사용자 골드 -->
+      <!-- User's Gold -->
       <div class="tenant_gold">
         <img class="tenant_img" src="./images/tycoon_gold.png" alt="gold" />
         <p><?php echo $member_gold ?></p>
         <?php
+        # 구매 불가능한 경우 느낌표 이미지를 띄움
+        # Show exclamation point image if not available for purchase
         switch ($building) {
           case 0:
             if ($available_gold_lv1 == false) {
@@ -249,10 +340,17 @@ $item8 = $row['item8'];
         }
         ?>
       </div>
+      <!-- 사용자 골드 -->
+      <!-- User's Gold -->
+
+      <!-- 사용자 레드베릴 -->
+      <!-- User's Red Beryl -->
       <div class="tenant_red">
         <img class="tenant_img" src="./images/tycoon_red.png" alt="red" />
         <p><?php echo $member_red ?></p>
         <?php
+        # 구매 불가능한 경우 느낌표 이미지를 띄움
+        # Show exclamation point image if not available for purchase
         switch ($building) {
           case 0:
             if ($available_red_lv1 == false) {
@@ -279,15 +377,24 @@ $item8 = $row['item8'];
         }
         ?>
       </div>
+      <!-- 사용자 레드베릴 -->
+      <!-- User's Red Beryl -->
+
     </div>
   </div>
+  <!-- 임차인 컴포넌트 끝 -->
+  <!-- Tenant Component End -->
 
-  <!-- Ownership -->
+  <!-- 소유권 컴포넌트 시작 -->
+  <!-- Ownership Component Start -->
   <div class="ownership_build">
     <h1 class="ownership_land"><?php echo $land_code ?></h1>
     <?php
+    # 영토 등급을 별로 표시
+    # Display territory ratings by star
     switch ($idx) {
-        // Grade 1
+        # 1등급
+        # 1st
       case 1:
         echo '
           <div class="ownership_star">
@@ -304,7 +411,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 2
+        # 2등급
+        # 2nd
       case 2:
       case 3:
         echo '
@@ -321,7 +429,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 3
+        # 3등급
+        # 3rd
       case 4:
       case 5:
       case 6:
@@ -338,7 +447,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 4
+        # 4등급
+        # 4th
       case 7:
       case 8:
       case 9:
@@ -355,7 +465,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 5
+        # 5등급
+        # 5th
       case 11:
       case 12:
       case 13:
@@ -372,7 +483,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 6
+        # 6등급
+        # 6th
       case 16:
       case 17:
       case 18:
@@ -389,7 +501,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 7
+        # 7등급
+        # 7th
       case 22:
       case 23:
       case 24:
@@ -406,7 +519,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 8
+        # 8등급
+        # 8th
       case 29:
       case 30:
       case 31:
@@ -423,7 +537,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 9
+        # 9등급
+        # 9th
       case 37:
       case 38:
       case 39:
@@ -440,7 +555,8 @@ $item8 = $row['item8'];
            </div>
           ';
         break;
-        // Grade 10
+        # 10등급
+        # 10th
       case 46:
       case 47:
       case 48:
@@ -460,8 +576,11 @@ $item8 = $row['item8'];
     }
     ?>
   </div>
+  <!-- 소유권 컴포넌트 끝 -->
+  <!-- Ownership Component End -->
 
-  <!-- Building Status -->
+  <!-- 건설 등급 컴포넌트 시작 -->
+  <!-- Building Status Component Start -->
   <div class="building">
     <h3 class="building_title">현재 영토의 건설 등급</h3>
     <div class="building_desc">
@@ -549,7 +668,8 @@ $item8 = $row['item8'];
     </div>
   </div>
 
-  <!-- Buttons -->
+  <!-- 하단 버튼 시작 -->
+  <!-- Buttons Start -->
   <div class="buttons">
     <button class="btn btn-effect" onclick="<?php if ($available_gold_lv1 == true || $available_gold_lv2 == true || $available_gold_lv3 == true || $available_gold_lv4 == true) { ?>
                                                               payWithGold(<?= $idx; ?>);
@@ -579,29 +699,55 @@ $item8 = $row['item8'];
       <span>취소</span>
     </button>
   </div>
+  <!-- 하단 버튼 끝 -->
+  <!-- Buttons End -->
 
   <script>
     // Go back
     function back(idx) {
-      location.href = "ieros_detail.php?idx=" + idx;
+      location.href = "uranos_detail.php?idx=" + idx;
     }
+
+    const modalGold = document.getElementById("modalGold");
+    const modalRed = document.getElementById("modalRed");
+    const btnGold = document.getElementById("btnGold");
+    const btnRed = document.getElementById("btnRed");
 
     // Pay with Gold
     function payWithGold(idx) {
-      let answer = confirm("골드로 결제하시겠습니까?");
-      if (answer == true) {
-        location.href = "ieros_build_process.php?idx=" + idx + "&coin=gold";
-      }
+      modalGold.style.display = "block";
     }
 
     // Pay with Red beryl
     function payWithRed(idx) {
-      let answer = confirm("레드베릴로 결제하시겠습니까?");
-      if (answer == true) {
-        location.href = "ieros_build_process.php?idx=" + idx + "&coin=red";
-      }
+      modalRed.style.display = "block";
     }
+
+    function success(idx, coin) {
+      location.href = "ieros_build_process.php?idx=" + idx + "&coin=" + coin;
+    }
+
+    btnGold.addEventListener("click", () => {
+      let idx = document.getElementById('idx').value;
+      let coin = "gold";
+      success(idx, coin);
+    });
+
+    btnRed.addEventListener("click", () => {
+      let idx = document.getElementById('idx').value;
+      let coin = "red";
+      success(idx, coin);
+    });
+
+    window.addEventListener("click", () => {
+      if (event.target == modalGold) {
+        modalGold.style.display = "none";
+      } else if (event.target == modalRed) {
+        modalRed.style.display = "none";
+      }
+    });
   </script>
+
 </body>
 
 <?php
