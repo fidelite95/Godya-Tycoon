@@ -1,10 +1,14 @@
-<?php include("./brand.php"); ?>
+<?php
+include("./brand.php");
+?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-    <?php include("./head.php") ?>
+    <?php
+    include("./head.php");
+    ?>
     <title>TYCOON</title>
     <link rel="stylesheet" type="text/css" href="common.css" />
     <link rel="stylesheet" type="text/css" href="index.css" />
@@ -15,8 +19,10 @@
 </head>
 
 <body id="body" style="opacity: 0">
+
+    <!-- 플레이어 컴포넌트 -->
+    <!-- Player Component -->
     <div class="player">
-        <!-- Define the section for displaying track buttons -->
         <div class="buttons">
             <div class="prev-track" onclick="prevTrack()">
                 <i class="fa fa-step-backward fa-1x"></i>
@@ -30,6 +36,8 @@
         </div>
     </div>
 
+    <!-- 메인 페이지 -->
+    <!-- Main Page -->
     <div class="App">
         <div class="video__wrapper">
             <video id="vid" autoplay="autoplay" muted="muted" loop>
@@ -40,6 +48,7 @@
             <div class="main__wrapper">
                 <h1>T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;O&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;N
                 </h1>
+                <!-- 로그인 Form -->
                 <!-- Login Form -->
                 <form class="login__form" action="login_ok.php" method="post">
                     <div class="login__box">
@@ -54,8 +63,13 @@
         </div>
     </div>
 
+    <!-- JS 스크립트 -->
+    <!-- JS Script -->
     <script>
-        // Fade-In
+        /*
+         * 페이드인 효과
+         * Fade-In Effect
+         */
         var opacity = 0;
         var intervalID = 0;
 
@@ -75,12 +89,17 @@
         }
         window.onload = fadeIn;
 
-        // Video Autoplay
+        /*
+         * 배경용 비디오 자동재생
+         * Background Video Autoplay
+         */
         document.getElementById('vid').play();
     </script>
 
-    <!-- Audio Player -->
+    <!-- 오디오 플레이어 JS -->
+    <!-- Audio Player JS -->
     <script src="play.js"></script>
+    
 </body>
 
 </html>

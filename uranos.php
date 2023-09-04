@@ -1,19 +1,15 @@
 <?php
+include("./login_status.php");
 include("./brand.php");
-
-session_start();
-$login_id = $_SESSION['id'];
-if (isset($_SESSION['id'])) {
-  $login_status = true;
-}
-
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <?php include("./head.php") ?>
+  <?php
+  include("./head.php");
+  ?>
   <title>TYCOON | URANOS</title>
   <link rel="stylesheet" type="text/css" href="tycoon.css" />
   <link rel="stylesheet" type="text/css" href="transition.css" />
@@ -25,33 +21,30 @@ if (isset($_SESSION['id'])) {
 //   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
 //   echo "<script>location.href='login.php';</script>";
 // } else {
+?>
 
-// Retrieving data from a database
-$con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
-mysqli_query($con, 'SET NAMES utf8');
-$con->query("SET NAMES 'UTF8'");
-
-if ($con->connect_errno) {
-  die('Connection Error : ' . $con->connect_error);
-}
+<?php
+include("./connection.php");
 ?>
 
 <body>
+
   <div class="container">
-    <video id="vid" autoplay="autoplay" muted="muted" loop>
-      <source src="./videos/tycoon_background2.mp4" type="video/mp4" />
-    </video>
 
-    <?php include("./navbar.php") ?>
+    <?php
+    include("./navbar.php");
+    ?>
 
-    <!-- ────────────────────────────────── -->
-    <!-- Desktop                            -->
-    <!-- ────────────────────────────────── -->
+    <!-- 데스크탑 -->
+    <!-- Desktop -->
     <div class="tycoon-container-desktop">
 
+      <!-- 1등급 영토 -->
       <!-- 1st Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 001
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 0, 1";
         $result = $con->query($query);
 
@@ -59,24 +52,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_1" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_1" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_1" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_1" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -84,9 +77,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 2등급 영토 -->
       <!-- 2nd Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 002 - 003
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 1, 2";
         $result = $con->query($query);
 
@@ -94,24 +90,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_2" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_2" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_2" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_2" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -119,9 +115,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 3등급 영토 -->
       <!-- 3rd Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 004 - 006
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 3, 3";
         $result = $con->query($query);
 
@@ -129,24 +128,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_3" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_3" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_3" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_3" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -154,9 +153,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 4등급 영토 -->
       <!-- 4th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 007 - 010
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 6, 4";
         $result = $con->query($query);
 
@@ -164,24 +166,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_4" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_4" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_4" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_4" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -189,9 +191,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 5등급 영토 -->
       <!-- 5th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 011 - 015
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 10, 5";
         $result = $con->query($query);
 
@@ -199,24 +204,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_5" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_5" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_5" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_5" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -224,9 +229,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 6등급 영토 -->
       <!-- 6th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 016 - 021
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 15, 6";
         $result = $con->query($query);
 
@@ -234,24 +242,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_6" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_6" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_6" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_6" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -259,9 +267,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 7등급 영토 -->
       <!-- 7th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 022 - 028
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 21, 7";
         $result = $con->query($query);
 
@@ -269,24 +280,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_7" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_7" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_7" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_7" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -294,9 +305,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 8등급 영토 -->
       <!-- 8th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 029 - 036
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 28, 8";
         $result = $con->query($query);
 
@@ -304,24 +318,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_8" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_8" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_8" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_8" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -329,9 +343,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 9등급 영토 -->
       <!-- 9th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 037 - 045
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 36, 9";
         $result = $con->query($query);
 
@@ -339,24 +356,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_9" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_9" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_9" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_9" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -364,9 +381,12 @@ if ($con->connect_errno) {
         } ?>
       </div>
 
+      <!-- 10등급 영토 -->
       <!-- 10th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 046 - 055
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 45, 10";
         $result = $con->query($query);
 
@@ -374,24 +394,24 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Sold
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank_10" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_10" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos_10" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_10" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
@@ -401,12 +421,16 @@ if ($con->connect_errno) {
 
     </div>
 
-    <!-- ────────────────────────────────── -->
-    <!-- Mobile                             -->
-    <!-- ────────────────────────────────── -->
+    <!-- 모바일 -->
+    <!-- Mobile -->
     <div class="tycoon-container-mobile">
+
+      <!-- 1등급 영토 -->
+      <!-- 1st Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 001
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 0, 5";
         $result = $con->query($query);
 
@@ -414,48 +438,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_1" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_1" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 2등급 영토 -->
+      <!-- 2nd Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 002 - 003
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 5, 6";
         $result = $con->query($query);
 
@@ -463,48 +476,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_2" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_2" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 3등급 영토 -->
+      <!-- 3rd Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 004 - 006
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 11, 5";
         $result = $con->query($query);
 
@@ -512,48 +514,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_3" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_3" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 4등급 영토 -->
+      <!-- 4th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 007 - 010
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 16, 6";
         $result = $con->query($query);
 
@@ -561,48 +552,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_4" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_4" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 5등급 영토 -->
+      <!-- 5th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 011 - 015
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 22, 5";
         $result = $con->query($query);
 
@@ -610,48 +590,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_5" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_5" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 6등급 영토 -->
+      <!-- 6th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 016 - 021
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 27, 6";
         $result = $con->query($query);
 
@@ -659,48 +628,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_6" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_6" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 7등급 영토 -->
+      <!-- 7th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 022 - 028
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 33, 5";
         $result = $con->query($query);
 
@@ -708,48 +666,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_7" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_7" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 8등급 영토 -->
+      <!-- 8th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 029 - 036
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 38, 6";
         $result = $con->query($query);
 
@@ -757,48 +704,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_8" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_8" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 9등급 영토 -->
+      <!-- 9th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 037 - 045
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 44, 5";
         $result = $con->query($query);
 
@@ -806,48 +742,37 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_9" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_9" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
+      <!-- 10등급 영토 -->
+      <!-- 10th Grade -->
       <div class="tycoon-row">
         <?php
+        # land_code
+        # 046 - 055
         $query = "SELECT * FROM tycoon_uranos ORDER BY idx LIMIT 49, 6";
         $result = $con->query($query);
 
@@ -855,55 +780,63 @@ if ($con->connect_errno) {
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-
           $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
 
-          // According to the "land_status"
-          // 0 : For sale
-          // 1 : Uranos Normal
-          // 2 : Uranos Double
-          // 3 : Uranos Triple
+          # "land_status"에 따른 영토 상태
+          # Status of the territory according to "land_status"
+          # 0 : 판매중 (For sale)
+          # 1 : 판매됨 (Sold)
           if ($land_status == 0) { ?>
             <div class="land_wrapper">
-              <div class="land_blank" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_blank_10" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
           <?php
           } elseif ($land_status == 1) { ?>
             <div class="land_wrapper">
-              <div class="land_uranos" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 2) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_double" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
-              </div>
-            </div>
-          <?php
-          } elseif ($land_status == 3) { ?>
-            <div class="land_wrapper">
-              <div class="land_uranos_triple" onclick="detail(<?= $idx ?>)">
-                <span class="land_ownership"><?php echo $land_code ?></span>
+              <div class="land_uranos_10" onclick="detail(<?php echo $idx; ?>)">
+                <span class="land_ownership"><?php echo $land_code; ?></span>
               </div>
             </div>
         <?php
           }
         } ?>
       </div>
+
     </div>
+
   </div>
 
+  <!-- JS 스크립트 -->
+  <!-- JS Script -->
   <script>
-    // Move to uranos_detail.php
+    /*
+     * 오버레이
+     * Overlay
+     */
+    const menuOpen = document.querySelector('.menu');
+    const menuClose = document.querySelector('.overlay_close');
+    const overlay = document.querySelector('.overlay');
+
+    menuOpen.addEventListener('click', () => {
+      overlay.classList.add('active');
+    });
+
+    menuClose.addEventListener('click', () => {
+      overlay.classList.remove('active');
+    });
+
+    /*
+     * uranos_detail.php 페이지로 이동
+     * Go to uranos_detail.php
+     */
     function detail(idx) {
       location.href = "uranos_detail.php?idx=" + idx;
     }
   </script>
+
 </body>
 
 <?php

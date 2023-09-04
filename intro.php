@@ -1,20 +1,16 @@
 <?php
+include("./login_status.php");
 include("./brand.php");
-
-session_start();
-$login_id = $_SESSION['id'];
-if (isset($_SESSION['id'])) {
-  $login_status = true;
-}
-
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
-  <?php include("./head.php") ?>
-  <title>TYCOON | Intro</title>
+  <?php
+  include("./head.php");
+  ?>
+  <title>TYCOON</title>
   <link rel="stylesheet" type="text/css" href="common.css" />
   <link rel="stylesheet" type="text/css" href="intro.css" />
   <link rel="stylesheet" type="text/css" href="transition.css" />
@@ -28,6 +24,9 @@ if (isset($_SESSION['id'])) {
 ?>
 
 <body id="body" style="opacity: 0">
+
+  <!-- 플레이어 컴포넌트 -->
+  <!-- Player Component -->
   <div class="intro">
     <video id="vid" autoplay="autoplay" muted="muted" loop>
       <source src="./videos/tycoon_intro.mp4" type="video/mp4" />
@@ -40,8 +39,13 @@ if (isset($_SESSION['id'])) {
     </div>
   </div>
 
+  <!-- JS 스크립트 -->
+  <!-- JS Script -->
   <script>
-    // Fade-In
+    /*
+     * 페이드인 효과
+     * Fade-In Effect
+     */
     var opacity = 0;
     var intervalID = 0;
 
@@ -61,15 +65,22 @@ if (isset($_SESSION['id'])) {
     }
     window.onload = fadeIn;
 
-    // Video Autoplay
+    /*
+     * 배경용 비디오 자동재생
+     * Background Video Autoplay
+     */
     document.getElementById("vid").play();
 
-    // Transition
+    /*
+     * 자동 화면 전환
+     * Automatic Screen Transition
+     */
     const chapterBox = document.querySelector(".chapter__title");
     setTimeout(function() {
       location.href = "uranos.php";
     }, 7000);
   </script>
+
 </body>
 
 <?php

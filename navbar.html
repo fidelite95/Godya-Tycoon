@@ -10,18 +10,21 @@
 </head>
 
 <body>
-  <!-- Navbar 시작 -->
+
+  <!-- 네이게이션 바 -->
+  <!-- Navigation Bar -->
   <div class="navbar">
 
     <!-- 로고 -->
+    <!-- Logo -->
     <div class="logo">
       <h1>
         T&nbsp;&nbsp;Y&nbsp;&nbsp;C&nbsp;&nbsp;O&nbsp;&nbsp;O&nbsp;&nbsp;N
       </h1>
     </div>
-    <!-- 로고 -->
 
     <!-- 메뉴 -->
+    <!-- Menu -->
     <ul>
       <li>
         <a href="uranos.php">우라노스</a>
@@ -33,9 +36,9 @@
         <a href="ieros.php">이에로스</a>
       </li>
     </ul>
-    <!-- 메뉴 -->
 
     <!-- SNS 링크 -->
+    <!-- Social Links -->
     <div class="sns">
       <a href="https://cafe.naver.com/godya" class="snsLink">
         <img src="./images/naver_white.png" />
@@ -47,9 +50,9 @@
         <img src="./images/youtube_white.png" />
       </a>
     </div>
-    <!-- SNS 링크 -->
 
     <!-- 마이 타이쿤 -->
+    <!-- My Tycoon -->
     <div class="signin-wrapper">
       <a href="/" class="signin"> 마이 타이쿤 </a>
       <p>&copy; Sinia.</p>
@@ -57,66 +60,70 @@
     <div class="menu">
       <img src="./images/menu_white.png" alt="menu" />
     </div>
-    <!-- 마이 타이쿤 -->
 
   </div>
-  <!-- Navbar 끝 -->
 
-  <!-- Overlay 메뉴 시작 -->
+  <!-- 오버레이 -->
+  <!-- Overlay -->
   <div class="overlay">
-    <!-- Overlay 로고 & 닫기 버튼 -->
-    <a class="overlay__close" style="text-decoration: none; font-weight: 800">&times;</a>
-    <a href="#" class="overlay__logo">
-      <img src="../images/logo_white.png" alt="logo" />
+
+    <!-- 닫기 버튼 -->
+    <!-- Close Button -->
+    <a class="overlay_close">&times;</a>
+
+    <!-- 로고 -->
+    <!-- Logo -->
+    <a href="#" class="overlay_logo">
+      <h1>
+        T&nbsp;&nbsp;Y&nbsp;&nbsp;C&nbsp;&nbsp;O&nbsp;&nbsp;O&nbsp;&nbsp;N
+      </h1>
     </a>
-    <!-- Overlay 로고 & 닫기 버튼 -->
+
     <!-- Overlay 메뉴 -->
-    <div class="overlay__content">
-      <ul class="overlay__nav">
-        <li class="overlay__nav-list">
-          <a href="guide.html" class="navLink">게임가이드</a>
+    <!-- Overlay Menu -->
+    <div class="overlay_content">
+      <ul class="overlay_nav">
+        <li class="overlay_list">
+          <a href="uranos.php" class="overlay_link">우라노스</a>
         </li>
-        <li class="overlay__nav-list">
-          <a href="ranking.html" class="navLink">랭킹</a>
+        <li class="overlay_list">
+          <a href="thalassa.php" class="overlay_link">탈라사</a>
         </li>
-        <li class="overlay__nav-list">
-          <a href="notice.php" class="navLink">공지사항</a>
+        <li class="overlay_list">
+          <a href="ieros.php" class="overlay_link">이에로스</a>
         </li>
-        <li class="overlay__nav-list">
-          <a href="login.html" class="navLink" id="navLink__signin">로그인</a>
+        <li class="overlay_list">
+          <a href="/" class="overlay_link">마이타이쿤</a>
         </li>
       </ul>
     </div>
-    <!-- Overlay 메뉴 -->
+
     <!-- Overlay SNS 링크 -->
-    <div class="overlay__sns">
-      <a href="https://cafe.naver.com/warofthegods" class="overlay__snsLink">
+    <!-- Overlay Social Links -->
+    <div class="overlay_socials">
+      <a href="https://cafe.naver.com/warofthegods" class="socials_link">
         <img src="../images/naver_white.png" />
       </a>
-      <a href="#" class="overlay__snsLink">
+      <a href="#" class="socials_link">
         <img src="../images/instagram_white.png" />
       </a>
-      <a href="#" class="overlay__snsLink">
+      <a href="https://www.youtube.com/@godya-di9rt" class="socials_link">
         <img src="../images/youtube_white.png" />
       </a>
     </div>
-    <!-- Overlay SNS 링크 -->
+
   </div>
-  <!-- Overlay 메뉴 끝 -->
 
   <div style="height: 200vh; background-color: black"></div>
 
   <script>
-    // Navbar 스크롤
-    const navbar = document.querySelector(".navbar");
-    window.addEventListener("scroll", function () {
-      navbar.classList.toggle("show", window.scrollY > 0);
-    });
-
-    // 모바일 메뉴
+    /*
+     * 오버레이
+     * Overlay
+     */
     const doc = document;
     const menuOpen = doc.querySelector(".menu");
-    const menuClose = doc.querySelector(".overlay__close");
+    const menuClose = doc.querySelector(".overlay_close");
     const overlay = doc.querySelector(".overlay");
 
     menuOpen.addEventListener("click", () => {
@@ -127,6 +134,7 @@
       overlay.classList.remove("active");
     });
   </script>
+
 </body>
 
 </html>

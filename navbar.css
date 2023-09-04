@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
 /* font-family: 'Noto Sans KR', sans-serif; */
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* font-family: 'Outfit', sans-serif; */
+
 html {
   scroll-behavior: smooth;
 }
@@ -34,7 +37,7 @@ body {
   z-index: 99;
   flex-direction: column;
   border: 2px solid #fafafa;
-  border-radius: 10px;
+  border-radius: 20px;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -209,10 +212,10 @@ body {
   .navbar {
     position: fixed;
     left: 20px;
-    top: -100px;
+    top: 20px;
     transform: none;
     background-color: transparent;
-    height: 80px;
+    height: 60px;
     width: calc(100% - 40px);
     max-width: none;
     display: flex;
@@ -221,7 +224,7 @@ body {
     transition: 0.5s ease;
     z-index: 99;
     flex-direction: row;
-    border-radius: 10px;
+    border-radius: 20px;
     font-family: "Roboto", sans-serif;
   }
 
@@ -235,18 +238,21 @@ body {
     border-radius: 0px;
     cursor: pointer;
     width: 180px;
-    height: 80px;
+    height: 100%;
     text-decoration: none;
     background-color: transparent;
     transition: all 0.4s;
   }
 
-  .logo img {
+  .logo h1 {
     position: absolute;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    font-size: 18px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120px;
     background-color: transparent;
     cursor: pointer;
   }
@@ -277,12 +283,12 @@ body {
 @media (max-width: 720px) {
   .navbar {
     position: fixed;
-    left: 10px;
-    top: -80px;
+    left: 20px;
+    top: 20px;
     transform: none;
     background-color: transparent;
     height: 60px;
-    width: calc(100% - 20px);
+    width: calc(100% - 40px);
     max-width: none;
     display: flex;
     justify-content: space-between;
@@ -310,12 +316,15 @@ body {
     transition: all 0.4s;
   }
 
-  .logo img {
+  .logo h1 {
     position: absolute;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    margin-left: 0px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100px;
     background-color: transparent;
     cursor: pointer;
   }
@@ -347,14 +356,13 @@ body {
     top: 50%;
     left: 200%;
     transform: translate(-50%, -50%);
-    background-color: #202020;
-    border: 3px solid #202020;
+    background-color: #101010;
     height: 100vh;
     width: 100vw;
     margin: 0px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 40px;
+    padding-top: 20px;
     position: fixed;
     z-index: 999;
     text-align: left;
@@ -368,46 +376,55 @@ body {
     transform: translate(-50%, -50%);
   }
 
-  .overlay__close {
+  .overlay_close {
     position: absolute;
     background-color: transparent;
     z-index: 10;
     margin-top: 20px;
     right: 60px;
     font-size: 40px;
-    font-weight: 700;
+    font-weight: 800;
     color: whitesmoke;
     cursor: pointer;
     transition: all 0.3s;
+    text-decoration: none;
   }
 
-  .overlay__close:hover {
+  .overlay_close:hover {
     color: #888;
     cursor: pointer;
     transform: scale(1.2);
   }
 
-  .overlay__close:active {
+  .overlay_close:active {
     color: #202020;
     cursor: pointer;
     transform: scale(1);
   }
 
-  .overlay__logo {
+  .overlay_logo {
+    text-align: left;
     position: relative;
-    display: block;
-    text-decoration: none;
+    border-radius: 0px;
+    cursor: default;
     width: 100%;
-    height: auto;
-    margin-top: 20px;
-    margin-left: 20px;
+    height: 80px;
+    text-decoration: none;
+    background-color: transparent;
+    transition: all 0.4s;
   }
 
-  .overlay__logo img {
-    width: 240px;
+  .overlay_logo h1 {
+    background-color: transparent;
+    margin-top: 40px;
+    margin-left: 30px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
   }
 
-  .overlay__content {
+  .overlay_content {
     display: flex;
     height: auto;
     width: 100%;
@@ -416,13 +433,13 @@ body {
     background-color: transparent;
   }
 
-  .overlay__nav {
+  .overlay_nav {
     background-color: transparent;
     width: 100%;
     padding: 0px 30px;
   }
 
-  .overlay__nav-list {
+  .overlay_list {
     background-color: transparent;
     list-style: none;
     border: whitesmoke 3px solid;
@@ -433,16 +450,16 @@ body {
     transition: all 0.3s;
   }
 
-  .overlay__nav-list:hover {
+  .overlay_list:hover {
     background-color: whitesmoke;
     border: whitesmoke 3px solid;
-    border-radius: 5px;
+    border-radius: 0px;
     margin-top: 30px;
     margin-bottom: 30px;
     text-align: center;
   }
 
-  .overlay__nav-list:active {
+  .overlay_list:active {
     background-color: transparent;
     border: whitesmoke 3px solid;
     border-radius: 30px;
@@ -451,13 +468,13 @@ body {
     text-align: center;
   }
 
-  .navLink {
+  .overlay_link {
     background-color: transparent;
     text-decoration: none;
     padding-top: 20px;
     padding-bottom: 20px;
     letter-spacing: -0.5px;
-    font-size: 15px;
+    font-size: 18px;
     color: whitesmoke;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -466,17 +483,17 @@ body {
     transition: all 0.3s;
   }
 
-  .overlay__nav-list:hover .navLink {
-    color: #202020;
+  .overlay_list:hover .overlay_link {
+    color: #101010;
   }
 
-  .overlay__nav-list:active .navLink {
+  .overlay_list:active .overlay_link {
     transform: scale(1.1);
     cursor: pointer;
     color: whitesmoke;
   }
 
-  .overlay__sns {
+  .overlay_socials {
     display: absolute;
     flex-direction: row;
     height: 50px;
@@ -486,50 +503,46 @@ body {
     background-color: transparent;
   }
 
-  .overlay__snsLink {
+  .socials_link {
     text-decoration: none;
     width: auto;
     height: auto;
     margin: 0px 20px;
   }
 
-  .overlay__snsLink img {
+  .socials_link img {
     margin-top: 10px;
     width: 30px;
     height: auto;
     transition: all 0.3s;
   }
 
-  .overlay__snsLink img:hover {
+  .socials_link img:hover {
     transform: translateY(-8px);
   }
 }
 
 @media (max-width: 720px) {
   .overlay {
-    padding-top: 60px;
+    padding-top: 20px;
   }
 
-  .overlay__close {
-    margin-top: 10px;
-    font-size: 35px;
+  .overlay_close {
+    margin-top: 0px;
+    font-size: 30px;
   }
 
-  .overlay__logo {
-    margin-top: 15px;
-    margin-left: 30px;
+  .overlay_logo h1 {
+    margin-top: 20px;
+    font-size: 22px;
   }
 
-  .overlay__logo img {
-    width: 220px;
-  }
-
-  .overlay__content {
+  .overlay_content {
     padding-top: 40px;
     padding-bottom: 20px;
   }
 
-  .overlay__nav-list {
+  .overlay_list {
     background-color: transparent;
     list-style: none;
     border: whitesmoke 3px solid;
@@ -540,7 +553,8 @@ body {
     transition: all 0.3s;
   }
 
-  .navLink {
+  .overlay_link {
+    font-size: 16px;
     padding-top: 15px;
     padding-bottom: 15px;
   }
