@@ -1,61 +1,56 @@
 <?php
+include("./login_status.php");
 include("./brand.php");
+include("./connection.php");
 
-session_start();
-$login_id = $_SESSION['id'];
-if (isset($_SESSION['id'])) {
-  $login_status = true;
-}
-
-// if (!$login_status) {
-//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-//   echo "<script>location.href='login.php';</script>";
-// } else {
-
-// GET an index from the previous page
+# GET 메소드로 받은 idx
+# idx received by the GET method
 $idx = $_GET['idx'];
 
-// Retrieving data from a database
-$con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
-mysqli_query($con, 'SET NAMES utf8');
-$con->query("SET NAMES 'UTF8'");
-
-if ($con->connect_errno) {
-  die('Connection Error : ' . $con->connect_error);
-}
-
+# 영토 조회 쿼리
+# Query to find territory data
 $query = "SELECT * FROM tycoon_ieros WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
-// Land Code
+# 영토 코드
+# Land Code
 $land_code = $row['land_code'];
 
-// Land Status : 0 (For sale), 1 (Sold)
+# "land_status"에 따른 영토 상태
+# Status of the territory according to "land_status"
+# 0 : 판매중 (For sale)
+# 1 : 판매됨 (Sold)
 $land_status = $row['land_status'];
 
-// Member Index
-$member_idX = $row['member_idX'];
+# 임차인 계정
+# Tenant ID (Gmail)
+$tenant_id = $row['member_id'];
 
-// Member ID (Gmail)
-$member_id = $row['member_id'];
-if ($member_id == NULL) {
-  $member_id = '없음';
+# 임차인 닉네임
+# Tenant Nickname
+$tenant_nick = $row['member_nick'];
+if ($tenant_nick == NULL) {
+  $tenant_nick = '없음';
 }
 
-// Price
+# 영토 가격
+# Price
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
 
-// Profitability : _rate.php
+# 수익 등급 (승급하기)
+# Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
 
-// Building : _build.php
+# 건설 등급 (건설하기)
+# Building : _build.php
 $building = $row['building'];
 $building_name = '';
 
-// Mined resources
+# 채굴 슬롯
+# Mining slots
 $item1 = $row['item1'];
 $item2 = $row['item2'];
 $item3 = $row['item3'];
@@ -70,7 +65,9 @@ $item8 = $row['item8'];
 <html>
 
 <head>
-  <?php include("./head.php") ?>
+  <?php
+  include("./head.php");
+  ?>
   <title>TYCOON | <?php echo $land_code ?></title>
   <link rel="stylesheet" type="text/css" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="tycoon.css" />
@@ -78,29 +75,45 @@ $item8 = $row['item8'];
   <link rel="stylesheet" type="text/css" href="description.css" />
 </head>
 
+<?php
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
+?>
+
 <body>
+
   <?php include("./navbar.php") ?>
 
-  <!-- Ownership -->
+  <!-- 소유권 컴포넌트 -->
+  <!-- Ownership Component -->
   <div class="ownership">
-    <h1 class="ownership_land"><?php echo $land_code ?></h1>
-    <h3 class="ownership_owner">소유자 : <?php echo $member_id ?></h3>
+    <h1 class="ownership_land"><?php echo $land_code; ?></h1>
+    <h3 class="ownership_owner">소유자 : <?php echo $tenant_nick; ?></h3>
     <?php
+    # 영토가 판매중인 경우
+    # If the territory is for sale
     if ($land_status == 0) { ?>
       <div class="ownership_price">
         <div class="price_gold">
           <img src="./images/tycoon_gold.png" alt="gold" />
-          <p><?php echo $price_gold ?></p>
+          <p><?php echo $price_gold; ?></p>
         </div>
         <div class="price_red">
           <img src="./images/tycoon_red.png" alt="red" />
-          <p><?php echo $price_red ?></p>
+          <p><?php echo $price_red; ?></p>
         </div>
       </div>
     <?php
+      # 영토가 판매된 경우
+      # If the territory is sold
     } elseif ($land_status == 1) {
+      # 영토 등급을 별(star)로 표시
+      # Display territory ratings by star
       switch ($idx) {
-          // Grade 1
+          # 1등급
+          # 1st
         case 1:
           echo '
           <div class="ownership_star">
@@ -117,7 +130,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 2
+          # 2등급
+          # 2nd
         case 2:
         case 3:
           echo '
@@ -134,7 +148,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 3
+          # 3등급
+          # 3rd
         case 4:
         case 5:
         case 6:
@@ -151,7 +166,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 4
+          # 4등급
+          # 4th
         case 7:
         case 8:
         case 9:
@@ -168,7 +184,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 5
+          # 5등급
+          # 5th
         case 11:
         case 12:
         case 13:
@@ -185,7 +202,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 6
+          # 6등급
+          # 6th
         case 16:
         case 17:
         case 18:
@@ -202,7 +220,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 7
+          # 7등급
+          # 7th
         case 22:
         case 23:
         case 24:
@@ -219,7 +238,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 8
+          # 8등급
+          # 8th
         case 29:
         case 30:
         case 31:
@@ -236,7 +256,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 9
+          # 9등급
+          # 9th
         case 37:
         case 38:
         case 39:
@@ -253,7 +274,8 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          // Grade 10
+          # 10등급
+          # 10th
         case 46:
         case 47:
         case 48:
@@ -275,11 +297,15 @@ $item8 = $row['item8'];
     ?>
   </div>
 
-  <!-- Land Cube -->
+  <!-- 큐브 컴포넌트 -->
+  <!-- Cube Component -->
   <?php
+  # 영토가 판매중인 경우
+  # If the territory is for sale
   if ($land_status == 0) {
     switch ($idx) {
-        // Grade 1
+        # 1등급
+        # 1st
       case 1:
         echo '
         <div class="cube_1">
@@ -293,7 +319,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 2
+        # 2등급
+        # 2nd
       case 2:
       case 3:
         echo '
@@ -308,7 +335,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 3
+        # 3등급
+        # 3rd
       case 4:
       case 5:
       case 6:
@@ -324,7 +352,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 4
+        # 4등급
+        # 4th
       case 7:
       case 8:
       case 9:
@@ -341,7 +370,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 5
+        # 5등급
+        # 5th
       case 11:
       case 12:
       case 13:
@@ -359,7 +389,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 6
+        # 6등급
+        # 6th
       case 16:
       case 17:
       case 18:
@@ -378,7 +409,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 7
+        # 7등급
+        # 7th
       case 22:
       case 23:
       case 24:
@@ -398,7 +430,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 8
+        # 8등급
+        # 8th
       case 29:
       case 30:
       case 31:
@@ -419,7 +452,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 9
+        # 9등급
+        # 9th
       case 37:
       case 38:
       case 39:
@@ -441,7 +475,8 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        // Grade 10
+        # 10등급
+        # 10th
       case 46:
       case 47:
       case 48:
@@ -465,9 +500,12 @@ $item8 = $row['item8'];
         ';
         break;
     }
+    # 영토가 판매된 경우
+    # If the territory is sold
   } elseif ($land_status == 1) {
     switch ($idx) {
-        // Grade 1
+        # 1등급
+        # 1st
       case 1:
         echo '
       <div class="cube_ieros_1">
@@ -481,7 +519,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 2
+        # 2등급
+        # 2nd
       case 2:
       case 3:
         echo '
@@ -496,7 +535,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 3
+        # 3등급
+        # 3rd
       case 4:
       case 5:
       case 6:
@@ -512,7 +552,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 4
+        # 4등급
+        # 4th
       case 7:
       case 8:
       case 9:
@@ -529,7 +570,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 5
+        # 5등급
+        # 5th
       case 11:
       case 12:
       case 13:
@@ -547,7 +589,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 6
+        # 6등급
+        # 6th
       case 16:
       case 17:
       case 18:
@@ -566,7 +609,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 7
+        # 7등급
+        # 7th
       case 22:
       case 23:
       case 24:
@@ -586,7 +630,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 8
+        # 8등급
+        # 8th
       case 29:
       case 30:
       case 31:
@@ -607,7 +652,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 9
+        # 9등급
+        # 9th
       case 37:
       case 38:
       case 39:
@@ -629,7 +675,8 @@ $item8 = $row['item8'];
       </div>
       ';
         break;
-        // Grade 10
+        # 10등급
+        # 10th
       case 46:
       case 47:
       case 48:
@@ -656,8 +703,11 @@ $item8 = $row['item8'];
   }
   ?>
 
+  <!-- 하단 버튼들 -->
   <!-- Buttons -->
   <?php
+  # 영토가 판매중인 경우
+  # If the territory is for sale
   if ($land_status == 0) {
   ?>
     <div class="buttons">
@@ -669,6 +719,8 @@ $item8 = $row['item8'];
       </button>
     </div>
   <?php
+    # 영토가 판매된 경우
+    # If the territory is sold
   } elseif ($land_status == 1) {
   ?>
     <div class="buttons">
@@ -689,88 +741,108 @@ $item8 = $row['item8'];
   }
   ?>
 
-  <!-- Description -->
+  <!-- 설명 컴포넌트 -->
+  <!-- Description Component -->
   <div class="description">
+
+    <!-- 수익 등급 -->
+    <!-- Profitability Status -->
     <div class="description_profit">
       <div class="description_img">
         <?php
         switch ($profit) {
-            // None
+            # 없음  
+            # None
           case 0:
             $profit_name = '없음';
             echo '<img src="./images/rating/profit_lv0.png" alt="profit">';
             break;
-            // Alpha
+            # 알파
+            # Alpha
           case 1:
             $profit_name = '알파';
             echo '<img src="./images/rating/profit_lv1.png" alt="profit">';
             break;
-            // Beta
+            # 베타
+            # Beta
           case 2:
             $profit_name = '베타';
             echo '<img src="./images/rating/profit_lv2.png" alt="profit">';
             break;
-            // Gamma
+            # 감마
+            # Gamma
           case 3:
             $profit_name = '감마';
             echo '<img src="./images/rating/profit_lv3.png" alt="profit">';
             break;
-            // Delta
+            # 델타
+            # Delta
           case 4:
             $profit_name = '델타';
             echo '<img src="./images/rating/profit_lv4.png" alt="profit">';
             break;
-            // Epsilon
+            # 엡실론
+            # Epsilon
           case 5:
             $profit_name = '엡실론';
             echo '<img src="./images/rating/profit_lv5.png" alt="profit">';
             break;
-            // Zeta
+            # 제타
+            # Zeta
           case 6:
             $profit_name = '제타';
             echo '<img src="./images/rating/profit_lv6.png" alt="profit">';
             break;
-            // Eta
+            # 에타
+            # Eta
           case 7:
             $profit_name = '에타';
             echo '<img src="./images/rating/profit_lv7.png" alt="profit">';
             break;
-            // Theta
+            # 시타
+            # Theta
           case 8:
             $profit_name = '시타';
             echo '<img src="./images/rating/profit_lv8.png" alt="profit">';
             break;
-            // Iota
+            # 이오타
+            # Iota
           case 9:
             $profit_name = '이오타';
             echo '<img src="./images/rating/profit_lv9.png" alt="profit">';
             break;
-            // Kappa
+            # 카파
+            # Kappa
           case 10:
             $profit_name = '카파';
             echo '<img src="./images/rating/profit_lv10.png" alt="profit">';
             break;
-            // Lambda
+            # 람다
+            # Lambda
           case 11:
             $profit_name = '람다';
             echo '<img src="./images/rating/profit_lv11.png" alt="profit">';
             break;
-            // Mu
+            # 뮤
+            # Mu
           case 12:
             $profit_name = '뮤';
             echo '<img src="./images/rating/profit_lv12.png" alt="profit">';
             break;
-            // Nu
+            # 뉴
+            # Nu
           case 13:
             $profit_name = '뉴';
             echo '<img src="./images/rating/profit_lv13.png" alt="profit">';
             break;
-            // Xi
+            # 크사이
+            # Xi
           case 14:
             $profit_name = '크사이';
             echo '<img src="./images/rating/profit_lv14.png" alt="profit">';
             break;
-            // Omicron
+            # 오미크론
+            # Omicron
           case 15:
             $profit_name = '오미크론';
             echo '<img src="./images/rating/profit_lv15.png" alt="profit">';
@@ -786,26 +858,39 @@ $item8 = $row['item8'];
         <h4><?php echo $profit_name ?></h4>
       </div>
     </div>
+
+    <!-- 건설 등급 -->
+    <!-- Building Status -->
     <div class="description_building">
       <div class="description_img">
         <?php
         switch ($building) {
+            # 없음
+            # None
           case 0:
             $building_name = '없음';
             echo '<img src="./images/building/building_none.png" alt="building">';
             break;
+            # 콜로나
+            # Kolona
           case 1:
             $building_name = '콜로나';
             echo '<img src="./images/building/building_kolona.png" alt="building">';
             break;
+            # 오데이온
+            # Odeion
           case 2:
             $building_name = '오데이온';
             echo '<img src="./images/building/building_odeion.png" alt="building">';
             break;
+            # 스타디온
+            # Stadion
           case 3:
             $building_name = '스타디온';
             echo '<img src="./images/building/building_stadion.png" alt="building">';
             break;
+            # 파르테논
+            # Parthenon
           case 4:
             $building_name = '파르테논';
             echo '<img src="./images/building/building_parthenon.png" alt="building">';
@@ -821,30 +906,46 @@ $item8 = $row['item8'];
         <h4><?php echo $building_name ?></h4>
       </div>
     </div>
+
   </div>
 
   <script>
-    // Move to ieros.php
+    /*
+     * 뒤로가기
+     * Go back to the previous page
+     */
     function back() {
       location.href = "ieros.php";
     }
 
-    // Move to ieros_rent.php
+    /*
+     * 임대하기
+     * Go to the RENT page
+     */
     function rent(idx) {
       location.href = "ieros_rent.php?idx=" + idx;
     }
 
-    // Move to ieros_build.php
+    /*
+     * 건설하기
+     * Go to the BUILD page
+     */
     function build(idx) {
       location.href = "ieros_build.php?idx=" + idx;
     }
 
-    // Move to ieros_rate.php
+    /*
+     * 승급하기
+     * Go to the RATE page
+     */
     function rate(idx) {
       location.href = "ieros_rate.php?idx=" + idx;
     }
 
-    // Move to ieros_mine.php
+    /*
+     * 채굴하기
+     * Go to the MINE page
+     */
     function mine(idx) {
       location.href = "ieros_mine.php?idx=" + idx;
     }

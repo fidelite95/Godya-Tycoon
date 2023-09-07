@@ -1,6 +1,7 @@
 <?php
 include("./login_status.php");
 include("./brand.php");
+include("./connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +22,6 @@ include("./brand.php");
 //   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
 //   echo "<script>location.href='login.php';</script>";
 // } else {
-?>
-
-<?php
-include("./connection.php");
 ?>
 
 <body>
@@ -52,8 +49,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -90,8 +87,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -128,8 +125,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -166,8 +163,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -204,8 +201,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -242,8 +239,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -280,8 +277,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -318,8 +315,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -356,8 +353,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -394,8 +391,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -438,8 +435,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -476,8 +473,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -514,8 +511,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -552,8 +549,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -590,8 +587,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -628,8 +625,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -666,8 +663,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -704,8 +701,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -742,8 +739,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"
@@ -780,8 +777,8 @@ include("./connection.php");
           $idx = $row['idx'];
           $land_code = $row['land_code'];
           $land_status = $row['land_status'];
-          $member_idx = $row['member_idx'];
           $member_id = $row['member_id'];
+          $member_nick = $row['member_nick'];
 
           # "land_status"에 따른 영토 상태
           # Status of the territory according to "land_status"

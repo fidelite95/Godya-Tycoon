@@ -1,79 +1,56 @@
 <?php
-# 로그인 세션
-# Login Session
-session_start();
-$login_id = $_SESSION['id'];
-if (isset($_SESSION['id'])) {
-  $login_status = true;
-} else {
-  $login_status = false;
-}
-
-// if (!$login_status) {
-//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-//   echo "<script>location.href='login.php';</script>";
-// } else {
-
+include("./login_status.php");
 include("./brand.php");
+include("./connection.php");
 
-# GET 방식으로 받은 데이터 : idx
-# GET an index from the previous page
+# GET 메소드로 받은 idx
+# idx received by the GET method
 $idx = $_GET['idx'];
 
-# 데이터베이스 연결
-# Connecting to a database
-$con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
-mysqli_query($con, 'SET NAMES utf8');
-$con->query("SET NAMES 'UTF8'");
-
-# 데이터베이스 연결 시 에러가 발생한 경우
-# If an error occurs when connecting to the database
-if ($con->connect_errno) {
-  die('Connection Error : ' . $con->connect_error);
-}
-
-# 영토 데이터 조회
-# Retrieving territory data
+# 영토 조회 쿼리
+# Query to find territory data
 $query = "SELECT * FROM tycoon_uranos WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
-# 영토 고유코드
+# 영토 코드
 # Land Code
 $land_code = $row['land_code'];
 
-# 영토 판매상태 : 0 (판매중), 1 (판매됨)
-# Land Status : 0 (For sale), 1 (Sold)
+# "land_status"에 따른 영토 상태
+# Status of the territory according to "land_status"
+# 0 : 판매중 (For sale)
+# 1 : 판매됨 (Sold)
 $land_status = $row['land_status'];
 
-# 사용자 인덱스
-# User Index
-$member_idX = $row['member_idX'];
+# 임차인 인덱스
+# Tenant Index
+$tenant_idx = $row['member_idx'];
 
-# 사용자 ID (구글 이메일)
-# User Account (Gmail)
-$member_id = $row['member_id'];
-if ($member_id == NULL) {
-  $member_id = '없음';
+# 임차인 계정
+# Tenant ID (Gmail)
+$tenant_id = $row['member_id'];
+if ($tenant_id == NULL) {
+  $tenant_id = '없음';
 }
 
 # 영토 가격
-# Land Price
+# Price
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
 
-# 수익 등급
+# 수익 등급 (승급하기)
 # Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
 
-# 건설 등급
+# 건설 등급 (건설하기)
 # Building : _build.php
 $building = $row['building'];
 $building_name = '';
 
-# 채굴 아이템 슬롯
-# Mined resources
+# 채굴 슬롯
+# Mining slots
 $item1 = $row['item1'];
 $item2 = $row['item2'];
 $item3 = $row['item3'];
@@ -88,7 +65,9 @@ $item8 = $row['item8'];
 <html>
 
 <head>
-  <?php include("./head.php") ?>
+  <?php
+  include("./head.php");
+  ?>
   <title>TYCOON | <?php echo $land_code ?></title>
   <link rel="stylesheet" type="text/css" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="tycoon.css" />
@@ -97,46 +76,43 @@ $item8 = $row['item8'];
   <link rel="stylesheet" type="text/css" href="modal.css" />
 </head>
 
+<?php
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
+?>
+
 <body>
 
-  <!-- 모달 시작 -->
-  <!-- Modal Start -->
+  <!-- 모달 -->
+  <!-- Modal -->
   <div id="modalGold" class="modal">
     <div class="modal_content">
       <p>골드로 결제하시겠습니까?</p>
       <button class="btn btn-effect" id="btnGold"><span>결제하기</span></button>
     </div>
   </div>
-  <!-- 모달 끝 -->
-  <!-- Modal End -->
 
-  <!-- 모달 시작 -->
-  <!-- Modal Start -->
+  <!-- 모달 -->
+  <!-- Modal -->
   <div id="modalRed" class="modal">
     <div class="modal_content">
       <p>레드베릴로 결제하시겠습니까?</p>
       <button class="btn btn-effect" id="btnRed"><span>결제하기</span></button>
     </div>
   </div>
-  <!-- 모달 끝 -->
-  <!-- Modal End -->
 
-  <!-- 데이터 저장을 위한 FORM 시작 -->
-  <!-- Form Start : Storing Data on Client -->
+  <!-- 데이터 저장을 위한 FORM tag -->
+  <!-- FORM tag for storing data -->
   <form>
     <input type="hidden" name="idx" id="idx" value="<?= $idx; ?>">
   </form>
-  <!-- 데이터 저장을 위한 FORM 끝 -->
-  <!-- Form End -->
 
-  <!-- 네비게이션바 시작 -->
-  <!-- Navbar Start -->
   <?php include("./navbar.php") ?>
-  <!-- 네비게이션바 끝 -->
-  <!-- Navbar End -->
 
-  <!-- 임차인 컴포넌트 시작 -->
-  <!-- Tenant Component Start -->
+  <!-- 임차인 컴포넌트 -->
+  <!-- Tenant Component -->
   <?php
   // Temporary Member ID
   $temporary_id = "grandefidelite@gmail.com";
@@ -340,8 +316,6 @@ $item8 = $row['item8'];
         }
         ?>
       </div>
-      <!-- 사용자 골드 -->
-      <!-- User's Gold -->
 
       <!-- 사용자 레드베릴 -->
       <!-- User's Red Beryl -->
@@ -377,20 +351,16 @@ $item8 = $row['item8'];
         }
         ?>
       </div>
-      <!-- 사용자 레드베릴 -->
-      <!-- User's Red Beryl -->
 
     </div>
   </div>
-  <!-- 임차인 컴포넌트 끝 -->
-  <!-- Tenant Component End -->
 
-  <!-- 소유권 컴포넌트 시작 -->
-  <!-- Ownership Component Start -->
+  <!-- 소유권 컴포넌트 -->
+  <!-- Ownership Component -->
   <div class="ownership_build">
     <h1 class="ownership_land"><?php echo $land_code ?></h1>
     <?php
-    # 영토 등급을 별로 표시
+    # 영토 등급을 별(star)로 표시
     # Display territory ratings by star
     switch ($idx) {
         # 1등급
@@ -576,14 +546,15 @@ $item8 = $row['item8'];
     }
     ?>
   </div>
-  <!-- 소유권 컴포넌트 끝 -->
-  <!-- Ownership Component End -->
 
-  <!-- 건설 등급 컴포넌트 시작 -->
-  <!-- Building Status Component Start -->
+  <!-- 건설 등급 컴포넌트 -->
+  <!-- Building Status Component -->
   <div class="building">
     <h3 class="building_title">현재 영토의 건설 등급</h3>
     <div class="building_desc">
+
+      <!-- 건설 등급에 따른 이미지 -->
+      <!-- Building Image -->
       <div class="building_img">
         <?php
         switch ($building) {
@@ -614,6 +585,9 @@ $item8 = $row['item8'];
         ?>
         <h4><?php echo $building_name ?></h4>
       </div>
+
+      <!-- 건설에 필요한 비용 -->
+      <!-- Cost for the building -->
       <div class="building_price">
         <div class="building_gold">
           <img class="tenant_img" src="./images/tycoon_gold.png" alt="gold" />
@@ -665,13 +639,12 @@ $item8 = $row['item8'];
         </div>
         <h4>ㅡ<br />건설에 필요한 비용</h4>
       </div>
+
     </div>
   </div>
-  <!-- 건설 등급 컴포넌트 끝 -->
-  <!-- Building Status Component End -->
 
-  <!-- 하단 버튼 시작 -->
-  <!-- Buttons Start -->
+  <!-- 하단 버튼들 -->
+  <!-- Buttons -->
   <div class="buttons">
 
     <button class="btn btn-effect" onclick="<?php if ($available_gold_lv1 == true || $available_gold_lv2 == true || $available_gold_lv3 == true || $available_gold_lv4 == true) { ?>
@@ -705,11 +678,12 @@ $item8 = $row['item8'];
     </button>
 
   </div>
-  <!-- 하단 버튼 끝 -->
-  <!-- Buttons End -->
 
   <script>
-    // Go back
+    /*
+     * 뒤로가기
+     * Go back to the previous page
+     */
     function back(idx) {
       location.href = "uranos_detail.php?idx=" + idx;
     }

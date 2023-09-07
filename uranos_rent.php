@@ -1,61 +1,56 @@
 <?php
+include("./login_status.php");
 include("./brand.php");
+include("./connection.php");
 
-session_start();
-$login_id = $_SESSION['id'];
-if (isset($_SESSION['id'])) {
-  $login_status = true;
-}
-
-// if (!$login_status) {
-//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-//   echo "<script>location.href='login.php';</script>";
-// } else {
-
-// GET an index from the previous page
+# GET 메소드로 받은 idx
+# idx received by the GET method
 $idx = $_GET['idx'];
 
-// Retrieving data from a database
-$con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
-mysqli_query($con, 'SET NAMES utf8');
-$con->query("SET NAMES 'UTF8'");
-
-if ($con->connect_errno) {
-  die('Connection Error : ' . $con->connect_error);
-}
-
+# 영토 조회 쿼리
+# Query to find territory data
 $query = "SELECT * FROM tycoon_uranos WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
-// Land Code
+# 영토 코드
+# Land Code
 $land_code = $row['land_code'];
 
-// Land Status : 0 (For sale), 1 (Sold)
+# "land_status"에 따른 영토 상태
+# Status of the territory according to "land_status"
+# 0 : 판매중 (For sale)
+# 1 : 판매됨 (Sold)
 $land_status = $row['land_status'];
 
-// Member Index
-$member_idX = $row['member_idX'];
+# 임차인 계정
+# Tenant ID (Gmail)
+$tenant_id = $row['member_id'];
 
-// Member ID (Gmail)
-$member_id = $row['member_id'];
-if ($member_id == NULL) {
-  $member_id = '없음';
+# 임차인 닉네임
+# Tenant Nickname
+$tenant_nick = $row['member_nick'];
+if ($tenant_nick == NULL) {
+  $tenant_nick = '없음';
 }
 
-// Price
+# 영토 가격
+# Price
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
 
-// Profitability : _rate.php
+# 수익 등급 (승급하기)
+# Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
 
-// Building : _build.php
+# 건설 등급 (건설하기)
+# Building : _build.php
 $building = $row['building'];
 $building_name = '';
 
-// Mined resources
+# 채굴 슬롯
+# Mining slots
 $item1 = $row['item1'];
 $item2 = $row['item2'];
 $item3 = $row['item3'];
