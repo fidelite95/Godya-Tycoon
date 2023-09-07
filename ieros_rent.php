@@ -1,61 +1,56 @@
 <?php
+include("./login_status.php");
 include("./brand.php");
+include("./connection.php");
 
-session_start();
-$login_id = $_SESSION['id'];
-if (isset($_SESSION['id'])) {
-  $login_status = true;
-}
-
-// if (!$login_status) {
-//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-//   echo "<script>location.href='login.php';</script>";
-// } else {
-
-// GET an index from the previous page
+# GET 메소드로 받은 idx
+# idx received by the GET method
 $idx = $_GET['idx'];
 
-// Retrieving data from a database
-$con = mysqli_connect("localhost", "gods2022", "wpdntm1004", "gods2022");
-mysqli_query($con, 'SET NAMES utf8');
-$con->query("SET NAMES 'UTF8'");
-
-if ($con->connect_errno) {
-  die('Connection Error : ' . $con->connect_error);
-}
-
+# 영토 조회 쿼리
+# Query to find territory data
 $query = "SELECT * FROM tycoon_ieros WHERE idx='$idx'";
 $result = $con->query($query);
 $row = $result->fetch_assoc();
 
-// Land Code
+# 영토 코드
+# Land Code
 $land_code = $row['land_code'];
 
-// Land Status : 0 (For sale), 1 (Sold)
+# "land_status"에 따른 영토 상태
+# Status of the territory according to "land_status"
+# 0 : 판매중 (For sale)
+# 1 : 판매됨 (Sold)
 $land_status = $row['land_status'];
 
-// Member Index
-$member_idX = $row['member_idX'];
+# 임차인 계정
+# Tenant ID (Gmail)
+$tenant_id = $row['member_id'];
 
-// Member ID (Gmail)
-$member_id = $row['member_id'];
-if ($member_id == NULL) {
-  $member_id = '없음';
+# 임차인 닉네임
+# Tenant Nickname
+$tenant_nick = $row['member_nick'];
+if ($tenant_nick == NULL) {
+  $tenant_nick = '없음';
 }
 
-// Price
+# 영토 가격
+# Price
 $price_gold = number_format($row['price_gold']);
 $price_red = number_format($row['price_red']);
 
-// Profitability : _rate.php
+# 수익 등급 (승급하기)
+# Profitability : _rate.php
 $profit = $row['profit'];
 $profit_name = '';
 
-// Building : _build.php
+# 건설 등급 (건설하기)
+# Building : _build.php
 $building = $row['building'];
 $building_name = '';
 
-// Mined resources
+# 채굴 슬롯
+# Mining slots
 $item1 = $row['item1'];
 $item2 = $row['item2'];
 $item3 = $row['item3'];
@@ -83,34 +78,37 @@ $item8 = $row['item8'];
 
   <!-- Tenant -->
   <?php
-  // Temporary Member ID
-  $temporary_id = "grandefidelite@gmail.com";
+  # SESSION에서 받은 현재 로그인 중인 유저 ID
+  # User ID received from the SESSION
+  $id = $_SESSION['id'];
+  $id_sanitized = filter_var($id, FILTER_SANITIZE_EMAIL);
 
-  $query_tenant = "SELECT * FROM tb_member WHERE id='$temporary_id'";
+  # 사용자 조회 쿼리
+  # Query to find a user
+  $query_tenant = "SELECT * FROM god_member WHERE id='$id_sanitized'";
   $result_tenant = $con->query($query_tenant);
   $row_tenant = $result_tenant->fetch_assoc();
 
-  //──────── Member Nickname
-  // $member_nick = $row_tenant['nick'];
-  $member_nick = "아슬란";
+  # 사용자 닉네임
+  # User Nickname
+  $member_nick = $row_tenant['nick'];
 
-  //──────── Member Asset
-  // $member_gold = number_format($row_tenant['point']);
-  // $member_red = number_format($row_tenant['cash']);
-  $gold = 8034678;
-  $red = 7564;
-  $member_gold = number_format($gold);
-  $member_red = number_format($red);
+  # 유저 자산
+  # User Asset
+  $member_gold = number_format($row_tenant['gold']);
+  $member_red = number_format($row_tenant['cash']);
 
-  //──────── Comparison (Gold)
+  # 구매 가능여부 확인 (골드)
+  # Check availability (Gold)
   $available_gold = false;
-  if ($gold >= $row['price_gold']) {
+  if ($member_gold >= $row['price_gold']) {
     $available_gold = true;
   }
 
-  //──────── Comparison (Red)
+  # 구매 가능여부 확인 (레드베릴)
+  # Check availability (Red Beryl)
   $available_red = false;
-  if ($red >= $row['price_red']) {
+  if ($member_red >= $row['price_red']) {
     $available_red = true;
   }
   ?>

@@ -70,7 +70,7 @@ $item8 = $row['item8'];
   <link rel="stylesheet" type="text/css" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="tycoon.css" />
   <link rel="stylesheet" type="text/css" href="navbar.css" />
-  <link rel="stylesheet" type="text/css" href="rent.css">
+  <link rel="stylesheet" type="text/css" href="common.css">
 </head>
 
 <body>
@@ -78,34 +78,37 @@ $item8 = $row['item8'];
 
   <!-- Tenant -->
   <?php
-  // Temporary Member ID
-  $temporary_id = "grandefidelite@gmail.com";
+  # SESSION에서 받은 현재 로그인 중인 유저 ID
+  # User ID received from the SESSION
+  $id = $_SESSION['id'];
+  $id_sanitized = filter_var($id, FILTER_SANITIZE_EMAIL);
 
-  $query_tenant = "SELECT * FROM tb_member WHERE id='$temporary_id'";
+  # 사용자 조회 쿼리
+  # Query to find a user
+  $query_tenant = "SELECT * FROM god_member WHERE id='$id_sanitized'";
   $result_tenant = $con->query($query_tenant);
   $row_tenant = $result_tenant->fetch_assoc();
 
-  //──────── Member Nickname
-  // $member_nick = $row_tenant['nick'];
-  $member_nick = "아슬란";
+  # 사용자 닉네임
+  # User Nickname
+  $member_nick = $row_tenant['nick'];
 
-  //──────── Member Asset
-  // $member_gold = number_format($row_tenant['point']);
-  // $member_red = number_format($row_tenant['cash']);
-  $gold = 8034678;
-  $red = 7564;
-  $member_gold = number_format($gold);
-  $member_red = number_format($red);
+  # 유저 자산
+  # User Asset
+  $member_gold = number_format($row_tenant['gold']);
+  $member_red = number_format($row_tenant['cash']);
 
-  //──────── Comparison (Gold)
+  # 구매 가능여부 확인 (골드)
+  # Check availability (Gold)
   $available_gold = false;
-  if ($gold >= $row['price_gold']) {
+  if ($member_gold >= $row['price_gold']) {
     $available_gold = true;
   }
 
-  //──────── Comparison (Red)
+  # 구매 가능여부 확인 (레드베릴)
+  # Check availability (Red Beryl)
   $available_red = false;
-  if ($red >= $row['price_red']) {
+  if ($member_red >= $row['price_red']) {
     $available_red = true;
   }
   ?>
@@ -347,8 +350,7 @@ $item8 = $row['item8'];
                                                               alert('골드 잔액이 부족합니다.');
                                                             <?php } ?>">
       <span>
-        <img src="./images/tycoon_gold.png" alt="gold" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
-        사용
+        임대하기
       </span>
     </button>
     <button class="btn btn-effect" onclick="<?php if ($available_red == true) { ?>
