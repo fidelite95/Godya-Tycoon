@@ -177,7 +177,8 @@ if ($coin == 'gold') {
 $now = date('Y-m-d H:i:s');
 $building_update = $building + 1;
 if ($coin == 'gold') {
-    // tycoon_uranos
+    # 영토 페이지 쿼리
+    # tycoon_uranos
     switch ($building_update) {
         case 1:
             $query_update = "UPDATE tycoon_uranos
@@ -207,7 +208,8 @@ if ($coin == 'gold') {
             break;
     }
 
-    // tycoon_build_history
+    # 건설 내역 페이지 쿼리
+    # tycoon_build_history
     $query_record = "INSERT INTO tycoon_build_history (
         member_idx,
         member_id,
@@ -234,7 +236,8 @@ if ($coin == 'gold') {
     // mysqli_query($con, $query_record);
     mysqli_close($con);
 } elseif ($coin == 'red') {
-    // tycoon_uranos
+    # 영토 페이지 쿼리
+    # tycoon_uranos
     switch ($building_update) {
         case 1:
             $query_update = "UPDATE tycoon_uranos
@@ -264,7 +267,8 @@ if ($coin == 'gold') {
             break;
     }
 
-    // tycoon_build_history
+    # 건설 내역 페이지 쿼리
+    # tycoon_build_history
     $query_record = "INSERT INTO tycoon_build_history (
         member_idx,
         member_id,

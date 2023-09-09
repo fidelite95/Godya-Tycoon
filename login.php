@@ -12,29 +12,12 @@ include("./brand.php");
     <title>TYCOON</title>
     <link rel="stylesheet" type="text/css" href="common.css" />
     <link rel="stylesheet" type="text/css" href="index.css" />
-    <link rel="stylesheet" type="text/css" href="play.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 
 <body id="body" style="opacity: 0">
-
-    <!-- 플레이어 컴포넌트 -->
-    <!-- Player Component -->
-    <div class="player">
-        <div class="buttons">
-            <div class="prev-track" onclick="prevTrack()">
-                <i class="fa fa-step-backward fa-1x"></i>
-            </div>
-            <div class="playpause-track" onclick="playpauseTrack()">
-                <i class="fa fa-play-circle fa-2x"></i>
-            </div>
-            <div class="next-track" onclick="nextTrack()">
-                <i class="fa fa-step-forward fa-1x"></i>
-            </div>
-        </div>
-    </div>
 
     <!-- 메인 페이지 -->
     <!-- Main Page -->
@@ -52,7 +35,7 @@ include("./brand.php");
                 <!-- Login Form -->
                 <form class="login__form" action="login_ok.php" method="post">
                     <div class="login__box">
-                        <label for="inputId" class="form-label" style="margin-right: 30px;">신이야 ID :</label>
+                        <p>신이야 계정을 입력해주세요.</p>
                         <input name="inputId" type="text" class="form-control" id="inputId" />
                     </div>
                     <button class="btn btn-effect" type="submit">
@@ -96,10 +79,6 @@ include("./brand.php");
         document.getElementById('vid').play();
     </script>
 
-    <!-- 오디오 플레이어 JS -->
-    <!-- Audio Player JS -->
-    <script src="play.js"></script>
-    
 </body>
 
 </html>

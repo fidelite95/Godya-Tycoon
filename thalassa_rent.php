@@ -3,6 +3,11 @@ include("./login_status.php");
 include("./brand.php");
 include("./connection.php");
 
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
+
 # GET 메소드로 받은 idx
 # idx received by the GET method
 $idx = $_GET['idx'];
@@ -65,15 +70,41 @@ $item8 = $row['item8'];
 <html>
 
 <head>
-  <?php include("./head.php") ?>
+  <?php
+  include("./head.php");
+  ?>
   <title>TYCOON | <?php echo $land_code ?></title>
   <link rel="stylesheet" type="text/css" href="cube.css" />
   <link rel="stylesheet" type="text/css" href="tycoon.css" />
   <link rel="stylesheet" type="text/css" href="navbar.css" />
-  <link rel="stylesheet" type="text/css" href="rent.css">
+  <link rel="stylesheet" type="text/css" href="common.css" />
+  <link rel="stylesheet" type="text/css" href="modal.css" />
 </head>
 
+<?php
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
+?>
+
 <body>
+
+  <!-- 모달 -->
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal_content">
+      <p>결제하시겠습니까?</p>
+      <button class="btn btn-effect" id="btnPay"><span>결제하기</span></button>
+    </div>
+  </div>
+
+  <!-- 데이터 저장을 위한 FORM tag -->
+  <!-- FORM tag for storing data -->
+  <form>
+    <input type="hidden" name="idx" id="idx" value="<? echo $idx; ?>">
+  </form>
+
   <?php include("./navbar.php") ?>
 
   <!-- Tenant -->
@@ -101,23 +132,23 @@ $item8 = $row['item8'];
   # 구매 가능여부 확인 (골드)
   # Check availability (Gold)
   $available_gold = false;
-  if ($member_gold >= $row['price_gold']) {
+  if ($row_tenant['gold'] >= $row['price_gold']) {
     $available_gold = true;
   }
 
   # 구매 가능여부 확인 (레드베릴)
   # Check availability (Red Beryl)
   $available_red = false;
-  if ($member_red >= $row['price_red']) {
+  if ($row_tenant['cash'] >= $row['price_red']) {
     $available_red = true;
   }
   ?>
   <div class="tenant">
-    <h3 class="tenant_name"><?php echo $member_nick ?>님의 보유자산</h3>
+    <h3 class="tenant_name"><?php echo $member_nick; ?>님의 보유자산</h3>
     <div class="tenant_asset">
       <div class="tenant_gold">
         <img class="tenant_img" src="./images/tycoon_gold.png" alt="gold" />
-        <p><?php echo $member_gold ?></p>
+        <p><?php echo $member_gold; ?></p>
         <?php
         if ($available_gold == false) {
           echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
@@ -126,7 +157,7 @@ $item8 = $row['item8'];
       </div>
       <div class="tenant_red">
         <img class="tenant_img" src="./images/tycoon_red.png" alt="red" />
-        <p><?php echo $member_red ?></p>
+        <p><?php echo $member_red; ?></p>
         <?php
         if ($available_red == false) {
           echo '<img class="tenant_warning" src="./images/warning_sign.png" alt="gold" />';
@@ -138,15 +169,15 @@ $item8 = $row['item8'];
 
   <!-- Ownership -->
   <div class="ownership_buy">
-    <h1 class="ownership_land"><?php echo $land_code ?></h1>
+    <h1 class="ownership_land"><?php echo $land_code; ?></h1>
     <div class="ownership_price">
       <div class="price_gold">
         <img src="./images/tycoon_gold.png" alt="gold" />
-        <p><?php echo $price_gold ?></p>
+        <p><?php echo $price_gold; ?></p>
       </div>
       <div class="price_red">
         <img src="./images/tycoon_red.png" alt="red" />
-        <p><?php echo $price_red ?></p>
+        <p><?php echo $price_red; ?></p>
       </div>
     </div>
   </div>
@@ -344,57 +375,58 @@ $item8 = $row['item8'];
 
   <!-- Buttons -->
   <div class="buttons">
-    <button class="btn btn-effect" onclick="<?php if ($available_gold == true) { ?>
-                                                              payWithGold(<?= $idx; ?>);
-                                                            <?php } else { ?>
-                                                              alert('골드 잔액이 부족합니다.');
+    <button class="btn btn-effect" onclick="<?php if ($available_gold == true && $available_red == true) { ?>
+                                                              pay(<?= $idx; ?>);
+                                                            <?php } else if ($available_gold == false) { ?>
+                                                              alert('골드가 부족합니다.');
+                                                            <?php } else if ($available_red == false) { ?>
+                                                              alert('레드베릴이 부족합니다.');
+                                                            <?php } else if ($available_gold == false && $available_red == false) { ?>
+                                                              alert('골드와 레드베릴 모두 부족합니다.');
                                                             <?php } ?>">
       <span>
-        <img src="./images/tycoon_gold.png" alt="gold" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
-        사용
+        임대하기
       </span>
     </button>
-    <button class="btn btn-effect" onclick="<?php if ($available_red == true) { ?>
-                                                              payWithRed(<?= $idx; ?>);
-                                                            <?php } else { ?>
-                                                              alert('레드베릴 잔액이 부족합니다.');
-                                                            <?php } ?>">
-      <span>
-        <img src="./images/tycoon_red.png" alt="red" style="width: 20px; margin-right: 10px; transform: translateY(3px);" />
-        사용
-      </span>
-    </button>
+
     <button class="btn btn-effect" onclick="back(<?= $idx; ?>)">
       <span>취소</span>
     </button>
   </div>
 
   <script>
-    // Go back
+    /*
+     * 뒤로가기
+     * Go back to the previous page
+     */
     function back(idx) {
       location.href = "thalassa_detail.php?idx=" + idx;
     }
 
-    // Pay with Gold
-    function payWithGold(idx) {
-      let answer = confirm("골드로 결제하시겠습니까?");
-      if (answer == true) {
-        location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=gold";
-      }
+    const modal = document.getElementById("modal");
+    const btnPay = document.getElementById("btnPay");
+
+    /*
+     * 결제하기
+     * Pay
+     */
+    function pay() {
+      modal.style.display = "block";
     }
 
-    // Pay with Red beryl
-    function payWithRed(idx) {
-      let answer = confirm("레드베릴로 결제하시겠습니까?");
-      if (answer == true) {
-        location.href = "uranos_rent_ok.php?idx=" + idx + "&coin=red";
-      }
+    btnPay.addEventListener("click", () => {
+      let idx = document.getElementById('idx').value;
+      success(idx);
+    });
+
+    function success(idx) {
+      location.href = "thalassa_rent_ok.php?idx=" + idx;
     }
   </script>
 </body>
 
+</html>
+
 <?php
 // }
 ?>
-
-</html>

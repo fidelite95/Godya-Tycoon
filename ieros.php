@@ -24,7 +24,7 @@ include("./connection.php");
 // } else {
 ?>
 
-<body>
+<body id="body" style="opacity: 0">
 
   <div class="container">
 
@@ -810,6 +810,29 @@ include("./connection.php");
   <!-- JS Script -->
   <script>
     /*
+     * 페이드인 효과
+     * Fade-In Effect
+     */
+    var opacity = 0;
+    var intervalID = 0;
+
+    function show() {
+      var body = document.getElementById('body');
+      opacity = Number(window.getComputedStyle(body).getPropertyValue('opacity'));
+      if (opacity < 1) {
+        opacity = opacity + 0.1;
+        body.style.opacity = opacity;
+      } else {
+        clearInterval(intervalID);
+      }
+    }
+
+    function fadeIn() {
+      setInterval(show, 60);
+    }
+    window.onload = fadeIn;
+
+    /*
      * 오버레이
      * Overlay
      */
@@ -826,11 +849,11 @@ include("./connection.php");
     });
 
     /*
-     * uranos_detail.php 페이지로 이동
-     * Go to uranos_detail.php
+     * ieros_detail.php 페이지로 이동
+     * Go to ieros_detail.php
      */
     function detail(idx) {
-      location.href = "uranos_detail.php?idx=" + idx;
+      location.href = "ieros_detail.php?idx=" + idx;
     }
   </script>
 
