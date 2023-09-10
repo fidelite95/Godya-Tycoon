@@ -2,6 +2,11 @@
 include("./login_status.php");
 include("./brand.php");
 include("./connection.php");
+
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
 ?>
 
 <!DOCTYPE html>
@@ -16,13 +21,6 @@ include("./connection.php");
   <link rel="stylesheet" type="text/css" href="transition.css" />
   <link rel="stylesheet" type="text/css" href="navbar.css" />
 </head>
-
-<?php
-// if (!$login_status) {
-//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-//   echo "<script>location.href='login.php';</script>";
-// } else {
-?>
 
 <body id="body" style="opacity: 0">
 
@@ -859,8 +857,8 @@ include("./connection.php");
 
 </body>
 
+</html>
+
 <?php
 // }
 ?>
-
-</html>

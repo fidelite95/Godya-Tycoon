@@ -3,6 +3,11 @@ include("./login_status.php");
 include("./brand.php");
 include("./connection.php");
 
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
+
 # GET 메소드로 받은 idx
 # idx received by the GET method
 $idx = $_GET['idx'];
@@ -16,6 +21,10 @@ $row = $result->fetch_assoc();
 # 영토 코드
 # Land Code
 $land_code = $row['land_code'];
+
+# 영토 등급
+# Land Grade
+$land_grade = $row['land_grade'];
 
 # "land_status"에 따른 영토 상태
 # Status of the territory according to "land_status"
@@ -59,6 +68,8 @@ $item5 = $row['item5'];
 $item6 = $row['item6'];
 $item7 = $row['item7'];
 $item8 = $row['item8'];
+
+# ────────────────────────────────────
 ?>
 
 <!DOCTYPE html>
@@ -74,13 +85,6 @@ $item8 = $row['item8'];
   <link rel="stylesheet" type="text/css" href="navbar.css" />
   <link rel="stylesheet" type="text/css" href="description.css" />
 </head>
-
-<?php
-// if (!$login_status) {
-//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-//   echo "<script>location.href='login.php';</script>";
-// } else {
-?>
 
 <body>
 
@@ -111,9 +115,7 @@ $item8 = $row['item8'];
     } elseif ($land_status == 1) {
       # 영토 등급을 별(star)로 표시
       # Display territory ratings by star
-      switch ($idx) {
-          # 1등급
-          # 1st
+      switch ($land_grade) {
         case 1:
           echo '
           <div class="ownership_star">
@@ -130,9 +132,21 @@ $item8 = $row['item8'];
            </div>
           ';
           break;
-          # 2등급
-          # 2nd
         case 2:
+          echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+          break;
         case 3:
           echo '
           <div class="ownership_star">
@@ -144,14 +158,34 @@ $item8 = $row['item8'];
             <img src="./images/tycoon_star.png" alt="star" />
             <img src="./images/tycoon_star.png" alt="star" />
             <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+          break;
+        case 4:
+          echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
             <img src="./images/tycoon_star.png" alt="star" />
            </div>
           ';
           break;
-          # 3등급
-          # 3rd
-        case 4:
         case 5:
+          echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+          break;
         case 6:
           echo '
           <div class="ownership_star">
@@ -160,132 +194,37 @@ $item8 = $row['item8'];
             <img src="./images/tycoon_star.png" alt="star" />
             <img src="./images/tycoon_star.png" alt="star" />
             <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
            </div>
           ';
           break;
-          # 4등급
-          # 4th
         case 7:
+          echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+          break;
         case 8:
+          echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+          break;
         case 9:
+          echo '
+          <div class="ownership_star">
+            <img src="./images/tycoon_star.png" alt="star" />
+            <img src="./images/tycoon_star.png" alt="star" />
+           </div>
+          ';
+          break;
         case 10:
-          echo '
-          <div class="ownership_star">
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-           </div>
-          ';
-          break;
-          # 5등급
-          # 5th
-        case 11:
-        case 12:
-        case 13:
-        case 14:
-        case 15:
-          echo '
-          <div class="ownership_star">
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-           </div>
-          ';
-          break;
-          # 6등급
-          # 6th
-        case 16:
-        case 17:
-        case 18:
-        case 19:
-        case 20:
-        case 21:
-          echo '
-          <div class="ownership_star">
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-           </div>
-          ';
-          break;
-          # 7등급
-          # 7th
-        case 22:
-        case 23:
-        case 24:
-        case 25:
-        case 26:
-        case 27:
-        case 28:
-          echo '
-          <div class="ownership_star">
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-           </div>
-          ';
-          break;
-          # 8등급
-          # 8th
-        case 29:
-        case 30:
-        case 31:
-        case 32:
-        case 33:
-        case 34:
-        case 35:
-        case 36:
-          echo '
-          <div class="ownership_star">
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-           </div>
-          ';
-          break;
-          # 9등급
-          # 9th
-        case 37:
-        case 38:
-        case 39:
-        case 40:
-        case 41:
-        case 42:
-        case 43:
-        case 44:
-        case 45:
-          echo '
-          <div class="ownership_star">
-            <img src="./images/tycoon_star.png" alt="star" />
-            <img src="./images/tycoon_star.png" alt="star" />
-           </div>
-          ';
-          break;
-          # 10등급
-          # 10th
-        case 46:
-        case 47:
-        case 48:
-        case 49:
-        case 50:
-        case 51:
-        case 52:
-        case 53:
-        case 54:
-        case 55:
           echo '
           <div class="ownership_star">
             <img src="./images/tycoon_star.png" alt="star" />
@@ -303,9 +242,7 @@ $item8 = $row['item8'];
   # 영토가 판매중인 경우
   # If the territory is for sale
   if ($land_status == 0) {
-    switch ($idx) {
-        # 1등급
-        # 1st
+    switch ($land_grade) {
       case 1:
         echo '
         <div class="cube_1">
@@ -319,10 +256,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 2등급
-        # 2nd
       case 2:
-      case 3:
         echo '
         <div class="cube_2">
           <div class="top_2"></div>
@@ -335,11 +269,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 3등급
-        # 3rd
-      case 4:
-      case 5:
-      case 6:
+      case 3:
         echo '
         <div class="cube_3">
           <div class="top_3"></div>
@@ -352,12 +282,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 4등급
-        # 4th
-      case 7:
-      case 8:
-      case 9:
-      case 10:
+      case 4:
         echo '
         <div class="cube_4">
           <div class="top_4"></div>
@@ -370,13 +295,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 5등급
-        # 5th
-      case 11:
-      case 12:
-      case 13:
-      case 14:
-      case 15:
+      case 5:
         echo '
         <div class="cube_5">
           <div class="top_5"></div>
@@ -389,14 +308,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 6등급
-        # 6th
-      case 16:
-      case 17:
-      case 18:
-      case 19:
-      case 20:
-      case 21:
+      case 6:
         echo '
         <div class="cube_6">
           <div class="top_6"></div>
@@ -409,15 +321,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 7등급
-        # 7th
-      case 22:
-      case 23:
-      case 24:
-      case 25:
-      case 26:
-      case 27:
-      case 28:
+      case 7:
         echo '
         <div class="cube_7">
           <div class="top_7"></div>
@@ -430,16 +334,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 8등급
-        # 8th
-      case 29:
-      case 30:
-      case 31:
-      case 32:
-      case 33:
-      case 34:
-      case 35:
-      case 36:
+      case 8:
         echo '
         <div class="cube_8">
           <div class="top_8"></div>
@@ -452,17 +347,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 9등급
-        # 9th
-      case 37:
-      case 38:
-      case 39:
-      case 40:
-      case 41:
-      case 42:
-      case 43:
-      case 44:
-      case 45:
+      case 9:
         echo '
         <div class="cube_9">
           <div class="top_9"></div>
@@ -475,18 +360,7 @@ $item8 = $row['item8'];
         </div>
         ';
         break;
-        # 10등급
-        # 10th
-      case 46:
-      case 47:
-      case 48:
-      case 49:
-      case 50:
-      case 51:
-      case 52:
-      case 53:
-      case 54:
-      case 55:
+      case 10:
         echo '
         <div class="cube_10">
           <div class="top_10"></div>
@@ -503,201 +377,136 @@ $item8 = $row['item8'];
     # 영토가 판매된 경우
     # If the territory is sold
   } elseif ($land_status == 1) {
-    switch ($idx) {
-        # 1등급
-        # 1st
+    switch ($land_grade) {
       case 1:
         echo '
-      <div class="cube_uranos_1">
-        <div class="top_uranos_1"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
+        <div class="cube_uranos_1">
+          <div class="top_uranos_1"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
         </div>
-      </div>
-      ';
+        ';
         break;
-        # 2등급
-        # 2nd
       case 2:
+        echo '
+        <div class="cube_uranos_2">
+          <div class="top_uranos_2"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
       case 3:
         echo '
-      <div class="cube_uranos_2">
-        <div class="top_uranos_2"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
+        <div class="cube_uranos_3">
+          <div class="top_uranos_3"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
         </div>
-      </div>
-      ';
+        ';
         break;
-        # 3등급
-        # 3rd
       case 4:
+        echo '
+        <div class="cube_uranos_4">
+          <div class="top_uranos_4"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
       case 5:
+        echo '
+        <div class="cube_uranos_5">
+          <div class="top_uranos_5"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
       case 6:
         echo '
-      <div class="cube_uranos_3">
-        <div class="top_uranos_3"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
+        <div class="cube_uranos_6">
+          <div class="top_uranos_6"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
         </div>
-      </div>
-      ';
+        ';
         break;
-        # 4등급
-        # 4th
       case 7:
+        echo '
+        <div class="cube_uranos_7">
+          <div class="top_uranos_7"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
       case 8:
+        echo '
+        <div class="cube_uranos_8">
+          <div class="top_uranos_8"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
       case 9:
+        echo '
+        <div class="cube_uranos_9">
+          <div class="top_uranos_9"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
+        </div>
+        ';
+        break;
       case 10:
         echo '
-      <div class="cube_uranos_4">
-        <div class="top_uranos_4"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
+        <div class="cube_uranos_10">
+          <div class="top_uranos_10"></div>
+          <div>
+            <span style="--i: 0"></span>
+            <span style="--i: 1"></span>
+            <span style="--i: 2"></span>
+            <span style="--i: 3"></span>
+          </div>
         </div>
-      </div>
-      ';
-        break;
-        # 5등급
-        # 5th
-      case 11:
-      case 12:
-      case 13:
-      case 14:
-      case 15:
-        echo '
-      <div class="cube_uranos_5">
-        <div class="top_uranos_5"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        # 6등급
-        # 6th
-      case 16:
-      case 17:
-      case 18:
-      case 19:
-      case 20:
-      case 21:
-        echo '
-      <div class="cube_uranos_6">
-        <div class="top_uranos_6"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        # 7등급
-        # 7th
-      case 22:
-      case 23:
-      case 24:
-      case 25:
-      case 26:
-      case 27:
-      case 28:
-        echo '
-      <div class="cube_uranos_7">
-        <div class="top_uranos_7"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        # 8등급
-        # 8th
-      case 29:
-      case 30:
-      case 31:
-      case 32:
-      case 33:
-      case 34:
-      case 35:
-      case 36:
-        echo '
-      <div class="cube_uranos_8">
-        <div class="top_uranos_8"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        # 9등급
-        # 9th
-      case 37:
-      case 38:
-      case 39:
-      case 40:
-      case 41:
-      case 42:
-      case 43:
-      case 44:
-      case 45:
-        echo '
-      <div class="cube_uranos_9">
-        <div class="top_uranos_9"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
-        break;
-        # 10등급
-        # 10th
-      case 46:
-      case 47:
-      case 48:
-      case 49:
-      case 50:
-      case 51:
-      case 52:
-      case 53:
-      case 54:
-      case 55:
-        echo '
-      <div class="cube_uranos_10">
-        <div class="top_uranos_10"></div>
-        <div>
-          <span style="--i: 0"></span>
-          <span style="--i: 1"></span>
-          <span style="--i: 2"></span>
-          <span style="--i: 3"></span>
-        </div>
-      </div>
-      ';
+        ';
         break;
     }
   }
@@ -952,8 +761,8 @@ $item8 = $row['item8'];
   </script>
 </body>
 
+</html>
+
 <?php
 // }
 ?>
-
-</html>

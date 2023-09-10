@@ -107,6 +107,10 @@
     transition: all 0.3s;
 }
 
+.btn:last-child {
+    margin-right: 0px;
+}
+
 .btn span {
     position: absolute;
     cursor: pointer;

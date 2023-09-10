@@ -3,6 +3,105 @@ include("./login_status.php");
 include("./brand.php");
 include("./connection.php");
 
+// if (!$login_status) {
+//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
+//   echo "<script>location.href='login.php';</script>";
+// } else {
+
+# 건설 가격표
+# Pricing list <Build>
+# grade1 ~ grade10
+
+# 0 -> 1 : kolona
+$cost_gold_grade1_kolona = 550000;
+$cost_gold_grade2_kolona = 500000;
+$cost_gold_grade3_kolona = 450000;
+$cost_gold_grade4_kolona = 400000;
+$cost_gold_grade5_kolona = 350000;
+$cost_gold_grade6_kolona = 300000;
+$cost_gold_grade7_kolona = 250000;
+$cost_gold_grade8_kolona = 200000;
+$cost_gold_grade9_kolona = 150000;
+$cost_gold_grade10_kolona = 100000;
+$cost_red_grade1_kolona = 1400;
+$cost_red_grade2_kolona = 1300;
+$cost_red_grade3_kolona = 1200;
+$cost_red_grade4_kolona = 1100;
+$cost_red_grade5_kolona = 1000;
+$cost_red_grade6_kolona = 900;
+$cost_red_grade7_kolona = 800;
+$cost_red_grade8_kolona = 700;
+$cost_red_grade9_kolona = 600;
+$cost_red_grade10_kolona = 500;
+
+# 1 -> 2 : odeion
+$cost_gold_grade1_odeion = 1100000;
+$cost_gold_grade2_odeion = 1000000;
+$cost_gold_grade3_odeion = 900000;
+$cost_gold_grade4_odeion = 800000;
+$cost_gold_grade5_odeion = 700000;
+$cost_gold_grade6_odeion = 600000;
+$cost_gold_grade7_odeion = 500000;
+$cost_gold_grade8_odeion = 400000;
+$cost_gold_grade9_odeion = 300000;
+$cost_gold_grade10_odeion = 200000;
+$cost_red_grade1_odeion = 2800;
+$cost_red_grade2_odeion = 2600;
+$cost_red_grade3_odeion = 2400;
+$cost_red_grade4_odeion = 2200;
+$cost_red_grade5_odeion = 2000;
+$cost_red_grade6_odeion = 1800;
+$cost_red_grade7_odeion = 1600;
+$cost_red_grade8_odeion = 1400;
+$cost_red_grade9_odeion = 1200;
+$cost_red_grade10_odeion = 1000;
+
+# 2 -> 3 : stadion
+$cost_gold_grade1_stadion = 1650000;
+$cost_gold_grade2_stadion = 1500000;
+$cost_gold_grade3_stadion = 1350000;
+$cost_gold_grade4_stadion = 1200000;
+$cost_gold_grade5_stadion = 1050000;
+$cost_gold_grade6_stadion = 900000;
+$cost_gold_grade7_stadion = 750000;
+$cost_gold_grade8_stadion = 600000;
+$cost_gold_grade9_stadion = 450000;
+$cost_gold_grade10_stadion = 300000;
+$cost_red_grade1_stadion = 4200;
+$cost_red_grade2_stadion = 3900;
+$cost_red_grade3_stadion = 3600;
+$cost_red_grade4_stadion = 3300;
+$cost_red_grade5_stadion = 3000;
+$cost_red_grade6_stadion = 2700;
+$cost_red_grade7_stadion = 2400;
+$cost_red_grade8_stadion = 2100;
+$cost_red_grade9_stadion = 1800;
+$cost_red_grade10_stadion = 1500;
+
+# 3 -> 4 : parthenon
+$cost_gold_grade1_stadion = 2200000;
+$cost_gold_grade2_stadion = 2000000;
+$cost_gold_grade3_stadion = 1800000;
+$cost_gold_grade4_stadion = 1600000;
+$cost_gold_grade5_stadion = 1400000;
+$cost_gold_grade6_stadion = 1200000;
+$cost_gold_grade7_stadion = 1000000;
+$cost_gold_grade8_stadion = 800000;
+$cost_gold_grade9_stadion = 600000;
+$cost_gold_grade10_stadion = 400000;
+$cost_red_grade1_stadion = 5600;
+$cost_red_grade2_stadion = 5200;
+$cost_red_grade3_stadion = 4800;
+$cost_red_grade4_stadion = 4400;
+$cost_red_grade5_stadion = 4000;
+$cost_red_grade6_stadion = 3600;
+$cost_red_grade7_stadion = 3200;
+$cost_red_grade8_stadion = 2800;
+$cost_red_grade9_stadion = 2400;
+$cost_red_grade10_stadion = 2000;
+
+# ────────────────────────────────────
+
 # GET 메소드로 받은 idx
 # idx received by the GET method
 $idx = $_GET['idx'];
@@ -17,21 +116,25 @@ $row = $result->fetch_assoc();
 # Land Code
 $land_code = $row['land_code'];
 
+# 영토 등급
+# Land Grade
+$land_grade = $row['land_grade'];
+
 # "land_status"에 따른 영토 상태
 # Status of the territory according to "land_status"
 # 0 : 판매중 (For sale)
 # 1 : 판매됨 (Sold)
 $land_status = $row['land_status'];
 
-# 임차인 인덱스
-# Tenant Index
-$tenant_idx = $row['member_idx'];
-
 # 임차인 계정
 # Tenant ID (Gmail)
 $tenant_id = $row['member_id'];
-if ($tenant_id == NULL) {
-  $tenant_id = '없음';
+
+# 임차인 닉네임
+# Tenant Nickname
+$tenant_nick = $row['member_nick'];
+if ($tenant_nick == NULL) {
+  $tenant_nick = '없음';
 }
 
 # 영토 가격
@@ -59,6 +162,163 @@ $item5 = $row['item5'];
 $item6 = $row['item6'];
 $item7 = $row['item7'];
 $item8 = $row['item8'];
+
+# ────────────────────────────────────
+
+# SESSION에서 받은 현재 로그인 중인 유저 ID
+# User ID received from the SESSION
+$id = $_SESSION['id'];
+$id_sanitized = filter_var($id, FILTER_SANITIZE_EMAIL);
+
+# 사용자 조회 쿼리
+# Query to find a user
+$query_tenant = "SELECT * FROM god_member WHERE id='$id_sanitized'";
+$result_tenant = $con->query($query_tenant);
+$row_tenant = $result_tenant->fetch_assoc();
+
+# 사용자 닉네임
+# Member Nickname
+// $member_nick = $row_tenant['nick'];
+$member_nick = "아슬란";
+
+# 사용자 자산
+# Member Asset
+// $member_gold = number_format($row_tenant['point']);
+// $member_red = number_format($row_tenant['cash']);
+$gold = 80000000;
+$red = 200000;
+$member_gold = number_format($gold);
+$member_red = number_format($red);
+
+# ────────────────────────────────────
+
+# 구매 가능여부 확인 (골드)
+# Checking for availability (Gold)
+$available_gold_lv1 = false;
+$available_gold_lv2 = false;
+$available_gold_lv3 = false;
+$available_gold_lv4 = false;
+$maximum_level_gold = false;
+switch ($building) {
+  case 0:
+    # 레벨 1 (콜로나)
+    # LEVEL 1 (Kolona)
+    if ($gold >= $price_gold_lv1) {
+      $available_gold_lv1 = true;
+    } else {
+      $available_gold_lv1 = false;
+    }
+    break;
+  case 1:
+    # 레벨 2 (오데이온)
+    # LEVEL 2 (Odeion)
+    if ($gold >= $price_gold_lv2) {
+      $available_gold_lv2 = true;
+    } else {
+      $available_gold_lv2 = false;
+    }
+    break;
+  case 2:
+    # 레벨 3 (스타디온)
+    # LEVEL 3 (Stadion)
+    if ($gold >= $price_gold_lv3) {
+      $available_gold_lv3 = true;
+    } else {
+      $available_gold_lv3 = false;
+    }
+    break;
+  case 3:
+    # 레벨 4 (파르테논)
+    # LEVEL 4 (Parthenon)
+    if ($gold >= $price_gold_lv4) {
+      $available_gold_lv4 = true;
+    } else {
+      $available_gold_lv4 = false;
+    }
+    break;
+  case 4:
+    # 최고 레벨 달성 & 결제 불가
+    # Highest level reached & Unable to pay
+    $available_gold_lv1 = false;
+    $available_gold_lv2 = false;
+    $available_gold_lv3 = false;
+    $available_gold_lv4 = false;
+    $maximum_level_gold = true;
+    break;
+  default:
+    # 디폴트 : 결제 불가
+    # Default : Unable to pay
+    $available_gold_lv1 = false;
+    $available_gold_lv2 = false;
+    $available_gold_lv3 = false;
+    $available_gold_lv4 = false;
+    break;
+}
+
+# 구매 가능여부 확인 (레드베릴)
+# Checking for availability (Red Beryl)
+$available_red_lv1 = false;
+$available_red_lv2 = false;
+$available_red_lv3 = false;
+$available_red_lv4 = false;
+$maximum_level_red = false;
+switch ($building) {
+  case 0:
+    # 레벨 1 (콜로나)
+    # LEVEL 1 (Kolona)
+    if ($red >= $price_red_lv1) {
+      $available_red_lv1 = true;
+    } else {
+      $available_red_lv1 = false;
+    }
+    break;
+  case 1:
+    # 레벨 2 (오데이온)
+    # LEVEL 2 (Odeion)
+    if ($red >= $price_red_lv2) {
+      $available_red_lv2 = true;
+    } else {
+      $available_red_lv2 = false;
+    }
+    break;
+  case 2:
+    # 레벨 3 (스타디온)
+    # LEVEL 3 (Stadion)
+    if ($red >= $price_red_lv3) {
+      $available_red_lv3 = true;
+    } else {
+      $available_red_lv3 = false;
+    }
+    break;
+  case 3:
+    # 레벨 4 (파르테논)
+    # LEVEL 4 (Parthenon)
+    if ($red >= $price_red_lv4) {
+      $available_red_lv4 = true;
+    } else {
+      $available_red_lv4 = false;
+    }
+    break;
+  case 4:
+    # 최고 레벨 달성 & 결제 불가
+    # Highest level reached & Unable to pay
+    $available_red_lv1 = false;
+    $available_red_lv2 = false;
+    $available_red_lv3 = false;
+    $available_red_lv4 = false;
+    $maximum_level_red = true;
+    break;
+  default:
+    # 디폴트 : 결제 불가
+    # Default : Unable to pay
+    $available_red_lv1 = false;
+    $available_red_lv2 = false;
+    $available_red_lv3 = false;
+    $available_red_lv4 = false;
+    break;
+}
+
+# ────────────────────────────────────
 ?>
 
 <!DOCTYPE html>
@@ -76,208 +336,27 @@ $item8 = $row['item8'];
   <link rel="stylesheet" type="text/css" href="modal.css" />
 </head>
 
-<?php
-// if (!$login_status) {
-//   echo "<script>alert('로그인 후에 이용 가능합니다.')</script>";
-//   echo "<script>location.href='login.php';</script>";
-// } else {
-?>
-
 <body>
 
   <!-- 모달 -->
   <!-- Modal -->
-  <div id="modalGold" class="modal">
+  <div id="modal" class="modal">
     <div class="modal_content">
-      <p>골드로 결제하시겠습니까?</p>
-      <button class="btn btn-effect" id="btnGold"><span>결제하기</span></button>
-    </div>
-  </div>
-
-  <!-- 모달 -->
-  <!-- Modal -->
-  <div id="modalRed" class="modal">
-    <div class="modal_content">
-      <p>레드베릴로 결제하시겠습니까?</p>
-      <button class="btn btn-effect" id="btnRed"><span>결제하기</span></button>
+      <p>결제하시겠습니까?</p>
+      <button class="btn btn-effect" id="btnPay"><span>결제하기</span></button>
     </div>
   </div>
 
   <!-- 데이터 저장을 위한 FORM tag -->
   <!-- FORM tag for storing data -->
   <form>
-    <input type="hidden" name="idx" id="idx" value="<?= $idx; ?>">
+    <input type="hidden" name="idx" id="idx" value="<? echo $idx; ?>">
   </form>
 
   <?php include("./navbar.php") ?>
 
   <!-- 임차인 컴포넌트 -->
   <!-- Tenant Component -->
-  <?php
-  // Temporary Member ID
-  $temporary_id = "grandefidelite@gmail.com";
-
-  # 임차인 데이터 조회
-  # Retrieving tenant data
-  $query_tenant = "SELECT * FROM tb_member WHERE id='$temporary_id'";
-  $result_tenant = $con->query($query_tenant);
-  $row_tenant = $result_tenant->fetch_assoc();
-
-  # 사용자 닉네임
-  # Member Nickname
-  // $member_nick = $row_tenant['nick'];
-  $member_nick = "아슬란";
-
-  # 사용자 자산
-  # Member Asset
-  // $member_gold = number_format($row_tenant['point']);
-  // $member_red = number_format($row_tenant['cash']);
-  $gold = 8034678;
-  $red = 7564;
-  $member_gold = number_format($gold);
-  $member_red = number_format($red);
-
-  # 건설 가격표
-  # Pricing list <Build>
-  # 0 -> 1 : 200,000 (GOLD) 1,000 (RED)
-  # 1 -> 2 : 800,000 (GOLD) 2,000 (RED)
-  # 2 -> 3 : 1,500,000 (GOLD) 3,000 (RED)
-  # 3 -> 4 : 2,500,000 (GOLD) 4,000 (RED)
-  $price_gold_lv1 = 200000;
-  $price_gold_lv2 = 800000;
-  $price_gold_lv3 = 1500000;
-  $price_gold_lv4 = 2500000;
-  $price_red_lv1 = 1000;
-  $price_red_lv2 = 2000;
-  $price_red_lv3 = 3000;
-  $price_red_lv4 = 4000;
-
-  # 구매 가능여부 확인 (골드)
-  # Checking for availability (Gold)
-  $available_gold_lv1 = false;
-  $available_gold_lv2 = false;
-  $available_gold_lv3 = false;
-  $available_gold_lv4 = false;
-  $maximum_level_gold = false;
-  switch ($building) {
-    case 0:
-      # 레벨 1 (콜로나)
-      # LEVEL 1 (Kolona)
-      if ($gold >= $price_gold_lv1) {
-        $available_gold_lv1 = true;
-      } else {
-        $available_gold_lv1 = false;
-      }
-      break;
-    case 1:
-      # 레벨 2 (오데이온)
-      # LEVEL 2 (Odeion)
-      if ($gold >= $price_gold_lv2) {
-        $available_gold_lv2 = true;
-      } else {
-        $available_gold_lv2 = false;
-      }
-      break;
-    case 2:
-      # 레벨 3 (스타디온)
-      # LEVEL 3 (Stadion)
-      if ($gold >= $price_gold_lv3) {
-        $available_gold_lv3 = true;
-      } else {
-        $available_gold_lv3 = false;
-      }
-      break;
-    case 3:
-      # 레벨 4 (파르테논)
-      # LEVEL 4 (Parthenon)
-      if ($gold >= $price_gold_lv4) {
-        $available_gold_lv4 = true;
-      } else {
-        $available_gold_lv4 = false;
-      }
-      break;
-    case 4:
-      # 최고 레벨 달성 & 결제 불가
-      # Highest level reached & Unable to pay
-      $available_gold_lv1 = false;
-      $available_gold_lv2 = false;
-      $available_gold_lv3 = false;
-      $available_gold_lv4 = false;
-      $maximum_level_gold = true;
-      break;
-    default:
-      # 디폴트 : 결제 불가
-      # Default : Unable to pay
-      $available_gold_lv1 = false;
-      $available_gold_lv2 = false;
-      $available_gold_lv3 = false;
-      $available_gold_lv4 = false;
-      break;
-  }
-
-  # 구매 가능여부 확인 (레드베릴)
-  # Checking for availability (Red Beryl)
-  $available_red_lv1 = false;
-  $available_red_lv2 = false;
-  $available_red_lv3 = false;
-  $available_red_lv4 = false;
-  $maximum_level_red = false;
-  switch ($building) {
-    case 0:
-      # 레벨 1 (콜로나)
-      # LEVEL 1 (Kolona)
-      if ($red >= $price_red_lv1) {
-        $available_red_lv1 = true;
-      } else {
-        $available_red_lv1 = false;
-      }
-      break;
-    case 1:
-      # 레벨 2 (오데이온)
-      # LEVEL 2 (Odeion)
-      if ($red >= $price_red_lv2) {
-        $available_red_lv2 = true;
-      } else {
-        $available_red_lv2 = false;
-      }
-      break;
-    case 2:
-      # 레벨 3 (스타디온)
-      # LEVEL 3 (Stadion)
-      if ($red >= $price_red_lv3) {
-        $available_red_lv3 = true;
-      } else {
-        $available_red_lv3 = false;
-      }
-      break;
-    case 3:
-      # 레벨 4 (파르테논)
-      # LEVEL 4 (Parthenon)
-      if ($red >= $price_red_lv4) {
-        $available_red_lv4 = true;
-      } else {
-        $available_red_lv4 = false;
-      }
-      break;
-    case 4:
-      # 최고 레벨 달성 & 결제 불가
-      # Highest level reached & Unable to pay
-      $available_red_lv1 = false;
-      $available_red_lv2 = false;
-      $available_red_lv3 = false;
-      $available_red_lv4 = false;
-      $maximum_level_red = true;
-      break;
-    default:
-      # 디폴트 : 결제 불가
-      # Default : Unable to pay
-      $available_red_lv1 = false;
-      $available_red_lv2 = false;
-      $available_red_lv3 = false;
-      $available_red_lv4 = false;
-      break;
-  }
-  ?>
   <div class="tenant">
     <h3 class="tenant_name"><?php echo $member_nick ?>님의 보유자산</h3>
     <div class="tenant_asset">
@@ -594,16 +673,148 @@ $item8 = $row['item8'];
           <p><?php
               switch ($building) {
                 case 0:
-                  echo number_format($price_gold_lv1);
+                  # 콜로나 건설비용
+                  # Kolona Construction Cost
+                  switch ($land_grade) {
+                    case 1:
+                      echo number_format($cost_gold_grade1_kolona);
+                      break;
+                    case 2:
+                      echo number_format($cost_gold_grade2_kolona);
+                      break;
+                    case 3:
+                      echo number_format($cost_gold_grade3_kolona);
+                      break;
+                    case 4:
+                      echo number_format($cost_gold_grade4_kolona);
+                      break;
+                    case 5:
+                      echo number_format($cost_gold_grade5_kolona);
+                      break;
+                    case 6:
+                      echo number_format($cost_gold_grade6_kolona);
+                      break;
+                    case 7:
+                      echo number_format($cost_gold_grade7_kolona);
+                      break;
+                    case 8:
+                      echo number_format($cost_gold_grade8_kolona);
+                      break;
+                    case 9:
+                      echo number_format($cost_gold_grade9_kolona);
+                      break;
+                    case 10:
+                      echo number_format($cost_gold_grade10_kolona);
+                      break;
+                  }
                   break;
                 case 1:
-                  echo number_format($price_gold_lv2);
+                  # 오데이온 건설비용
+                  # Odeion Construction Cost
+                  switch ($land_grade) {
+                    case 1:
+                      echo number_format($cost_gold_grade1_odeion);
+                      break;
+                    case 2:
+                      echo number_format($cost_gold_grade2_odeion);
+                      break;
+                    case 3:
+                      echo number_format($cost_gold_grade3_odeion);
+                      break;
+                    case 4:
+                      echo number_format($cost_gold_grade4_odeion);
+                      break;
+                    case 5:
+                      echo number_format($cost_gold_grade5_odeion);
+                      break;
+                    case 6:
+                      echo number_format($cost_gold_grade6_odeion);
+                      break;
+                    case 7:
+                      echo number_format($cost_gold_grade7_odeion);
+                      break;
+                    case 8:
+                      echo number_format($cost_gold_grade8_odeion);
+                      break;
+                    case 9:
+                      echo number_format($cost_gold_grade9_odeion);
+                      break;
+                    case 10:
+                      echo number_format($cost_gold_grade10_odeion);
+                      break;
+                  }
                   break;
                 case 2:
-                  echo number_format($price_gold_lv3);
+                  # 스타디온 건설비용
+                  # Stadion Construction Cost
+                  switch ($land_grade) {
+                    case 1:
+                      echo number_format($cost_gold_grade1_stadion);
+                      break;
+                    case 2:
+                      echo number_format($cost_gold_grade2_stadion);
+                      break;
+                    case 3:
+                      echo number_format($cost_gold_grade3_stadion);
+                      break;
+                    case 4:
+                      echo number_format($cost_gold_grade4_stadion);
+                      break;
+                    case 5:
+                      echo number_format($cost_gold_grade5_stadion);
+                      break;
+                    case 6:
+                      echo number_format($cost_gold_grade6_stadion);
+                      break;
+                    case 7:
+                      echo number_format($cost_gold_grade7_stadion);
+                      break;
+                    case 8:
+                      echo number_format($cost_gold_grade8_stadion);
+                      break;
+                    case 9:
+                      echo number_format($cost_gold_grade9_stadion);
+                      break;
+                    case 10:
+                      echo number_format($cost_gold_grade10_stadion);
+                      break;
+                  }
                   break;
                 case 3:
-                  echo number_format($price_gold_lv4);
+                  # 파르테논 건설비용
+                  # Parthenon Construction Cost
+                  switch ($land_grade) {
+                    case 1:
+                      echo number_format($cost_gold_grade1_parthenon);
+                      break;
+                    case 2:
+                      echo number_format($cost_gold_grade2_parthenon);
+                      break;
+                    case 3:
+                      echo number_format($cost_gold_grade3_parthenon);
+                      break;
+                    case 4:
+                      echo number_format($cost_gold_grade4_parthenon);
+                      break;
+                    case 5:
+                      echo number_format($cost_gold_grade5_parthenon);
+                      break;
+                    case 6:
+                      echo number_format($cost_gold_grade6_parthenon);
+                      break;
+                    case 7:
+                      echo number_format($cost_gold_grade7_parthenon);
+                      break;
+                    case 8:
+                      echo number_format($cost_gold_grade8_parthenon);
+                      break;
+                    case 9:
+                      echo number_format($cost_gold_grade9_parthenon);
+                      break;
+                    case 10:
+                      echo number_format($cost_gold_grade10_parthenon);
+                      break;
+                  }
                   break;
                 case 4:
                   echo '최고 등급';
@@ -618,16 +829,148 @@ $item8 = $row['item8'];
           <p><?php
               switch ($building) {
                 case 0:
-                  echo number_format($price_red_lv1);
+                  # 콜로나 건설비용
+                  # Kolona Construction Cost
+                  switch ($land_grade) {
+                    case 1:
+                      echo number_format($cost_red_grade1_kolona);
+                      break;
+                    case 2:
+                      echo number_format($cost_red_grade2_kolona);
+                      break;
+                    case 3:
+                      echo number_format($cost_red_grade3_kolona);
+                      break;
+                    case 4:
+                      echo number_format($cost_red_grade4_kolona);
+                      break;
+                    case 5:
+                      echo number_format($cost_red_grade5_kolona);
+                      break;
+                    case 6:
+                      echo number_format($cost_red_grade6_kolona);
+                      break;
+                    case 7:
+                      echo number_format($cost_red_grade7_kolona);
+                      break;
+                    case 8:
+                      echo number_format($cost_red_grade8_kolona);
+                      break;
+                    case 9:
+                      echo number_format($cost_red_grade9_kolona);
+                      break;
+                    case 10:
+                      echo number_format($cost_red_grade10_kolona);
+                      break;
+                  }
                   break;
                 case 1:
-                  echo number_format($price_red_lv2);
+                  # 오데이온 건설비용
+                  # Odeion Construction Cost
+                  switch ($land_grade) {
+                    case 1:
+                      echo number_format($cost_red_grade1_odeion);
+                      break;
+                    case 2:
+                      echo number_format($cost_red_grade2_odeion);
+                      break;
+                    case 3:
+                      echo number_format($cost_red_grade3_odeion);
+                      break;
+                    case 4:
+                      echo number_format($cost_red_grade4_odeion);
+                      break;
+                    case 5:
+                      echo number_format($cost_red_grade5_odeion);
+                      break;
+                    case 6:
+                      echo number_format($cost_red_grade6_odeion);
+                      break;
+                    case 7:
+                      echo number_format($cost_red_grade7_odeion);
+                      break;
+                    case 8:
+                      echo number_format($cost_red_grade8_odeion);
+                      break;
+                    case 9:
+                      echo number_format($cost_red_grade9_odeion);
+                      break;
+                    case 10:
+                      echo number_format($cost_red_grade10_odeion);
+                      break;
+                  }
                   break;
                 case 2:
-                  echo number_format($price_red_lv3);
+                  # 스타디온 건설비용
+                  # Stadion Construction Cost
+                  switch ($land_grade) {
+                    case 1:
+                      echo number_format($cost_red_grade1_stadion);
+                      break;
+                    case 2:
+                      echo number_format($cost_red_grade2_stadion);
+                      break;
+                    case 3:
+                      echo number_format($cost_red_grade3_stadion);
+                      break;
+                    case 4:
+                      echo number_format($cost_red_grade4_stadion);
+                      break;
+                    case 5:
+                      echo number_format($cost_red_grade5_stadion);
+                      break;
+                    case 6:
+                      echo number_format($cost_red_grade6_stadion);
+                      break;
+                    case 7:
+                      echo number_format($cost_red_grade7_stadion);
+                      break;
+                    case 8:
+                      echo number_format($cost_red_grade8_stadion);
+                      break;
+                    case 9:
+                      echo number_format($cost_red_grade9_stadion);
+                      break;
+                    case 10:
+                      echo number_format($cost_red_grade10_stadion);
+                      break;
+                  }
                   break;
                 case 3:
-                  echo number_format($price_red_lv4);
+                  # 파르테논 건설비용
+                  # Parthenon Construction Cost
+                  switch ($land_grade) {
+                    case 1:
+                      echo number_format($cost_gold_grade1_parthenon);
+                      break;
+                    case 2:
+                      echo number_format($cost_gold_grade2_parthenon);
+                      break;
+                    case 3:
+                      echo number_format($cost_gold_grade3_parthenon);
+                      break;
+                    case 4:
+                      echo number_format($cost_gold_grade4_parthenon);
+                      break;
+                    case 5:
+                      echo number_format($cost_gold_grade5_parthenon);
+                      break;
+                    case 6:
+                      echo number_format($cost_gold_grade6_parthenon);
+                      break;
+                    case 7:
+                      echo number_format($cost_gold_grade7_parthenon);
+                      break;
+                    case 8:
+                      echo number_format($cost_gold_grade8_parthenon);
+                      break;
+                    case 9:
+                      echo number_format($cost_gold_grade9_parthenon);
+                      break;
+                    case 10:
+                      echo number_format($cost_gold_grade10_parthenon);
+                      break;
+                  }
                   break;
                 case 4:
                   echo '최고 등급';
@@ -730,8 +1073,8 @@ $item8 = $row['item8'];
 
 </body>
 
+</html>
+
 <?php
 // }
 ?>
-
-</html>
