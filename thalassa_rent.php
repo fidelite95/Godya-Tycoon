@@ -389,6 +389,12 @@ if ($row_tenant['cash'] >= $row['price_red']) {
     function success(idx) {
       location.href = "thalassa_rent_ok.php?idx=" + idx;
     }
+
+    window.addEventListener("click", () => {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    });
   </script>
 </body>
 

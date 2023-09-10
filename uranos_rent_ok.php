@@ -97,7 +97,7 @@ if ($tenant_red >= $price_red) {
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 
-<body>
+<body id="body">
     <div class="build_ok">
         <lottie-player src="./json/success2.json" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay direction="1" mode="normal">
         </lottie-player>
@@ -197,7 +197,9 @@ if ($member_id == NULL) {
 # 영토가 판매된 경우
 # If the territory is sold
 else {
-    echo "<script>alert('이미 판매된 영토입니다.')</script>";
+    echo "<script>const body = document.getElementById('body');</script>";
+    echo "<script>body.style.opacity = 0;</script>";
+    echo "<script>alert('이미 판매된 영토입니다.');</script>";
     echo '<script>location.href = "uranos.php"</script>';
     mysqli_close($con);
 }
