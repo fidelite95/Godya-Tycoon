@@ -10,7 +10,6 @@ include("./connection.php");
 
 # 건설 가격표
 # Pricing list <Build>
-# grade1 ~ grade10
 
 # 0 -> 1 : kolona
 $cost_gold_grade1_kolona = 550000;
